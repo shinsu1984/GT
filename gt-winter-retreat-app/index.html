@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GT 겨울여정</title>
+<meta name="description" content="2027 GT 겨울수련회 정보 안내 앱 — 일정, 오시는 길, 준비물, 조 편성, 공지사항, 사진을 한 곳에서 확인하세요.">
+<meta name="theme-color" content="#3562e8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="GT 겨울여정">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%233562e8'/%3E%3Ccircle cx='12' cy='12' r='7.2' fill='none' stroke='white' stroke-width='1.8'/%3E%3Cpath d='M14.6 9.4l-1.6 4.2-4.2 1.6 1.6-4.2z' fill='white'/%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell" id="page">
+  <div class="sample-banner" id="sampleBanner">
+    🚧 예시 데이터로 채운 뼈대 버전 — <code>js/data.js</code> 파일에서 실제 정보로 바꿔주세요.
+    <button type="button" id="dismissBanner">닫기</button>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-title"><span class="dot"></span><span id="topbarTitle">GT 겨울여정</span></div>
+    <div class="topbar-dday" id="ddayBadge">D-000</div>
+  </header>
+
+  <main id="content"></main>
+
+  <nav class="tabbar" id="tabbar" aria-label="메뉴"></nav>
+</div>
+
+<!-- lightbox for photo viewer -->
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="닫기">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <img id="lightboxImg" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

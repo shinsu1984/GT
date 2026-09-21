@@ -1,0 +1,10 @@
+{
+  "name": "GT 겨울여정",
+  "short_name": "GT 겨울여정",
+  "description": "2027 GT 겨울수련회 정보 안내 앱",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#3562e8",
+  "icons": []
+}
