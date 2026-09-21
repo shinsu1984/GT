@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GT 겨울여정</title>
+<meta name="description" content="2027 GT 교사 겨울수련회 정보 안내 앱 — 일정, 분과, 미션, 정보, 사진을 한 곳에서 확인하세요.">
+<meta name="theme-color" content="#3562e8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GT 겨울여정">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%233562e8'/%3E%3Ccircle cx='12' cy='12' r='7.2' fill='none' stroke='white' stroke-width='1.8'/%3E%3Cpath d='M14.6 9.4l-1.6 4.2-4.2 1.6 1.6-4.2z' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6fa; --surface:#ffffff; --surface-2:#eef1f8;
+  --border:#e4e7f0; --border-strong:#cfd5e6;
+  --ink:#1c2333; --ink-dim:#5c6478; --ink-faint:#96a0b5;
+  --primary:#3562e8; --primary-soft:#eaf0ff; --primary-line:#c6d6ff;
+  --violet:#7c5cff; --violet-soft:#efeaff; --violet-line:#d9ccff;
+  --amber:#e8890c; --amber-soft:#fff4e0; --amber-line:#f6d99a;
+  --coral:#e0433a; --coral-soft:#fdeceb; --coral-line:#f6c6c2;
+  --mint:#0d9868; --mint-soft:#e2f7ee; --mint-line:#a9e6cb;
+  --radius-s:10px; --radius-m:16px; --radius-l:22px;
+  --font-body:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-weight:800;margin:0;text-wrap:balance;}
+p{margin:0;}
+button{font-family:inherit;}
+img{max-width:100%;}
+a{color:inherit;}
+.icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.15em;flex:none;}
+
+.app-shell{max-width:520px;margin:0 auto;position:relative;min-height:100%;background:var(--bg);padding-bottom:96px;}
+
+.sample-banner{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding:9px 16px;background:var(--amber-soft);color:#8a5a05;border-bottom:1px solid var(--amber-line);font-size:12px;text-align:center;}
+.sample-banner code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:11px;}
+.sample-banner button{background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;font-size:inherit;padding:0;flex:none;font-weight:700;}
+
+.topbar{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.topbar-title{font-size:15px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px;}
+.topbar-title .dot{width:7px;height:7px;border-radius:50%;background:var(--primary);}
+.topbar-dday{font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-soft);border:1px solid var(--primary-line);padding:5px 11px;border-radius:999px;font-variant-numeric:tabular-nums;}
+
+main{padding:16px 18px 8px;}
+
+.home-banner{background:linear-gradient(160deg,var(--primary) 0%,#2748b8 100%);color:#fff;border-radius:var(--radius-l);padding:22px 20px;margin-bottom:18px;position:relative;overflow:hidden;}
+.home-banner::after{content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);}
+.home-eyebrow{font-size:11px;letter-spacing:.16em;opacity:.8;font-weight:700;}
+.home-title{font-size:23px;margin-top:8px;color:#fff;}
+.home-year{color:#ffd67a;}
+.home-theme{margin-top:8px;font-size:13.5px;opacity:.92;max-width:38ch;}
+.home-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px;}
+.home-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px;font-size:12px;font-weight:600;}
+.home-dday-row{display:flex;align-items:center;gap:10px;margin-top:16px;}
+.home-dday{font-family:var(--font-mono);font-weight:800;font-size:15px;background:rgba(255,255,255,.94);color:var(--primary);padding:7px 14px;border-radius:999px;font-variant-numeric:tabular-nums;}
+
+.home-welcome{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:16px;margin-bottom:18px;color:var(--ink-dim);font-size:14px;white-space:pre-line;}
+
+.section-label{font-size:12.5px;font-weight:800;color:var(--ink-faint);letter-spacing:.02em;margin-bottom:10px;}
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
+.quick-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;text-align:left;color:var(--ink);}
+.quick-card .icon-badge{width:32px;height:32px;border-radius:9px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.quick-card b{font-size:13.5px;font-weight:700;}
+
+.notice-preview-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;margin-bottom:9px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;width:100%;text-align:left;}
+.notice-preview-card.important{border-color:var(--coral-line);background:var(--coral-soft);}
+.notice-dot{width:7px;height:7px;border-radius:50%;background:var(--ink-faint);margin-top:6px;flex:none;}
+.notice-preview-card.important .notice-dot{background:var(--coral);}
+.notice-preview-text b{font-size:13.5px;font-weight:700;display:block;}
+.notice-preview-text span{font-size:12.5px;color:var(--ink-dim);}
+.see-all-link{display:flex;align-items:center;gap:5px;color:var(--primary);font-size:13px;font-weight:700;background:none;border:none;cursor:pointer;padding:6px 0;margin-bottom:14px;}
+
+.mission-teaser{background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:var(--radius-m);padding:14px;margin-bottom:18px;display:flex;align-items:center;gap:12px;cursor:pointer;width:100%;text-align:left;}
+.mission-teaser .icon-badge{width:34px;height:34px;border-radius:10px;background:#fff;color:var(--violet);display:flex;align-items:center;justify-content:center;flex:none;}
+.mission-teaser b{font-size:13.5px;color:var(--ink);display:block;}
+.mission-teaser span{font-size:12px;color:var(--ink-dim);}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+.stop{margin-bottom:22px;}
+.stop-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+.stop-badge{width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--primary-soft);border:1px solid var(--primary-line);color:var(--primary);font-size:16px;}
+.stop-title{font-size:16.5px;color:var(--ink);flex:1;}
+.stop-sub{font-size:12.5px;color:var(--ink-faint);margin:-10px 0 14px 45px;}
+
+.venue-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-l);padding:16px;}
+.venue-name{font-size:15.5px;color:var(--ink);font-weight:700;}
+.venue-addr{color:var(--ink-dim);font-size:13px;margin-top:5px;}
+.venue-link{display:inline-flex;align-items:center;gap:6px;margin-top:11px;color:var(--primary);font-size:13px;text-decoration:none;font-weight:700;}
+.transport-list{margin-top:15px;display:flex;flex-direction:column;gap:10px;}
+.transport-item{display:flex;gap:12px;border-top:1px solid var(--border);padding-top:10px;}
+.transport-item:first-child{border-top:none;padding-top:0;}
+.transport-method{flex:none;width:74px;font-size:12px;color:var(--primary);font-weight:700;}
+.transport-desc{color:var(--ink-dim);font-size:13px;flex:1;}
+
+.day-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.day-tab{background:var(--surface);border:1px solid var(--border-strong);color:var(--ink-dim);padding:7px 13px;border-radius:999px;font-size:12.5px;cursor:pointer;font-weight:600;}
+.day-tab.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+.day-panel{display:none;}
+.day-panel.active{display:block;}
+.timeline{position:relative;padding-left:19px;}
+.timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border-strong);}
+.tl-item{position:relative;padding-bottom:18px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-19px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--primary);}
+.tl-row{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
+.tl-time{font-family:var(--font-mono);color:var(--primary);font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;flex:none;}
+.tl-title{color:var(--ink);font-weight:700;font-size:14px;}
+.tl-tag{font-size:10.5px;padding:2px 8px;border-radius:999px;margin-left:auto;font-weight:700;}
+.tl-tag.tag-primary{background:var(--primary-soft);color:var(--primary);}
+.tl-tag.tag-violet{background:var(--violet-soft);color:var(--violet);}
+.tl-tag.tag-amber{background:var(--amber-soft);color:var(--amber);}
+.tl-tag.tag-mint{background:var(--mint-soft);color:var(--mint);}
+.tl-tag.tag-grey{background:var(--surface-2);color:var(--ink-faint);}
+.tl-desc{color:var(--ink-dim);font-size:12.5px;margin-top:3px;}
+
+/* workshops (분과·워크숍) */
+.round-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.session-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:15px;margin-bottom:10px;}
+.session-top{display:flex;align-items:baseline;gap:9px;}
+.session-time{font-family:var(--font-mono);color:var(--violet);font-size:12px;font-weight:700;flex:none;}
+.session-title{font-size:14.5px;font-weight:700;color:var(--ink);}
+.session-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.session-meta span{font-size:11px;color:var(--ink-faint);background:var(--surface-2);padding:2px 8px;border-radius:999px;font-weight:600;}
+.session-desc{margin-top:8px;font-size:12.5px;color:var(--ink-dim);}
+
+/* missions */
+.mission-progress{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:16px;margin-bottom:18px;}
+.mission-progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+.mission-progress-top b{font-size:14px;color:var(--ink);}
+.mission-progress-top span{font-family:var(--font-mono);font-size:13px;color:var(--violet);font-weight:700;}
+.mission-bar{height:9px;background:var(--surface-2);border-radius:999px;overflow:hidden;}
+.mission-bar-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--primary));border-radius:999px;transition:width .3s ease;}
+.mission-cat-label{font-size:12px;font-weight:800;color:var(--violet);margin:18px 0 8px;display:flex;align-items:center;gap:6px;}
+.mission-list{display:flex;flex-direction:column;gap:8px;}
+.mission-card{display:flex;align-items:center;gap:11px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:13px;cursor:pointer;}
+.mission-card.done{background:var(--mint-soft);border-color:var(--mint-line);}
+.mission-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border-strong);flex:none;display:flex;align-items:center;justify-content:center;color:#fff;}
+.mission-check.checked{background:var(--mint);border-color:var(--mint);}
+.mission-check .icon{width:12px;height:12px;}
+.mission-text{font-size:13.5px;color:var(--ink);}
+.mission-card.done .mission-text{color:var(--ink-dim);text-decoration:line-through;}
+.commitment-card{background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:var(--radius-l);padding:16px;margin-bottom:20px;}
+.commitment-card b{font-size:14px;color:var(--ink);display:block;margin-bottom:8px;}
+.commitment-card textarea{width:100%;min-height:70px;border-radius:10px;border:1px solid var(--border-strong);padding:10px 12px;font-family:inherit;font-size:13.5px;resize:vertical;background:#fff;}
+.commitment-save{margin-top:8px;background:var(--violet);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;}
+.commitment-saved{margin-top:10px;font-size:12.5px;color:var(--ink-dim);font-style:italic;}
+
+/* group / packing */
+.group-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+.group-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;}
+.group-name{color:var(--primary);font-weight:800;font-size:14.5px;}
+.group-row{display:flex;gap:6px;font-size:12.5px;color:var(--ink-dim);margin-top:7px;}
+.group-row b{color:var(--ink);font-weight:700;min-width:44px;flex:none;}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.pack-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;}
+.pack-title{font-size:13.5px;color:var(--ink);font-weight:800;}
+.pack-list{list-style:none;margin:11px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.pack-list li{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-dim);}
+.pack-check{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border-strong);flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;}
+.pack-check.checked{background:var(--mint);border-color:var(--mint);}
+.pack-check .icon{width:11px;height:11px;}
+.pack-text.checked{color:var(--ink-faint);text-decoration:line-through;}
+
+/* notice / faq */
+.notice-list{display:flex;flex-direction:column;gap:10px;}
+.notice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;}
+.notice-card.important{border-color:var(--coral-line);background:var(--coral-soft);}
+.notice-top{display:flex;align-items:center;gap:8px;}
+.notice-title{font-weight:700;color:var(--ink);font-size:14px;flex:1;}
+.badge-important{font-size:10.5px;color:var(--coral);border:1px solid var(--coral-line);padding:2px 8px;border-radius:999px;flex:none;font-weight:700;}
+.notice-body{color:var(--ink-dim);font-size:13px;margin-top:7px;white-space:pre-line;}
+.faq-list{display:flex;flex-direction:column;gap:8px;}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);overflow:hidden;}
+.faq-q{width:100%;text-align:left;background:none;border:none;color:var(--ink);padding:13px 14px;font-size:13.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:10px;}
+.faq-q .icon{margin-left:auto;transition:transform .2s;flex:none;color:var(--ink-faint);}
+.faq-item.open .faq-q .icon{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+.faq-item.open .faq-a{max-height:400px;}
+.faq-a-inner{padding:0 14px 14px;color:var(--ink-dim);font-size:13px;}
+
+/* contact */
+.contact-list{display:flex;flex-direction:column;gap:9px;}
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.contact-info{flex:1;}
+.contact-role{font-size:11px;color:var(--ink-faint);font-weight:600;}
+.contact-name{font-size:14px;color:var(--ink);font-weight:700;margin-top:2px;}
+.contact-phone{display:inline-flex;align-items:center;gap:6px;color:var(--primary);text-decoration:none;font-size:12.5px;font-family:var(--font-mono);margin-top:2px;font-weight:700;}
+
+.empty-note{color:var(--ink-faint);font-size:13px;font-style:italic;}
+
+/* photos */
+.photo-upload-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-l);padding:16px;margin-bottom:18px;}
+.photo-upload-card .field{margin-bottom:12px;}
+.photo-upload-card label.f-label{display:block;font-size:12px;color:var(--ink-dim);margin-bottom:6px;font-weight:600;}
+.photo-upload-card input[type=text]{width:100%;background:var(--surface-2);border:1px solid var(--border-strong);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit;}
+.file-drop{border:1.5px dashed var(--border-strong);border-radius:var(--radius-m);padding:20px;text-align:center;color:var(--ink-faint);font-size:13px;cursor:pointer;background:var(--surface-2);}
+.file-drop input{display:none;}
+.file-drop.has-files{color:var(--primary);border-color:var(--primary-line);background:var(--primary-soft);}
+.upload-btn{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;margin-top:4px;}
+.upload-btn:disabled{opacity:.5;cursor:not-allowed;}
+.upload-progress{margin-top:10px;font-size:12.5px;color:var(--ink-dim);}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.photo-thumb{aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;position:relative;}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-thumb .photo-name{position:absolute;left:0;right:0;bottom:0;padding:4px 6px;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);color:#fff;font-size:9.5px;font-weight:600;}
+.firebase-setup-note{background:var(--surface);border:1px dashed var(--border-strong);border-radius:var(--radius-m);padding:18px;color:var(--ink-dim);font-size:13px;text-align:center;}
+.firebase-setup-note b{display:block;color:var(--ink);font-size:14px;margin-bottom:6px;}
+
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(10,14,26,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+.lightbox img{max-width:100%;max-height:78vh;border-radius:12px;object-fit:contain;}
+.lightbox-caption{color:#fff;font-size:13px;margin-top:14px;text-align:center;opacity:.85;}
+.lightbox-close{position:absolute;top:20px;right:20px;top:calc(20px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.14);border:none;color:#fff;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:520px;margin:0 auto;background:var(--surface);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom,0px);display:flex;box-shadow:0 -6px 24px -12px rgba(20,30,60,.18);}
+.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;background:none;border:none;color:var(--ink-faint);font-size:10px;font-weight:700;cursor:pointer;}
+.tab-btn .icon{width:20px;height:20px;}
+.tab-btn.active{color:var(--primary);}
+
+.toast{position:fixed;left:50%;bottom:88px;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 18px;border-radius:999px;font-size:13px;z-index:80;max-width:88vw;text-align:center;box-shadow:0 10px 30px -10px rgba(0,0,0,.35);}
+[hidden]{display:none!important;}
+</style>
+</head>
+<body>
+
+<div class="app-shell" id="page">
+  <div class="sample-banner" id="sampleBanner">
+    🚧 예시 데이터로 채운 뼈대 버전 — 이 파일 위쪽 <code>RETREAT_DATA</code> 부분에서 실제 정보로 바꿔주세요.
+    <button type="button" id="dismissBanner">닫기</button>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-title"><span class="dot"></span><span id="topbarTitle">GT 겨울여정</span></div>
+    <div class="topbar-dday" id="ddayBadge">D-000</div>
+  </header>
+
+  <main id="content"></main>
+
+  <nav class="tabbar" id="tabbar" aria-label="메뉴"></nav>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="닫기">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <img id="lightboxImg" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script type="module">
+/* ============================================================================
+   RETREAT_DATA — 이 블록만 고치면 앱에 나오는 모든 내용이 바뀝니다.
+   (일정/분과/미션/조편성/준비물/공지/FAQ/연락처)
+   문자열 안 줄바꿈은 \n 으로.
+============================================================================ */
+const RETREAT_DATA = {
+  meta: {
+    orgName: "GT",
+    year: "2027",
+    eyebrow: "GT TEACHERS' WINTER RETREAT",
+    theme: "쉼. 배움. 다시. (예시 테마 문구 — 실제 테마로 바꿔주세요)",
+    welcome:
+      "선생님, 한 학기 정말 애쓰셨습니다.\n" +
+      "이 앱 하나에 2027 GT 교사 겨울수련회의 모든 정보를 담았어요 — 일정, 분과·워크숍, 미션, 조 편성, 준비물, 공지사항, 사진까지 아래 메뉴에서 확인하세요.\n\n" +
+      "(예시 문구입니다 — 아래 RETREAT_DATA에서 실제 안내문으로 교체해주세요.)",
+    dateStart: "2027-01-15",
+    dateEnd: "2027-01-17",
+    dateLabel: "2027.01.15(금) – 01.17(일) · 2박 3일",
+    venueLabel: "○○수양관 (예시 장소명)",
+    audience: "GT 소속 교사 전체",
+    footerCredit: "GT 겨울여정 · 문의는 간사에게",
+  },
+
+  location: {
+    venueName: "○○수양관 (예시)",
+    address: "강원도 ○○시 ○○로 123 (예시 주소)",
+    mapUrl: "",
+    transport: [
+      { method: "전세버스", desc: "○○역 앞에서 1/15(금) 14:00 집결, 14:30 출발 (예시)" },
+      { method: "자가용", desc: "수양관 내 주차 가능, 도착 후 안내 요원에게 문의 (예시)" },
+    ],
+  },
+
+  // 전체 일정표. tag 색상: 예배/특강=primary, 분과·워크숍=violet, 체육대회=amber, 문화행사=mint, 나머지=grey
+  schedule: {
+    days: [
+      { id: "d1", label: "1일차 (금)", items: [
+        { time: "14:30", title: "출발", tag: "이동" },
+        { time: "17:00", title: "도착 및 입소", tag: "이동", desc: "숙소 배정 및 짐 정리" },
+        { time: "18:00", title: "저녁 식사", tag: "식사" },
+        { time: "19:30", title: "오프닝 특강", tag: "특강", desc: "\"쉼. 배움. 다시.\" — 소진된 교사의 자리에서 다시 일어서기 (예시)" },
+        { time: "21:30", title: "첫 만남 소그룹 (아이스브레이킹)", tag: "소그룹" },
+        { time: "23:00", title: "취침", tag: "취침" },
+      ]},
+      { id: "d2", label: "2일차 (토)", items: [
+        { time: "07:00", title: "아침 경건회", tag: "경건회" },
+        { time: "08:00", title: "아침 식사", tag: "식사" },
+        { time: "09:30", title: "분과연수 1부", tag: "분과연수", desc: "\"분과·워크숍\" 탭에서 원하는 세션을 미리 골라보세요" },
+        { time: "12:00", title: "점심 식사", tag: "식사" },
+        { time: "14:00", title: "교사 체육대회", tag: "체육대회", desc: "5인제 풋살 · 단체 줄넘기 · 피구 (예시)" },
+        { time: "18:00", title: "저녁 식사", tag: "식사" },
+        { time: "19:30", title: "저녁 집회 (핵심 강연)", tag: "특강" },
+        { time: "21:30", title: "문화행사 — 작가와의 만남 & 버스킹", tag: "문화행사" },
+        { time: "23:30", title: "취침", tag: "취침" },
+      ]},
+      { id: "d3", label: "3일차 (일)", items: [
+        { time: "07:30", title: "기상 및 정리", tag: "이동" },
+        { time: "08:00", title: "아침 식사", tag: "식사" },
+        { time: "09:30", title: "분과연수 2부", tag: "분과연수" },
+        { time: "11:00", title: "사명선언 나눔 & 파송 예배", tag: "예배", desc: "\"미션\" 탭에서 써둔 나의 다짐을 조원들과 나눠요" },
+        { time: "12:30", title: "점심 식사 및 퇴소", tag: "식사" },
+        { time: "13:30", title: "출발", tag: "이동" },
+      ]},
+    ],
+  },
+
+  // 분과·워크숍 카탈로그 (좋은교사운동 기독교사대회의 "분과연수/주제워크숍" 구성 참고)
+  workshops: {
+    rounds: [
+      {
+        id: "r1", label: "분과연수 1부 · 2일차 오전",
+        sessions: [
+          { time: "09:30–11:30", title: "회복탄력성: 소진된 교사가 다시 서는 법", speaker: "예시 강사", place: "대강당", audience: "전체", desc: "번아웃을 신앙으로 바라보고 회복하는 시간 (예시)" },
+          { time: "09:30–11:30", title: "학급긍정훈육(PDC) 실전", speaker: "예시 강사", place: "201호", audience: "초·중등", desc: "존중에 기반한 학급운영 실습 (예시)" },
+          { time: "09:30–11:30", title: "기독교 세계관으로 가르치는 수학/과학", speaker: "예시 강사", place: "202호", audience: "교과교사", desc: "교과 안에서 신앙과 지식을 잇는 시도 (예시)" },
+        ],
+      },
+      {
+        id: "r2", label: "분과연수 2부 · 3일차 오전",
+        sessions: [
+          { time: "09:30–11:00", title: "관계 회복: 학생 상담의 기술", speaker: "예시 강사", place: "대강당", audience: "전체", desc: "듣기와 질문으로 여는 상담 실습 (예시)" },
+          { time: "09:30–11:00", title: "쉼과 안식의 영성", speaker: "예시 강사", place: "201호", audience: "전체", desc: "교사의 삶에서 안식을 회복하는 시간 (예시)" },
+        ],
+      },
+    ],
+  },
+
+  // 조/모임 편성 — 학교급·경력 섞어서 배정하는 소그룹
+  groups: [
+    { name: "1소그룹", leader: "김모임장 (예시)", members: "이선생, 박선생, 최선생", room: "201호" },
+    { name: "2소그룹", leader: "정모임장 (예시)", members: "한선생, 유선생, 조선생", room: "202호" },
+  ],
+
+  packing: [
+    { id: "p1", title: "필수 준비물", items: ["성경책 및 필기구", "세면도구", "개인 컵", "따뜻한 겉옷·운동복"] },
+    { id: "p2", title: "개인 위생/상비약", items: ["수건", "칫솔/치약", "개인 상비약"] },
+    { id: "p3", title: "선택 준비물", items: ["체육대회용 운동화", "나눔용 수업자료·사진(선택)", "핫팩", "카메라"] },
+  ],
+
+  notices: [
+    { title: "수련회비 안내 (예시)", body: "회비는 1/10(일)까지 간사에게 납부해주세요.", important: true },
+    { title: "체육대회 복장 안내", body: "2일차 오후에는 활동하기 편한 복장과 운동화를 준비해주세요.", important: false },
+  ],
+
+  faq: [
+    { q: "가족(자녀)도 함께 갈 수 있나요?", a: "사전 신청 시 자녀 동반 프로그램 참여가 가능합니다. (예시 답변 — 실제 운영 여부에 맞게 수정하세요)" },
+    { q: "분과·워크숍은 미리 신청해야 하나요?", a: "현장에서 자유롭게 원하는 세션에 참여하시면 됩니다. (예시 답변)" },
+  ],
+
+  contacts: [
+    { role: "수련회 총괄", name: "홍길동 (예시)", phone: "010-0000-0000" },
+    { role: "안전 / 의료", name: "김안전 (예시)", phone: "010-0000-0001" },
+  ],
+
+  // 미션 — 참가 선생님들이 수련회 동안 체크해나가는 소소한 도전 목록
+  missions: {
+    categories: [
+      {
+        id: "faith", label: "신앙 미션", icon: "candle",
+        items: [
+          "오늘 집회에서 마음에 남은 한 문장 적어보기",
+          "처음 만난 선생님 한 분을 위해 기도하기",
+          "분과연수에서 배운 것 하나, 새 학기에 적용할 방법 생각해보기",
+        ],
+      },
+      {
+        id: "relation", label: "관계 미션", icon: "users",
+        items: [
+          "다른 학교 선생님 3명과 인사하고 이름 기억하기",
+          "우리 소그룹 조원 모두와 사진 한 장 남기기",
+          "체육대회에서 우리 조를 목청껏 응원하기",
+        ],
+      },
+      {
+        id: "reflect", label: "성찰 미션", icon: "target",
+        items: [
+          "아래 '나의 다짐' 칸에 새 학기 한 줄 다짐 적어보기",
+          "이번 수련회에서 가장 쉼이 되었던 순간 한 가지 떠올려보기",
+        ],
+      },
+      {
+        id: "join", label: "참여 미션", icon: "camera",
+        items: [
+          "문화행사(작가와의 만남·버스킹) 끝까지 즐기기",
+          "미션 인증샷을 '사진' 탭에 올려서 함께 나누기",
+        ],
+      },
+    ],
+  },
+};
+
+/* ============================================================================
+   Firebase 설정 — "사진" 탭 공유 기능용.
+   아래 값을 실제 Firebase 프로젝트 값으로 바꾸기 전까지는 사진 탭에
+   안내 문구만 표시되고 나머지 앱은 정상 작동합니다.
+   구하는 방법은 이 파일 하단 안내(또는 README) 참고.
+============================================================================ */
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID",
+};
+function isFirebaseConfigured() {
+  return firebaseConfig.apiKey !== "YOUR_API_KEY" && !!firebaseConfig.apiKey;
+}
+
+/* ============================================================================
+   ICONS
+============================================================================ */
+const ICONS = {
+  home: '<path d="M4 11.5L12 4l8 7.5"/><path d="M6 10.2V19a1 1 0 001 1h10a1 1 0 001-1v-8.8"/><path d="M10 20v-5.2h4V20"/>',
+  info: '<circle cx="12" cy="12" r="8.4"/><path d="M12 11v5.3"/><circle cx="12" cy="8.2" r=".3" stroke-width="2.6"/>',
+  'map-pin': '<path d="M12 21s7-7.6 7-12.4A7 7 0 105 8.6C5 13.4 12 21 12 21z"/><circle cx="12" cy="8.6" r="2.3"/>',
+  calendar: '<rect x="3.6" y="5" width="16.8" height="15.6" rx="2.2"/><path d="M3.6 9.6h16.8"/><path d="M8 3v4M16 3v4"/>',
+  users: '<circle cx="8.6" cy="8.6" r="3"/><path d="M2.6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="16.6" cy="9.6" r="2.5"/><path d="M15.2 14.3c2.6.4 4.4 2.7 4.4 5.7"/>',
+  backpack: '<rect x="5.2" y="8.6" width="13.6" height="12.4" rx="3.6"/><path d="M9 8.6V6.2a3 3 0 016 0v2.4"/><rect x="9.4" y="12.8" width="5.2" height="4.6" rx="1.5"/>',
+  megaphone: '<path d="M3 10.4v3.6a1 1 0 001 1h1.8l7.6 3.8V5.6L5.8 9.4H4a1 1 0 00-1 1z"/><path d="M13.8 9.2a3 3 0 010 5.4"/>',
+  help: '<circle cx="12" cy="12" r="8.4"/><path d="M9.6 9.6a2.4 2.4 0 114 1.9c-.8.6-1.4 1-1.4 2.2"/><circle cx="12.1" cy="16.6" r=".25" stroke-width="2.4"/>',
+  phone: '<path d="M6.2 3h2.8l1.4 3.8-2 1.6a11.6 11.6 0 005.6 5.6l1.6-2 3.8 1.4v2.8a1.8 1.8 0 01-2 1.8A16 16 0 014.4 5a1.8 1.8 0 011.8-2z"/>',
+  camera: '<path d="M4 8.4A1.4 1.4 0 015.4 7h2l1-2h7.2l1 2h2A1.4 1.4 0 0120 8.4V18a1.4 1.4 0 01-1.4 1.4H5.4A1.4 1.4 0 014 18z"/><circle cx="12" cy="13" r="3.6"/>',
+  check: '<path d="M5 13l4 4L19 7"/>',
+  'chevron-down': '<path d="M6 9l6 6 6-6"/>',
+  'arrow-right': '<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>',
+  external: '<path d="M14 4h6v6"/><path d="M20 4L10 14"/><path d="M18 14v4.6A1.4 1.4 0 0116.6 20H5.4A1.4 1.4 0 014 18.6V7.4A1.4 1.4 0 015.4 6H10"/>',
+  upload: '<path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/>',
+  'book-open': '<path d="M12 6.5c-2-1.4-4.6-2-7-1.6v12.6c2.4-.4 5 .2 7 1.6c2-1.4 4.6-2 7-1.6V4.9c-2.4-.4-5 .2-7 1.6z"/><path d="M12 6.5v12.6"/>',
+  target: '<circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>',
+  candle: '<path d="M12 3c1 1.6 1.6 2.7 1.6 3.6a1.6 1.6 0 01-3.2 0C10.4 5.7 11 4.6 12 3z"/><rect x="10" y="8" width="4" height="12" rx="1"/><path d="M7 20h10"/>',
+};
+function iconSvg(name, extraClass) {
+  return `<svg class="icon${extraClass ? ' ' + extraClass : ''}" viewBox="0 0 24 24">${ICONS[name] || ICONS.info}</svg>`;
+}
+const TAG_CLASS = {
+  '예배': 'tag-primary', '경건회': 'tag-primary', '특강': 'tag-primary',
+  '분과연수': 'tag-violet', '워크숍': 'tag-violet',
+  '체육대회': 'tag-amber',
+  '문화행사': 'tag-mint',
+};
+function tagClass(tag) { return TAG_CLASS[tag] || 'tag-grey'; }
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+function lsGet(key, fallback) {
+  try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); } catch (e) { return fallback; }
+}
+function lsSet(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+}
+
+/* ============================================================================
+   TOAST
+============================================================================ */
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toastEl.hidden = true; }, 2600);
+}
+
+/* ============================================================================
+   TABS
+============================================================================ */
+const TAB_DEFS = [
+  { id: 'home', label: '홈', icon: 'home' },
+  { id: 'schedule', label: '일정', icon: 'calendar' },
+  { id: 'workshops', label: '분과', icon: 'book-open' },
+  { id: 'missions', label: '미션', icon: 'target' },
+  { id: 'info', label: '정보', icon: 'info' },
+  { id: 'photos', label: '사진', icon: 'camera' },
+];
+let currentTab = 'home';
+
+function renderTabBar() {
+  const bar = document.getElementById('tabbar');
+  bar.innerHTML = TAB_DEFS.map(
+    (t) => `<button type="button" class="tab-btn${t.id === currentTab ? ' active' : ''}" data-tab="${t.id}">${iconSvg(t.icon)}<span>${esc(t.label)}</span></button>`
+  ).join('');
+}
+function switchTab(tabId) {
+  currentTab = tabId;
+  document.querySelectorAll('.tab-panel').forEach((p) => p.classList.toggle('active', p.id === 'panel-' + tabId));
+  document.querySelectorAll('.tab-btn').forEach((b) => b.classList.toggle('active', b.getAttribute('data-tab') === tabId));
+  window.scrollTo(0, 0);
+}
+
+/* ============================================================================
+   TOPBAR / D-DAY
+============================================================================ */
+function computeDday() {
+  const m = RETREAT_DATA.meta;
+  if (!m.dateStart) return '';
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const start = new Date(m.dateStart + 'T00:00:00');
+  const diff = Math.round((start - today) / 86400000);
+  if (diff > 0) return 'D-' + diff;
+  if (diff === 0) return 'D-DAY';
+  return '여정 종료';
+}
+function renderTopbar() {
+  document.getElementById('topbarTitle').textContent = (RETREAT_DATA.meta.orgName || 'GT') + ' 겨울여정';
+  document.getElementById('ddayBadge').textContent = computeDday();
+}
+
+/* ============================================================================
+   HOME TAB
+============================================================================ */
+function missionStats() {
+  let total = 0, done = 0;
+  RETREAT_DATA.missions.categories.forEach((cat) => {
+    cat.items.forEach((_, idx) => {
+      total++;
+      if (lsGet('gt_mission_' + cat.id + '_' + idx, false)) done++;
+    });
+  });
+  return { total, done };
+}
+function renderHome() {
+  const m = RETREAT_DATA.meta;
+  const notices = (RETREAT_DATA.notices || []).slice().sort((a, b) => (b.important ? 1 : 0) - (a.important ? 1 : 0)).slice(0, 2);
+  const ms = missionStats();
+
+  const quickLinks = [
+    { tab: 'schedule', icon: 'calendar', label: '전체 일정표' },
+    { tab: 'workshops', icon: 'book-open', label: '분과·워크숍' },
+    { tab: 'info', icon: 'backpack', label: '준비물 확인' },
+    { tab: 'photos', icon: 'camera', label: '사진 보러가기' },
+  ];
+
+  let html = '';
+  html += `<div class="home-banner">
+    <div class="home-eyebrow">${esc(m.eyebrow || 'GT TEACHERS\' WINTER RETREAT')}</div>
+    <h1 class="home-title">${esc(m.orgName || 'GT')} 교사 겨울수련회 <span class="home-year">${esc(m.year || '')}</span></h1>
+    <p class="home-theme">${esc(m.theme || '')}</p>
+    <div class="home-chips">
+      <span class="home-chip">${iconSvg('calendar')} ${esc(m.dateLabel)}</span>
+      <span class="home-chip">${iconSvg('map-pin')} ${esc(m.venueLabel)}</span>
+      <span class="home-chip">${iconSvg('users')} ${esc(m.audience)}</span>
+    </div>
+    <div class="home-dday-row"><span class="home-dday">${esc(computeDday())}</span></div>
+  </div>`;
+
+  html += `<div class="home-welcome">${esc(m.welcome || '')}</div>`;
+
+  html += `<button type="button" class="mission-teaser" data-goto-tab="missions">
+    <span class="icon-badge">${iconSvg('target')}</span>
+    <span><b>수련회 미션 ${ms.done} / ${ms.total} 완료</b><span>탭해서 오늘의 미션을 확인해보세요 →</span></span>
+  </button>`;
+
+  html += `<div class="section-label">바로가기</div>`;
+  html += `<div class="quick-grid">${quickLinks
+    .map((q) => `<button type="button" class="quick-card" data-goto-tab="${q.tab}"><span class="icon-badge">${iconSvg(q.icon)}</span><b>${esc(q.label)}</b></button>`)
+    .join('')}</div>`;
+
+  html += `<div class="section-label">최근 공지</div>`;
+  if (notices.length) {
+    html += notices
+      .map(
+        (n) =>
+          `<button type="button" class="notice-preview-card${n.important ? ' important' : ''}" data-goto-tab="info">
+            <span class="notice-dot"></span>
+            <span class="notice-preview-text"><b>${esc(n.title)}</b><span>${esc((n.body || '').slice(0, 40))}${(n.body || '').length > 40 ? '…' : ''}</span></span>
+          </button>`
+      )
+      .join('');
+  } else {
+    html += `<p class="empty-note">등록된 공지가 없어요.</p>`;
+  }
+  html += `<button type="button" class="see-all-link" data-goto-tab="info">공지사항 전체보기 ${iconSvg('arrow-right')}</button>`;
+
+  return html;
+}
+
+/* ============================================================================
+   SCHEDULE TAB
+============================================================================ */
+function renderSchedule() {
+  const days = RETREAT_DATA.schedule.days;
+  const tabs = days.map((d, i) => `<button type="button" class="day-tab${i === 0 ? ' active' : ''}" data-day="${d.id}">${esc(d.label)}</button>`).join('');
+  const panels = days
+    .map((d, i) => {
+      const items = d.items
+        .map(
+          (it) => `<div class="tl-item">
+            <span class="tl-dot"></span>
+            <div class="tl-row">
+              <span class="tl-time">${esc(it.time)}</span>
+              <span class="tl-title">${esc(it.title)}</span>
+              ${it.tag ? `<span class="tl-tag ${tagClass(it.tag)}">${esc(it.tag)}</span>` : ''}
+            </div>
+            ${it.desc ? `<div class="tl-desc">${esc(it.desc)}</div>` : ''}
+          </div>`
+        )
+        .join('');
+      return `<div class="day-panel${i === 0 ? ' active' : ''}" data-day-panel="${d.id}">
+        <div class="timeline">${items || '<p class="empty-note">아직 일정이 없어요.</p>'}</div>
+      </div>`;
+    })
+    .join('');
+
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('calendar')}</div><h2 class="stop-title">전체 일정표</h2></div>
+    <div class="day-tabs">${tabs}</div>
+    ${panels}
+  </div>`;
+}
+
+/* ============================================================================
+   WORKSHOPS TAB (분과·워크숍)
+============================================================================ */
+function renderWorkshops() {
+  const rounds = RETREAT_DATA.workshops.rounds;
+  const tabs = rounds.map((r, i) => `<button type="button" class="day-tab${i === 0 ? ' active' : ''}" data-round="${r.id}">${esc(r.label)}</button>`).join('');
+  const panels = rounds
+    .map((r, i) => {
+      const cards = r.sessions
+        .map(
+          (s) => `<div class="session-card">
+            <div class="session-top"><span class="session-time">${esc(s.time)}</span></div>
+            <div class="session-title">${esc(s.title)}</div>
+            <div class="session-meta"><span>${esc(s.speaker)}</span><span>${esc(s.place)}</span><span>${esc(s.audience)}</span></div>
+            ${s.desc ? `<div class="session-desc">${esc(s.desc)}</div>` : ''}
+          </div>`
+        )
+        .join('');
+      return `<div class="day-panel${i === 0 ? ' active' : ''}" data-round-panel="${r.id}">${cards}</div>`;
+    })
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('book-open')}</div><h2 class="stop-title">분과·워크숍</h2></div>
+    <p class="stop-sub">원하는 세션을 미리 살펴보고 현장에서 골라 들어가세요.</p>
+    <div class="round-tabs">${tabs}</div>
+    ${panels}
+  </div>`;
+}
+
+/* ============================================================================
+   MISSIONS TAB
+============================================================================ */
+function renderMissions() {
+  const ms = missionStats();
+  const pct = ms.total ? Math.round((ms.done / ms.total) * 100) : 0;
+  let html = `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('target')}</div><h2 class="stop-title">수련회 미션</h2></div>
+    <p class="stop-sub">체크는 이 기기에만 저장돼요. 완료할수록 채워집니다.</p>
+    <div class="mission-progress">
+      <div class="mission-progress-top"><b>미션 진행률</b><span>${ms.done} / ${ms.total}</span></div>
+      <div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
+
+  html += `<div class="commitment-card">
+    <b>✍️ 나의 새 학기 한 줄 다짐</b>
+    <textarea id="commitmentInput" placeholder="예: 아이 한 명 한 명을 있는 그대로 바라보는 선생님이 되겠습니다."></textarea>
+    <button type="button" class="commitment-save" id="commitmentSave">다짐 저장하기</button>
+    <div class="commitment-saved" id="commitmentSaved" hidden></div>
+  </div>`;
+
+  RETREAT_DATA.missions.categories.forEach((cat) => {
+    html += `<div class="mission-cat-label">${iconSvg(cat.icon)} ${esc(cat.label)}</div><div class="mission-list">`;
+    cat.items.forEach((text, idx) => {
+      const key = 'gt_mission_' + cat.id + '_' + idx;
+      const checked = lsGet(key, false);
+      html += `<div class="mission-card${checked ? ' done' : ''}" data-mission-toggle="${key}">
+        <span class="mission-check${checked ? ' checked' : ''}">${checked ? iconSvg('check') : ''}</span>
+        <span class="mission-text">${esc(text)}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+  return html;
+}
+
+/* ============================================================================
+   INFO TAB (location + packing + groups + notices + faq + contacts)
+============================================================================ */
+function renderLocationSection() {
+  const c = RETREAT_DATA.location;
+  const mapLink = c.mapUrl ? c.mapUrl : 'https://map.naver.com/p/search/' + encodeURIComponent(c.address || c.venueName || '');
+  const transport = (c.transport || [])
+    .map((t) => `<div class="transport-item"><div class="transport-method">${esc(t.method)}</div><div class="transport-desc">${esc(t.desc)}</div></div>`)
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('map-pin')}</div><h2 class="stop-title">오시는 길</h2></div>
+    <div class="venue-card">
+      <div class="venue-name">${esc(c.venueName)}</div>
+      <div class="venue-addr">${esc(c.address)}</div>
+      <a class="venue-link" href="${esc(mapLink)}" target="_blank" rel="noopener">지도에서 보기 ${iconSvg('external')}</a>
+      <div class="transport-list">${transport}</div>
+    </div>
+  </div>`;
+}
+function renderGroupSection() {
+  const cards = (RETREAT_DATA.groups || [])
+    .map(
+      (g) => `<div class="group-card">
+        <div class="group-name">${esc(g.name)}</div>
+        <div class="group-row"><b>모임장</b><span>${esc(g.leader)}</span></div>
+        <div class="group-row"><b>선생님</b><span>${esc(g.members)}</span></div>
+        <div class="group-row"><b>숙소</b><span>${esc(g.room)}</span></div>
+      </div>`
+    )
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('users')}</div><h2 class="stop-title">소그룹 편성</h2></div>
+    <div class="group-grid">${cards || '<p class="empty-note">아직 편성이 없어요.</p>'}</div>
+  </div>`;
+}
+function renderPackingSection() {
+  const cats = (RETREAT_DATA.packing || [])
+    .map((cat) => {
+      const items = (cat.items || [])
+        .map((item, idx) => {
+          const key = 'gt_pack_' + cat.id + '_' + idx;
+          const checked = lsGet(key, false);
+          return `<li>
+            <span class="pack-check${checked ? ' checked' : ''}" data-pack-toggle="${key}">${checked ? iconSvg('check') : ''}</span>
+            <span class="pack-text${checked ? ' checked' : ''}" data-pack-text="${key}">${esc(item)}</span>
+          </li>`;
+        })
+        .join('');
+      return `<div class="pack-card"><div class="pack-title">${esc(cat.title)}</div><ul class="pack-list">${items || '<li class="empty-note">항목 없음</li>'}</ul></div>`;
+    })
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('backpack')}</div><h2 class="stop-title">준비물</h2></div>
+    <div class="pack-grid">${cats}</div>
+  </div>`;
+}
+function renderNoticeSection() {
+  const list = (RETREAT_DATA.notices || []).slice().sort((a, b) => (b.important ? 1 : 0) - (a.important ? 1 : 0));
+  const html = list
+    .map(
+      (n) => `<div class="notice-card${n.important ? ' important' : ''}">
+        <div class="notice-top"><div class="notice-title">${esc(n.title)}</div>${n.important ? '<span class="badge-important">중요</span>' : ''}</div>
+        <div class="notice-body">${esc(n.body)}</div>
+      </div>`
+    )
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('megaphone')}</div><h2 class="stop-title">공지사항</h2></div>
+    <div class="notice-list">${html || '<p class="empty-note">공지사항이 없어요.</p>'}</div>
+  </div>`;
+}
+function renderFaqSection() {
+  const html = (RETREAT_DATA.faq || [])
+    .map(
+      (f, idx) => `<div class="faq-item" data-faq-item="${idx}">
+        <button type="button" class="faq-q" data-faq-toggle="${idx}">${esc(f.q)}${iconSvg('chevron-down')}</button>
+        <div class="faq-a"><div class="faq-a-inner">${esc(f.a)}</div></div>
+      </div>`
+    )
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('help')}</div><h2 class="stop-title">자주 묻는 질문</h2></div>
+    <div class="faq-list">${html || '<p class="empty-note">등록된 질문이 없어요.</p>'}</div>
+  </div>`;
+}
+function renderContactSection() {
+  const html = (RETREAT_DATA.contacts || [])
+    .map(
+      (ct) => `<div class="contact-card">
+        <div class="contact-info">
+          <div class="contact-role">${esc(ct.role)}</div>
+          <div class="contact-name">${esc(ct.name)}</div>
+          <a class="contact-phone" href="tel:${esc((ct.phone || '').replace(/[^0-9+]/g, ''))}">${iconSvg('phone')} ${esc(ct.phone)}</a>
+        </div>
+      </div>`
+    )
+    .join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('phone')}</div><h2 class="stop-title">비상연락처</h2></div>
+    <div class="contact-list">${html || '<p class="empty-note">등록된 연락처가 없어요.</p>'}</div>
+  </div>`;
+}
+function renderInfo() {
+  return renderLocationSection() + renderPackingSection() + renderGroupSection() + renderNoticeSection() + renderFaqSection() + renderContactSection();
+}
+
+/* ============================================================================
+   PHOTOS TAB (Firebase Storage + Firestore)
+============================================================================ */
+let firebaseApp = null, db = null, storage = null;
+const uploaderKey = 'gt_uploader_name';
+
+function renderPhotosShell() {
+  if (!isFirebaseConfigured()) {
+    return `<div class="stop">
+      <div class="stop-head"><div class="stop-badge">${iconSvg('camera')}</div><h2 class="stop-title">사진</h2></div>
+      <div class="firebase-setup-note">
+        <b>사진 공유 기능을 켜려면 Firebase 설정이 필요해요</b>
+        이 파일 위쪽 <code>firebaseConfig</code> 값을 채워주세요.<br>자세한 방법은 README.md를 참고하세요.
+      </div>
+    </div>`;
+  }
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">${iconSvg('camera')}</div><h2 class="stop-title">사진</h2></div>
+    <div class="photo-upload-card">
+      <div class="field"><label class="f-label" for="uploaderName">이름 (선택)</label><input type="text" id="uploaderName" placeholder="예: 김선생"></div>
+      <label class="file-drop" id="fileDrop">
+        <span id="fileDropText">${iconSvg('upload')} 눌러서 사진 선택 (여러 장 가능)</span>
+        <input type="file" id="fileInput" accept="image/*" multiple>
+      </label>
+      <button type="button" class="upload-btn" id="uploadBtn" disabled>사진 업로드</button>
+      <div class="upload-progress" id="uploadProgress" hidden></div>
+    </div>
+    <div class="section-label">공유된 사진</div>
+    <div class="photo-grid" id="photoGrid"><p class="empty-note">불러오는 중…</p></div>
+  </div>`;
+}
+async function initFirebase() {
+  if (!isFirebaseConfigured()) return;
+  try {
+    const [{ initializeApp }, firestoreMod, storageMod] = await Promise.all([
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js'),
+    ]);
+    firebaseApp = initializeApp(firebaseConfig);
+    db = firestoreMod.getFirestore(firebaseApp);
+    storage = storageMod.getStorage(firebaseApp);
+    watchPhotos(firestoreMod);
+    setupUploadUI(storageMod, firestoreMod);
+  } catch (err) {
+    console.error('Firebase init failed', err);
+    const grid = document.getElementById('photoGrid');
+    if (grid) grid.innerHTML = '<p class="empty-note">사진을 불러오지 못했어요. firebaseConfig 값을 확인해주세요.</p>';
+  }
+}
+function watchPhotos(firestoreMod) {
+  const { collection, query, orderBy, limit, onSnapshot } = firestoreMod;
+  const q = query(collection(db, 'photos'), orderBy('uploadedAt', 'desc'), limit(120));
+  onSnapshot(q, (snap) => {
+    const grid = document.getElementById('photoGrid');
+    if (!grid) return;
+    if (snap.empty) { grid.innerHTML = '<p class="empty-note">아직 업로드된 사진이 없어요. 첫 사진을 올려보세요!</p>'; return; }
+    grid.innerHTML = snap.docs.map((d) => {
+      const p = d.data();
+      return `<div class="photo-thumb" data-url="${esc(p.url)}" data-name="${esc(p.name || '')}">
+        <img src="${esc(p.url)}" loading="lazy" alt="${esc(p.name || '공유 사진')}">
+        ${p.name ? `<span class="photo-name">${esc(p.name)}</span>` : ''}
+      </div>`;
+    }).join('');
+  }, (err) => {
+    console.error('photo watch failed', err);
+    const grid = document.getElementById('photoGrid');
+    if (grid) grid.innerHTML = '<p class="empty-note">사진을 불러오지 못했어요. Firestore 보안 규칙을 확인해주세요.</p>';
+  });
+}
+function setupUploadUI(storageMod, firestoreMod) {
+  const nameInput = document.getElementById('uploaderName');
+  const fileInput = document.getElementById('fileInput');
+  const fileDrop = document.getElementById('fileDrop');
+  const fileDropText = document.getElementById('fileDropText');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const progressEl = document.getElementById('uploadProgress');
+  if (!fileInput) return;
+
+  nameInput.value = lsGet(uploaderKey, '');
+  nameInput.addEventListener('input', () => lsSet(uploaderKey, nameInput.value));
+
+  fileInput.addEventListener('change', () => {
+    const n = fileInput.files.length;
+    fileDrop.classList.toggle('has-files', n > 0);
+    fileDropText.textContent = n > 0 ? `${n}장 선택됨 · 다시 눌러 변경` : '눌러서 사진 선택 (여러 장 가능)';
+    uploadBtn.disabled = n === 0;
+  });
+
+  uploadBtn.addEventListener('click', async () => {
+    const files = Array.from(fileInput.files || []);
+    if (!files.length) return;
+    uploadBtn.disabled = true;
+    progressEl.hidden = false;
+    const { ref, uploadBytes, getDownloadURL } = storageMod;
+    const { collection, addDoc, serverTimestamp } = firestoreMod;
+    const name = nameInput.value.trim();
+    let done = 0;
+    for (const file of files) {
+      progressEl.textContent = `업로드 중… (${done + 1}/${files.length})`;
+      try {
+        const path = `photos/${Date.now()}_${Math.random().toString(36).slice(2, 8)}_${file.name}`;
+        const sref = ref(storage, path);
+        await uploadBytes(sref, file);
+        const url = await getDownloadURL(sref);
+        await addDoc(collection(db, 'photos'), { url, name: name || '', path, uploadedAt: serverTimestamp() });
+        done++;
+      } catch (err) {
+        console.error('upload failed', err);
+        toast('일부 사진 업로드에 실패했어요.');
+      }
+    }
+    progressEl.textContent = `${done}장 업로드 완료!`;
+    setTimeout(() => { progressEl.hidden = true; }, 2000);
+    fileInput.value = '';
+    fileDrop.classList.remove('has-files');
+    fileDropText.textContent = '눌러서 사진 선택 (여러 장 가능)';
+    uploadBtn.disabled = true;
+    if (done > 0) toast(`사진 ${done}장을 공유했어요!`);
+  });
+}
+
+/* ============================================================================
+   RENDER ALL
+============================================================================ */
+const RENDERERS = { home: renderHome, schedule: renderSchedule, workshops: renderWorkshops, missions: renderMissions, info: renderInfo, photos: renderPhotosShell };
+
+function renderContent() {
+  const main = document.getElementById('content');
+  main.innerHTML = TAB_DEFS.map((t) => `<div class="tab-panel${t.id === currentTab ? ' active' : ''}" id="panel-${t.id}">${RENDERERS[t.id]()}</div>`).join('');
+  const ci = document.getElementById('commitmentInput');
+  if (ci) {
+    const saved = lsGet('gt_my_commitment', '');
+    if (saved) { ci.value = saved; document.getElementById('commitmentSaved').hidden = false; document.getElementById('commitmentSaved').textContent = '저장됨 ✓ 언제든 다시 고쳐 쓸 수 있어요.'; }
+  }
+}
+function renderAll() { renderTopbar(); renderTabBar(); renderContent(); }
+
+/* ============================================================================
+   LIGHTBOX
+============================================================================ */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+function openLightbox(url, caption) { lightboxImg.src = url; lightboxCaption.textContent = caption || ''; lightbox.hidden = false; }
+document.getElementById('lightboxClose').addEventListener('click', () => { lightbox.hidden = true; lightboxImg.src = ''; });
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) { lightbox.hidden = true; lightboxImg.src = ''; } });
+
+/* ============================================================================
+   GLOBAL CLICK / INPUT DELEGATION
+============================================================================ */
+document.addEventListener('click', (e) => {
+  const tabBtn = e.target.closest('.tab-btn[data-tab]');
+  if (tabBtn) { switchTab(tabBtn.getAttribute('data-tab')); return; }
+
+  const gotoTab = e.target.closest('[data-goto-tab]');
+  if (gotoTab) { switchTab(gotoTab.getAttribute('data-goto-tab')); return; }
+
+  const dayTab = e.target.closest('.day-tab[data-day]');
+  if (dayTab) {
+    const panel = dayTab.closest('.tab-panel');
+    panel.querySelectorAll('.day-tab').forEach((t) => t.classList.remove('active'));
+    dayTab.classList.add('active');
+    panel.querySelectorAll('.day-panel').forEach((p) => p.classList.remove('active'));
+    const dp = panel.querySelector(`[data-day-panel="${dayTab.getAttribute('data-day')}"]`);
+    if (dp) dp.classList.add('active');
+    return;
+  }
+  const roundTab = e.target.closest('.day-tab[data-round]');
+  if (roundTab) {
+    const panel = roundTab.closest('.tab-panel');
+    panel.querySelectorAll('.day-tab').forEach((t) => t.classList.remove('active'));
+    roundTab.classList.add('active');
+    panel.querySelectorAll('.day-panel').forEach((p) => p.classList.remove('active'));
+    const dp = panel.querySelector(`[data-round-panel="${roundTab.getAttribute('data-round')}"]`);
+    if (dp) dp.classList.add('active');
+    return;
+  }
+
+  const faqQ = e.target.closest('[data-faq-toggle]');
+  if (faqQ) { faqQ.closest('.faq-item').classList.toggle('open'); return; }
+
+  const packToggle = e.target.closest('[data-pack-toggle]');
+  if (packToggle) {
+    const key = packToggle.getAttribute('data-pack-toggle');
+    const now = !lsGet(key, false);
+    lsSet(key, now);
+    packToggle.classList.toggle('checked', now);
+    packToggle.innerHTML = now ? iconSvg('check') : '';
+    const textEl = document.querySelector(`[data-pack-text="${key}"]`);
+    if (textEl) textEl.classList.toggle('checked', now);
+    return;
+  }
+
+  const missionToggle = e.target.closest('[data-mission-toggle]');
+  if (missionToggle) {
+    const key = missionToggle.getAttribute('data-mission-toggle');
+    const now = !lsGet(key, false);
+    lsSet(key, now);
+    missionToggle.classList.toggle('done', now);
+    const cb = missionToggle.querySelector('.mission-check');
+    cb.classList.toggle('checked', now);
+    cb.innerHTML = now ? iconSvg('check') : '';
+    const stats = missionStats();
+    const bar = document.querySelector('.mission-bar-fill');
+    const label = document.querySelector('.mission-progress-top span');
+    if (bar) bar.style.width = (stats.total ? Math.round((stats.done / stats.total) * 100) : 0) + '%';
+    if (label) label.textContent = `${stats.done} / ${stats.total}`;
+    return;
+  }
+
+  if (e.target.id === 'commitmentSave') {
+    const val = document.getElementById('commitmentInput').value.trim();
+    lsSet('gt_my_commitment', val);
+    const saved = document.getElementById('commitmentSaved');
+    saved.hidden = false;
+    saved.textContent = val ? '저장됐어요. 언제든 다시 고쳐 쓸 수 있어요.' : '다짐을 지웠어요.';
+    toast('저장했어요.');
+    return;
+  }
+
+  const thumb = e.target.closest('.photo-thumb');
+  if (thumb) { openLightbox(thumb.getAttribute('data-url'), thumb.getAttribute('data-name')); return; }
+});
+
+document.getElementById('dismissBanner').addEventListener('click', () => { document.getElementById('sampleBanner').hidden = true; });
+
+/* ============================================================================
+   BOOT
+============================================================================ */
+renderAll();
+initFirebase();
+</script>
+</body>
+</html>
