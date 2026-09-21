@@ -153,6 +153,25 @@ main{padding:16px 18px 8px;}
 .commitment-save{margin-top:8px;background:var(--violet);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;}
 .commitment-saved{margin-top:10px;font-size:12.5px;color:var(--ink-dim);font-style:italic;}
 
+/* 닉네임 / 랭킹 */
+.nickname-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;margin-bottom:16px;}
+.nickname-card b{font-size:13.5px;color:var(--ink);display:block;margin-bottom:8px;}
+.nickname-row{display:flex;gap:8px;}
+.nickname-row input{flex:1;min-width:0;border:1px solid var(--border-strong);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13.5px;background:var(--surface-2);}
+.nickname-row button{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:700;font-size:13px;cursor:pointer;flex:none;}
+.nickname-current{font-size:12.5px;color:var(--ink-dim);margin-top:9px;}
+.level-badge{display:inline-flex;align-items:center;gap:6px;background:var(--amber-soft);border:1px solid var(--amber-line);color:#8a5a05;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;}
+
+.rank-board{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-l);padding:14px;margin-bottom:20px;}
+.rank-board-title{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:10px;}
+.rank-row{display:flex;align-items:center;gap:10px;padding:9px 6px;border-top:1px solid var(--border);}
+.rank-row:first-child{border-top:none;}
+.rank-row.me{background:var(--primary-soft);border-radius:10px;padding:9px 10px;}
+.rank-num{width:26px;flex:none;text-align:center;font-weight:800;font-size:13px;color:var(--ink-faint);}
+.rank-num.medal{font-size:17px;}
+.rank-name{flex:1;font-size:13px;font-weight:700;color:var(--ink);}
+.rank-pts{font-family:var(--font-mono);font-size:12.5px;color:var(--primary);font-weight:700;}
+
 /* group / packing */
 .group-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
 .group-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;}
@@ -344,7 +363,7 @@ const RETREAT_DATA = {
     theme: "쉼. 배움. 다시. (예시 테마 문구 — 실제 테마로 바꿔주세요)",
     welcome:
       "선생님, 한 학기 정말 애쓰셨습니다 🍎\n" +
-      "이 앱 하나에 2027 GT 겨울수련회의 모든 정보를 담았어요. 아래 메뉴와 '전체' 탭에서 필요한 걸 찾아보세요!\n\n" +
+      "이 앱 하나에 2027 GT 겨울수련회의 모든 정보를 담았어요. 아래 메뉴와 '정보' 탭에서 필요한 걸 찾아보세요!\n\n" +
       "(예시 문구입니다 — 아래 RETREAT_DATA에서 실제 안내문으로 교체해주세요.)",
     dateStart: "2027-01-15",
     dateEnd: "2027-01-17",
@@ -376,7 +395,7 @@ const RETREAT_DATA = {
       { id: "d2", label: "2일차 (토)", items: [
         { time: "07:00", title: "아침 경건회", tag: "경건회" },
         { time: "08:00", title: "아침 식사", tag: "식사" },
-        { time: "09:30", title: "분과연수 1부", tag: "분과연수", desc: "'전체 > 분과·워크숍'에서 미리 살펴보세요" },
+        { time: "09:30", title: "분과연수 1부", tag: "분과연수", desc: "'정보 > 분과·워크숍'에서 미리 살펴보세요" },
         { time: "12:00", title: "점심 식사", tag: "식사" },
         { time: "14:00", title: "교사 체육대회", tag: "체육대회", desc: "5인제 풋살 · 단체 줄넘기 · 피구 (예시)" },
         { time: "18:00", title: "저녁 식사", tag: "식사" },
@@ -421,7 +440,7 @@ const RETREAT_DATA = {
   ],
 
   faq: [
-    { q: "가족(자녀)도 함께 갈 수 있나요?", a: "GK캠프에 사전 신청하시면 자녀와 함께 참여할 수 있어요. '전체 > 가족·GK캠프'를 확인해주세요. (예시 답변)" },
+    { q: "가족(자녀)도 함께 갈 수 있나요?", a: "GK캠프에 사전 신청하시면 자녀와 함께 참여할 수 있어요. '정보 > 가족·GK캠프'를 확인해주세요. (예시 답변)" },
     { q: "분과·워크숍은 미리 신청해야 하나요?", a: "현장에서 자유롭게 원하는 세션에 참여하시면 됩니다. (예시 답변)" },
   ],
 
@@ -535,7 +554,7 @@ const RETREAT_DATA = {
   registerGuide: {
     steps: [
       "1. 참가비 입금 (계좌: 예시은행 000-0000-0000, GT)",
-      "2. 온라인 등록 폼 제출 ('전체 > 온라인등록안내' 참고)",
+      "2. 온라인 등록 폼 제출 ('정보 > 온라인등록안내' 참고)",
       "3. 입금 확인 후 간사가 개별 안내",
     ],
     note: "현장 등록도 가능하지만 사전 등록 시 배정이 훨씬 수월해요. (예시)",
@@ -623,9 +642,9 @@ function toast(msg) {
 const TAB_DEFS = [
   { id: 'home', label: '홈', emoji: '🏠' },
   { id: 'schedule', label: '일정', emoji: '📅' },
+  { id: 'more', label: '정보', emoji: '🗂️' },
   { id: 'missions', label: '미션', emoji: '🎯' },
   { id: 'photos', label: '사진', emoji: '📸' },
-  { id: 'more', label: '전체', emoji: '🧭' },
 ];
 let currentTab = 'home';
 
@@ -673,6 +692,66 @@ function missionStats() {
   });
   return { total, done };
 }
+
+/* ============================================================================
+   닉네임 / 랭킹 (재미 요소) — 미션을 체크할수록 점수가 쌓이고 랭킹에 반영됩니다.
+============================================================================ */
+function ensureDeviceId() {
+  let id = lsGet('gt_device_id', null);
+  if (!id) { id = 'd' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); lsSet('gt_device_id', id); }
+  return id;
+}
+function getNickname() { return lsGet('gt_nickname', ''); }
+function setNickname(name) { lsSet('gt_nickname', name); }
+function levelInfo(done, total) {
+  const pct = total ? done / total : 0;
+  if (total > 0 && done >= total) return { emoji: '👑', label: '미션 마스터' };
+  if (pct >= 0.5) return { emoji: '⭐', label: '미션 헌터' };
+  if (pct > 0) return { emoji: '🔥', label: '열심 참가자' };
+  return { emoji: '🌱', label: '새내기 참가자' };
+}
+let firestoreModRef = null;
+async function syncMissionProgress() {
+  const nickname = getNickname();
+  if (!nickname || !isFirebaseConfigured() || !db || !firestoreModRef) return;
+  const { doc, setDoc, serverTimestamp } = firestoreModRef;
+  const stats = missionStats();
+  try {
+    await setDoc(doc(db, 'players', ensureDeviceId()), {
+      nickname,
+      missionsDone: stats.done,
+      missionsTotal: stats.total,
+      points: stats.done * 10,
+      updatedAt: serverTimestamp(),
+    }, { merge: true });
+  } catch (err) { console.error('ranking sync failed', err); }
+}
+function watchRanking() {
+  if (!firestoreModRef) return;
+  const { collection, query, orderBy, limit, onSnapshot } = firestoreModRef;
+  const q = query(collection(db, 'players'), orderBy('points', 'desc'), limit(20));
+  onSnapshot(q, (snap) => {
+    const board = document.getElementById('rankBoardList');
+    if (!board) return;
+    if (snap.empty) { board.innerHTML = '<p class="empty-note">아직 랭킹에 아무도 없어요. 첫 주자가 되어보세요! 🏁</p>'; return; }
+    const myId = ensureDeviceId();
+    const medals = ['🥇', '🥈', '🥉'];
+    board.innerHTML = snap.docs.map((d, i) => {
+      const p = d.data();
+      const isMe = d.id === myId;
+      return `<div class="rank-row${isMe ? ' me' : ''}">
+        <span class="rank-num${i < 3 ? ' medal' : ''}">${i < 3 ? medals[i] : (i + 1)}</span>
+        <span class="rank-name">${esc(p.nickname || '익명')}${isMe ? ' (나)' : ''}</span>
+        <span class="rank-pts">${esc(p.points || 0)}pt</span>
+      </div>`;
+    }).join('');
+  }, (err) => {
+    console.error('ranking watch failed', err);
+    const board = document.getElementById('rankBoardList');
+    if (board) board.innerHTML = '<p class="empty-note">랭킹을 불러오지 못했어요.</p>';
+  });
+}
+
 function renderHome() {
   const m = RETREAT_DATA.meta;
   const notices = (RETREAT_DATA.notices || []).slice().sort((a, b) => (b.important ? 1 : 0) - (a.important ? 1 : 0)).slice(0, 2);
@@ -727,7 +806,7 @@ function renderHome() {
   html += `<button type="button" class="see-all-link" data-open="info">공지사항 전체보기 ${iconSvg('arrow-right')}</button>`;
 
   html += `<div class="section-label">🧭 더 많은 정보</div>`;
-  html += `<button type="button" class="quick-card" style="width:100%" data-goto-tab="more"><span class="icon-badge">🧭</span><b>전체 메뉴 보러가기 (등록·GBS·GK캠프·자료 등)</b></button>`;
+  html += `<button type="button" class="quick-card" style="width:100%" data-goto-tab="more"><span class="icon-badge">🗂️</span><b>정보 메뉴 보러가기 (등록·GBS·GK캠프·자료 등)</b></button>`;
 
   return html;
 }
@@ -798,13 +877,31 @@ function renderWorkshops() {
 function renderMissions() {
   const ms = missionStats();
   const pct = ms.total ? Math.round((ms.done / ms.total) * 100) : 0;
+  const nickname = getNickname();
+  const lvl = levelInfo(ms.done, ms.total);
   let html = `<div class="stop">
     <div class="stop-head"><div class="stop-badge">🎯</div><h2 class="stop-title">수련회 미션</h2></div>
-    <p class="stop-sub">체크는 이 기기에만 저장돼요. 완료할수록 채워집니다.</p>
+    <p class="stop-sub">체크는 이 기기에 저장되고, 닉네임을 등록하면 랭킹에도 반영돼요!</p>
     <div class="mission-progress">
       <div class="mission-progress-top"><b>미션 진행률</b><span>${ms.done} / ${ms.total}</span></div>
       <div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
     </div>`;
+
+  html += `<div class="nickname-card">
+    <b>🙋 내 닉네임 (랭킹용)</b>
+    <div class="nickname-row">
+      <input type="text" id="nicknameInput" placeholder="예: 3학년 김선생" value="${esc(nickname)}" maxlength="16">
+      <button type="button" id="nicknameSave">저장</button>
+    </div>
+    <div class="nickname-current">${nickname
+      ? `<span class="level-badge">${lvl.emoji} ${esc(lvl.label)}</span> 미션을 체크할 때마다 점수가 쌓여요!`
+      : '닉네임을 저장하면 미션 체크가 자동으로 랭킹에 반영돼요.'}</div>
+  </div>`;
+
+  html += `<div class="rank-board">
+    <div class="rank-board-title">🏆 미션 랭킹 TOP 20</div>
+    <div id="rankBoardList"><p class="empty-note">${isFirebaseConfigured() ? '불러오는 중…' : 'Firebase 설정 후 랭킹이 열려요.'}</p></div>
+  </div>`;
 
   html += `<div class="commitment-card">
     <b>✍️ 나의 새 학기 한 줄 다짐</b>
@@ -1189,11 +1286,14 @@ async function initFirebase() {
     firebaseApp = initializeApp(firebaseConfig);
     db = firestoreMod.getFirestore(firebaseApp);
     storage = storageMod.getStorage(firebaseApp);
+    firestoreModRef = firestoreMod;
     PHOTO_FEATURES.forEach((f) => {
       watchPhotos(f, firestoreMod);
       setupUploadUI(f, storageMod, firestoreMod);
     });
     initPrayerBoard(firestoreMod);
+    watchRanking();
+    syncMissionProgress();
   } catch (err) {
     console.error('Firebase init failed', err);
   }
@@ -1408,6 +1508,19 @@ document.addEventListener('click', (e) => {
     const label = document.querySelector('.mission-progress-top span');
     if (bar) bar.style.width = (stats.total ? Math.round((stats.done / stats.total) * 100) : 0) + '%';
     if (label) label.textContent = `${stats.done} / ${stats.total}`;
+    syncMissionProgress();
+    return;
+  }
+
+  if (e.target.id === 'nicknameSave') {
+    const input = document.getElementById('nicknameInput');
+    const val = (input.value || '').trim().slice(0, 16);
+    if (!val) { toast('닉네임을 입력해주세요.'); return; }
+    setNickname(val);
+    toast(`'${val}'(으)로 랭킹에 참여해요! 🎉`);
+    syncMissionProgress();
+    const panel = document.getElementById('panel-missions');
+    if (panel) panel.innerHTML = renderMissions();
     return;
   }
 
