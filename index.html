@@ -26,44 +26,58 @@
   --radius-s:10px; --radius-m:16px; --radius-l:22px;
   --font-body:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
   --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+  --shadow-card:0 1px 2px rgba(20,30,70,.04), 0 6px 18px -8px rgba(20,30,70,.12);
+  --shadow-card-hover:0 2px 4px rgba(20,30,70,.05), 0 10px 26px -8px rgba(20,30,70,.16);
+  --shadow-pop:0 8px 30px -6px rgba(20,30,70,.22);
   color-scheme:light;
 }
 *{box-sizing:border-box;}
 html,body{height:100%;}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
-h1,h2,h3{font-weight:800;margin:0;text-wrap:balance;}
+body{margin:0;background:linear-gradient(180deg,#eef1fb 0%,#f5f6fa 340px,#f5f6fa 100%);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+h1,h2,h3{font-weight:800;margin:0;text-wrap:balance;letter-spacing:-.02em;}
 p{margin:0;}
 button{font-family:inherit;}
 img{max-width:100%;}
 a{color:inherit;}
 .icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.15em;flex:none;}
 
-.app-shell{max-width:520px;margin:0 auto;position:relative;min-height:100%;background:var(--bg);padding-bottom:96px;}
+.app-shell{max-width:520px;margin:0 auto;position:relative;min-height:100%;background:transparent;padding-bottom:96px;}
 
-.sample-banner{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding:9px 16px;background:var(--amber-soft);color:#8a5a05;border-bottom:1px solid var(--amber-line);font-size:12px;text-align:center;}
-.sample-banner code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:11px;}
-.sample-banner button{background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;font-size:inherit;padding:0;flex:none;font-weight:700;}
+/* 카드형 요소 공통 입체감 */
+.venue-card,.group-card,.pack-card,.notice-card,.faq-item,.contact-card,.session-card,
+.mission-card,.link-card,.quick-card,.rank-board,.nickname-card,.commitment-card,
+.photo-upload-card,.prayer-form,.prayer-post,.menu-tile,.home-welcome,.mission-progress,
+.step-item,.meal-day,.roster-row,.firebase-setup-note,.map-frame,.admin-field,.notice-preview-card,
+.mission-teaser{
+  box-shadow:var(--shadow-card);
+  transition:box-shadow .18s ease, transform .18s ease;
+}
 
-.topbar{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.topbar{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.85);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
 .topbar-title{font-size:15px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px;}
+.topbar-right{display:flex;align-items:center;gap:8px;}
+.admin-gear{background:var(--surface-2);border:none;width:30px;height:30px;border-radius:50%;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.65;}
+.admin-gear.on{background:var(--mint-soft);opacity:1;}
 .topbar-dday{font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-soft);border:1px solid var(--primary-line);padding:5px 11px;border-radius:999px;font-variant-numeric:tabular-nums;}
 
 main{padding:16px 18px 8px;}
 
-.home-banner{background:linear-gradient(160deg,var(--primary) 0%,#2748b8 100%);color:#fff;border-radius:var(--radius-l);padding:22px 20px;margin-bottom:18px;position:relative;overflow:hidden;}
-.home-banner::after{content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);}
-.home-eyebrow{font-size:11px;letter-spacing:.16em;opacity:.8;font-weight:700;}
-.home-title{font-size:22px;margin-top:8px;color:#fff;}
+.home-banner{background:linear-gradient(155deg,#4a72f2 0%,var(--primary) 45%,#1f3aa0 100%);color:#fff;border-radius:var(--radius-l);padding:24px 22px;margin-bottom:20px;position:relative;overflow:hidden;box-shadow:0 16px 40px -14px rgba(31,58,160,.5);}
+.home-banner::after{content:'';position:absolute;right:-50px;top:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);}
+.home-banner::before{content:'';position:absolute;left:-30px;bottom:-60px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,214,122,.18),transparent 70%);}
+.home-eyebrow{font-size:11px;letter-spacing:.18em;opacity:.85;font-weight:700;}
+.home-title{font-size:23px;margin-top:9px;color:#fff;position:relative;}
 .home-year{color:#ffd67a;}
-.home-theme{margin-top:8px;font-size:13.5px;opacity:.92;max-width:38ch;}
-.home-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px;}
-.home-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px;font-size:12px;font-weight:600;}
-.home-dday-row{display:flex;align-items:center;gap:10px;margin-top:16px;}
-.home-dday{font-family:var(--font-mono);font-weight:800;font-size:15px;background:rgba(255,255,255,.94);color:var(--primary);padding:7px 14px;border-radius:999px;font-variant-numeric:tabular-nums;}
+.home-theme{margin-top:9px;font-size:13.5px;opacity:.95;max-width:38ch;position:relative;}
+.home-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px;position:relative;}
+.home-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:6px 11px;border-radius:999px;font-size:12px;font-weight:600;backdrop-filter:blur(6px);}
+.home-dday-row{display:flex;align-items:center;gap:10px;margin-top:17px;position:relative;}
+.home-dday{font-family:var(--font-mono);font-weight:800;font-size:15px;background:rgba(255,255,255,.96);color:var(--primary);padding:7px 14px;border-radius:999px;font-variant-numeric:tabular-nums;box-shadow:0 4px 14px -4px rgba(0,0,0,.25);}
 
-.home-welcome{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:16px;margin-bottom:18px;color:var(--ink-dim);font-size:14px;white-space:pre-line;}
+.home-welcome{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:17px;margin-bottom:18px;color:var(--ink-dim);font-size:14px;white-space:pre-line;}
 
-.section-label{font-size:12.5px;font-weight:800;color:var(--ink-faint);letter-spacing:.02em;margin-bottom:10px;}
+.section-label{font-size:12.5px;font-weight:800;color:var(--ink);letter-spacing:.02em;margin-bottom:11px;padding-left:10px;position:relative;}
+.section-label::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--primary),var(--violet));}
 .quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
 .quick-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;text-align:left;color:var(--ink);}
 .quick-card .icon-badge{width:32px;height:32px;border-radius:9px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;font-size:17px;}
@@ -139,6 +153,19 @@ main{padding:16px 18px 8px;}
 .mission-bar{height:9px;background:var(--surface-2);border-radius:999px;overflow:hidden;}
 .mission-bar-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--primary));border-radius:999px;transition:width .3s ease;}
 .mission-cat-label{font-size:12.5px;font-weight:800;color:var(--violet);margin:18px 0 8px;display:flex;align-items:center;gap:6px;}
+.mission-cat-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);overflow:hidden;margin-bottom:8px;}
+.mission-cat-item.full{border-color:var(--mint-line);}
+.mission-cat-head{width:100%;background:none;border:none;padding:13px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;text-align:left;}
+.mission-cat-emoji{font-size:18px;flex:none;}
+.mission-cat-name{flex:1;font-size:13.5px;font-weight:700;color:var(--ink);}
+.mission-cat-count{font-family:var(--font-mono);font-size:11.5px;color:var(--violet);font-weight:700;background:var(--violet-soft);padding:3px 9px;border-radius:999px;flex:none;}
+.mission-cat-item.full .mission-cat-count{color:var(--mint);background:var(--mint-soft);}
+.mission-cat-head .icon{color:var(--ink-faint);transition:transform .2s;flex:none;}
+.mission-cat-item.open .mission-cat-head .icon{transform:rotate(180deg);}
+.mission-cat-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.mission-cat-item.open .mission-cat-body{max-height:3000px;}
+.mission-cat-body .mission-list{padding:0 14px 14px;display:flex;flex-direction:column;gap:8px;}
+.mission-cat-body .mission-card{box-shadow:none;}
 .mission-list{display:flex;flex-direction:column;gap:8px;}
 .mission-card{display:flex;align-items:center;gap:11px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:13px;cursor:pointer;}
 .mission-card.done{background:var(--mint-soft);border-color:var(--mint-line);}
@@ -150,7 +177,7 @@ main{padding:16px 18px 8px;}
 .commitment-card{background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:var(--radius-l);padding:16px;margin-bottom:20px;}
 .commitment-card b{font-size:14px;color:var(--ink);display:block;margin-bottom:8px;}
 .commitment-card textarea{width:100%;min-height:70px;border-radius:10px;border:1px solid var(--border-strong);padding:10px 12px;font-family:inherit;font-size:13.5px;resize:vertical;background:#fff;}
-.commitment-save{margin-top:8px;background:var(--violet);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;}
+.commitment-save{margin-top:8px;background:linear-gradient(135deg,var(--violet),#6a4ae8);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px -6px rgba(124,92,255,.55);}
 .commitment-saved{margin-top:10px;font-size:12.5px;color:var(--ink-dim);font-style:italic;}
 
 /* 닉네임 / 랭킹 */
@@ -158,7 +185,7 @@ main{padding:16px 18px 8px;}
 .nickname-card b{font-size:13.5px;color:var(--ink);display:block;margin-bottom:8px;}
 .nickname-row{display:flex;gap:8px;}
 .nickname-row input{flex:1;min-width:0;border:1px solid var(--border-strong);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13.5px;background:var(--surface-2);}
-.nickname-row button{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:700;font-size:13px;cursor:pointer;flex:none;}
+.nickname-row button{background:linear-gradient(135deg,#4a72f2,var(--primary));color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:700;font-size:13px;cursor:pointer;flex:none;box-shadow:0 6px 16px -6px rgba(53,98,232,.55);}
 .nickname-current{font-size:12.5px;color:var(--ink-dim);margin-top:9px;}
 .level-badge{display:inline-flex;align-items:center;gap:6px;background:var(--amber-soft);border:1px solid var(--amber-line);color:#8a5a05;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;}
 
@@ -223,7 +250,7 @@ main{padding:16px 18px 8px;}
 .file-drop{border:1.5px dashed var(--border-strong);border-radius:var(--radius-m);padding:20px;text-align:center;color:var(--ink-faint);font-size:13px;cursor:pointer;background:var(--surface-2);display:block;}
 .file-drop input{display:none;}
 .file-drop.has-files{color:var(--primary);border-color:var(--primary-line);background:var(--primary-soft);}
-.upload-btn{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;margin-top:4px;}
+.upload-btn{width:100%;background:linear-gradient(135deg,#4a72f2,var(--primary));color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;margin-top:4px;box-shadow:0 8px 20px -8px rgba(53,98,232,.55);}
 .upload-btn:disabled{opacity:.5;cursor:not-allowed;}
 .upload-progress{margin-top:10px;font-size:12.5px;color:var(--ink-dim);}
 .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
@@ -238,11 +265,11 @@ main{padding:16px 18px 8px;}
 .lightbox-caption{color:#fff;font-size:13px;margin-top:14px;text-align:center;opacity:.85;}
 .lightbox-close{position:absolute;top:20px;right:20px;top:calc(20px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.14);border:none;color:#fff;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;}
 
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:520px;margin:0 auto;background:var(--surface);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom,0px);display:flex;box-shadow:0 -6px 24px -12px rgba(20,30,60,.18);}
-.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;background:none;border:none;color:var(--ink-faint);font-size:10px;font-weight:700;cursor:pointer;}
-.tab-btn .tab-emoji{font-size:19px;line-height:1;filter:grayscale(1) opacity(.55);}
-.tab-btn.active .tab-emoji{filter:none;}
-.tab-btn.active{color:var(--primary);}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:520px;margin:0 auto;background:rgba(255,255,255,.92);backdrop-filter:blur(16px) saturate(1.4);border-top:1px solid var(--border);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:flex;gap:2px;box-shadow:0 -8px 28px -14px rgba(20,30,60,.22);}
+.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 2px;background:none;border:none;border-radius:14px;color:var(--ink-faint);font-size:10px;font-weight:700;cursor:pointer;transition:background .15s ease, color .15s ease;}
+.tab-btn .tab-emoji{font-size:19px;line-height:1;filter:grayscale(1) opacity(.5);transition:filter .15s ease, transform .15s ease;}
+.tab-btn.active .tab-emoji{filter:none;transform:translateY(-1px) scale(1.06);}
+.tab-btn.active{color:var(--primary);background:var(--primary-soft);}
 
 .toast{position:fixed;left:50%;bottom:88px;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 18px;border-radius:999px;font-size:13px;z-index:80;max-width:88vw;text-align:center;box-shadow:0 10px 30px -10px rgba(0,0,0,.35);}
 [hidden]{display:none!important;}
@@ -270,7 +297,7 @@ main{padding:16px 18px 8px;}
 .link-card .emoji-big{font-size:36px;}
 .link-card h3{font-size:15.5px;margin-top:10px;}
 .link-card p{font-size:13px;color:var(--ink-dim);margin-top:6px;}
-.link-btn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:var(--primary);color:#fff;text-decoration:none;padding:10px 20px;border-radius:999px;font-size:13.5px;font-weight:700;}
+.link-btn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:linear-gradient(135deg,#4a72f2,var(--primary));color:#fff;text-decoration:none;padding:10px 20px;border-radius:999px;font-size:13.5px;font-weight:700;box-shadow:0 8px 20px -8px rgba(53,98,232,.55);}
 
 /* 안내 스텝 */
 .step-list{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
@@ -302,10 +329,30 @@ main{padding:16px 18px 8px;}
 .prayer-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-l);padding:16px;margin-bottom:16px;}
 .prayer-form input, .prayer-form textarea{width:100%;border:1px solid var(--border-strong);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13.5px;margin-bottom:8px;background:var(--surface-2);}
 .prayer-form textarea{min-height:70px;resize:vertical;}
-.prayer-submit{background:var(--coral);color:#fff;border:none;border-radius:999px;padding:10px 18px;font-weight:700;font-size:13px;cursor:pointer;}
+.prayer-submit{background:linear-gradient(135deg,#ef5c50,var(--coral));color:#fff;border:none;border-radius:999px;padding:10px 18px;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(224,67,58,.5);}
 .prayer-post{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px;}
 .prayer-post-name{font-size:12px;font-weight:800;color:var(--coral);}
 .prayer-post-text{font-size:13.5px;color:var(--ink);margin-top:4px;white-space:pre-line;}
+
+/* 관리자 모드 */
+.admin-modal{position:fixed;inset:0;z-index:95;background:rgba(10,14,26,.55);display:flex;align-items:flex-end;justify-content:center;}
+.admin-modal-inner{background:var(--bg);width:100%;max-width:520px;max-height:88vh;overflow-y:auto;border-radius:22px 22px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));box-shadow:var(--shadow-pop);}
+.admin-modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.admin-modal-head h3{font-size:16px;}
+.admin-close{background:var(--surface-2);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--ink);flex:none;}
+.admin-field{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;}
+.admin-field label{font-size:11.5px;font-weight:700;color:var(--ink-dim);display:block;margin-bottom:6px;}
+.admin-field input,.admin-field textarea{width:100%;border:1px solid var(--border-strong);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:13px;background:var(--surface-2);}
+.admin-field textarea{min-height:60px;resize:vertical;}
+.admin-check-label{display:flex!important;align-items:center;gap:6px;width:auto!important;}
+.admin-check-label input{width:auto!important;flex:none;}
+.admin-save-btn{background:linear-gradient(135deg,var(--mint),#0b7d54);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-weight:700;font-size:12.5px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(13,152,104,.5);}
+.admin-section-title{font-size:13px;font-weight:800;color:var(--ink);margin:18px 0 8px;}
+.admin-notice-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;}
+.admin-notice-row .admin-field{flex:1;margin-bottom:0;}
+.admin-del-btn{background:var(--coral-soft);color:var(--coral);border:1px solid var(--coral-line);border-radius:8px;width:34px;height:34px;flex:none;cursor:pointer;margin-top:2px;}
+.admin-pin-row{display:flex;gap:8px;}
+.admin-pin-row input{flex:1;}
 
 /* 마을지도 */
 .map-frame{background:var(--surface-2);border:1.5px dashed var(--border-strong);border-radius:var(--radius-l);padding:34px 20px;text-align:center;color:var(--ink-faint);font-size:13px;}
@@ -315,14 +362,12 @@ main{padding:16px 18px 8px;}
 <body>
 
 <div class="app-shell" id="page">
-  <div class="sample-banner" id="sampleBanner">
-    🚧 예시 데이터로 채운 뼈대 버전 — 이 파일 위쪽 <code>RETREAT_DATA</code> 부분에서 실제 정보로 바꿔주세요.
-    <button type="button" id="dismissBanner">닫기</button>
-  </div>
-
   <header class="topbar">
     <div class="topbar-title">❄️ <span id="topbarTitle">GT 겨울여정</span></div>
-    <div class="topbar-dday" id="ddayBadge">D-000</div>
+    <div class="topbar-right">
+      <button type="button" class="admin-gear" id="adminGearBtn" aria-label="관리자 모드" title="관리자 모드">⚙️</button>
+      <div class="topbar-dday" id="ddayBadge">D-000</div>
+    </div>
   </header>
 
   <main id="content"></main>
@@ -349,6 +394,10 @@ main{padding:16px 18px 8px;}
 </div>
 
 <div class="toast" id="toast" hidden></div>
+
+<div class="admin-modal" id="adminModal" hidden>
+  <div class="admin-modal-inner" id="adminModalInner"></div>
+</div>
 
 <script type="module">
 /* ============================================================================
@@ -452,23 +501,133 @@ const RETREAT_DATA = {
   missions: {
     categories: [
       { id: "faith", label: "신앙 미션", emoji: "🙏", items: [
-        "오늘 집회에서 마음에 남은 한 문장 적어보기",
-        "처음 만난 선생님 한 분을 위해 기도하기",
-        "분과연수에서 배운 것, 새 학기에 적용할 방법 생각해보기",
+        "오늘 집회에서 마음에 남은 한 문장 노트에 적기",
+        "처음 만난 선생님 한 분을 위해 조용히 기도하기",
+        "아침 경건회에 지각하지 않고 참석하기",
+        "성경 본문을 소리 내어 한 번 읽어보기",
+        "오늘 하루 감사한 일 3가지 적어보기",
+        "나를 위해 기도해준 사람에게 감사 인사 전하기",
+        "설교 중 나온 질문 하나에 스스로 답해보기",
+        "저녁 집회에서 찬양 가사를 눈 감고 음미하며 부르기",
+        "조용한 시간을 내어 나만의 짧은 기도 시간 갖기",
       ]},
       { id: "relation", label: "관계 미션", emoji: "🤝", items: [
         "다른 학교 선생님 3명과 인사하고 이름 기억하기",
         "우리 GBS 조원 모두와 사진 한 장 남기기",
-        "체육대회에서 우리 조를 목청껏 응원하기",
+        "처음 보는 선생님과 점심 함께 먹기",
+        "교직 경력이 나와 가장 다른 선생님과 대화 나누기",
+        "헬퍼 선생님 한 분에게 '수고하십니다' 인사 건네기",
+        "GBS 조장님께 짧은 응원 메시지 전하기",
+        "낯선 테이블에 앉아 식사해보기",
+        "옆방 선생님과 통성명하기",
+        "오늘 대화한 선생님의 담당 과목·학년 3명 기억해서 적어보기",
       ]},
       { id: "reflect", label: "성찰 미션", emoji: "✍️", items: [
-        "'미션' 탭 '나의 다짐' 칸에 새 학기 한 줄 다짐 적어보기",
+        "'나의 다짐' 칸에 새 학기 한 줄 다짐 적어보기",
         "이번 수련회에서 가장 쉼이 되었던 순간 떠올려보기",
+        "최근 한 학기 나를 가장 힘들게 한 일 하나 적어보기",
+        "올해 가르치며 가장 뿌듯했던 순간 떠올려보기",
+        "나에게 쉼이 필요한 이유를 한 문장으로 정리해보기",
+        "새 학기에 그만두고 싶은 습관 하나 적어보기",
+        "나를 가장 지지해주는 동료 한 명 떠올려보기",
+        "올 한 해 나의 교직 생활에 점수를 매겨보기 (1~10점)",
+        "내년 이맘때 나는 어떤 교사이고 싶은지 상상해보기",
       ]},
       { id: "join", label: "참여 미션", emoji: "🎉", items: [
         "문화행사(작가와의 만남·버스킹) 끝까지 즐기기",
         "미션 인증샷을 '사진' 탭에 올려서 함께 나누기",
         "공동체적 성경읽기 인증샷 올리기",
+        "분과연수(워크숍) 한 세션 끝까지 참여하기",
+        "저녁 집회에서 맨 앞자리에 앉아보기",
+        "소그룹 나눔 시간에 먼저 손 들고 이야기하기",
+        "릴레이기도 게시판에 기도제목 하나 올리기",
+        "찬양 시간에 손뼉이나 몸짓으로 함께 반응하기",
+        "프로그램 하나에서 사회자·진행 돕기에 자원하기",
+      ]},
+      { id: "sports", label: "체육 미션", emoji: "🏃", items: [
+        "체육대회 개회식에서 우리 조 구호 외치기",
+        "풋살 경기에서 골 넣고 세레머니 해보기",
+        "단체 줄넘기 한 번이라도 성공하기",
+        "우리 조 경기를 목이 쉬도록 응원하기",
+        "체육대회 중 상대 팀 선수에게 하이파이브 건네기",
+        "준비운동 스트레칭 빠지지 않고 참여하기",
+        "이기든 지든 파이팅 있게 경기 마무리하기",
+        "평소 안 하던 운동(줄넘기·피구 등) 한 번 도전해보기",
+        "체육대회 후 땀 흘린 얼굴로 인증샷 남기기",
+      ]},
+      { id: "culture", label: "문화 미션", emoji: "🎤", items: [
+        "CCM 콘서트에서 좋아하는 곡 하나 따라 부르기",
+        "작가와의 만남에서 질문 하나 해보기",
+        "버스킹 무대에 박수나 환호로 리액션 보내기",
+        "찬양리스트 중 처음 듣는 곡 하나 찾아 들어보기",
+        "문화행사 중 인상 깊었던 한 장면 사진으로 남기기",
+        "마음에 든 곡의 가사 한 줄 적어두기",
+        "무대에 오른 사람에게 마음속으로 박수 보내기",
+        "공연 끝나고 옆 사람과 소감 한마디 나누기",
+        "내년 문화행사에 하고 싶은 제안 하나 생각해보기",
+      ]},
+      { id: "learn", label: "배움 미션", emoji: "📚", items: [
+        "분과연수(워크숍)에서 배운 내용 한 줄 메모하기",
+        "워크숍 강사님께 궁금한 점 하나 질문하기",
+        "다른 학교 선생님의 수업 노하우 하나 물어보기",
+        "오늘 배운 것 중 새 학기에 바로 써먹을 것 하나 고르기",
+        "다른 학교급(초·중·고) 선생님과 교육 고민 나누기",
+        "워크숍 내용을 한 문장으로 요약해보기",
+        "강의 중 가장 공감됐던 말 적어두기",
+        "오늘 들은 강의 주제를 동료에게 짧게 설명해보기",
+        "새로 배운 수업 아이디어 하나 다음 학기 계획에 적어두기",
+      ]},
+      { id: "photo", label: "기록 미션", emoji: "📸", items: [
+        "이번 수련회 첫 사진 '사진' 탭에 업로드하기",
+        "우리 GBS 조 전체 사진 남기기",
+        "수양관 풍경 사진 한 장 찍어보기",
+        "식사 시간 음식 사진 남기기",
+        "가장 웃겼던 순간을 사진으로 포착하기",
+        "하늘 사진 한 장 찍어보기",
+        "헬퍼 선생님들 활동 모습 사진 남기기",
+        "나의 다짐을 손글씨로 써서 사진 찍어 올리기",
+        "수련회 마지막 날 단체사진에 참여하기",
+      ]},
+      { id: "share", label: "나눔 미션", emoji: "💌", items: [
+        "동료 교사에게 응원의 쪽지 써서 전달하기",
+        "처음 만난 선생님에게 칭찬 한마디 건네기",
+        "식사 시간에 먼저 음식 나눠주기",
+        "힘들어 보이는 동료에게 말 걸어주기",
+        "GBS 조원에게 감사 인사 전하기",
+        "헬퍼 선생님께 간식이나 음료 건네기",
+        "오늘 하루 고마웠던 사람 이름 적어보기",
+        "누군가의 이야기를 10분 이상 들어주기",
+        "새 학기 다짐을 옆 사람과 나눠보기",
+      ]},
+      { id: "daily", label: "일상 미션", emoji: "🍚", items: [
+        "아침 식사 국물까지 싹 비우기",
+        "숙소 이불 각 잡아서 정리하기",
+        "지각 없이 모든 프로그램 제시간에 참석하기",
+        "새로운 반찬 하나 도전해서 먹어보기",
+        "숙소 룸메이트와 하루 소감 나누기",
+        "하루 동안 스마트폰 사용 30분 줄여보기",
+        "이동 시간에 창밖 풍경 감상하기",
+        "잠들기 전 오늘 하루를 한 문장으로 정리하기",
+        "아침에 이불 정리 후 방 사진 찍어보기",
+      ]},
+      { id: "family", label: "가족 미션", emoji: "👶", items: [
+        "자녀와 함께 GK캠프 활동 사진 남기기",
+        "GK캠프 교사(헬퍼)에게 감사 인사 전하기",
+        "아이와 함께 저녁 집회 소감 나누기",
+        "자녀가 그린 그림이나 만든 작품 사진으로 남기기",
+        "아이에게 오늘 배운 말씀 한 가지 이야기해주기",
+        "가족과 함께 마지막 날 단체사진 찍기",
+      ]},
+      { id: "challenge", label: "도전 미션", emoji: "🎯", items: [
+        "평소 안 친했던 선생님께 먼저 인사 건네기",
+        "낯선 프로그램에 자원해서 참여해보기",
+        "새 학기 목표 3가지 이상 적어보기",
+        "오늘 하루 불평 한마디도 하지 않기",
+        "처음 먹어보는 음식에 도전하기",
+        "사진 없이 순간을 눈에 담아보는 시간 갖기",
+        "조용히 산책하며 나만의 생각 정리 시간 갖기",
+        "가장 어색한 사람과 5분 이상 대화하기",
+        "수련회 마지막 날, 처음 적었던 다짐을 다시 읽어보기",
       ]},
     ],
   },
@@ -576,7 +735,15 @@ const RETREAT_DATA = {
 };
 
 /* ============================================================================
-   Firebase 설정 — "사진" 탭(전체사진 / 성경읽기 인증)과 "릴레이기도" 게시판용.
+   관리자 모드 PIN — 여기 숫자만 바꾸면 새 PIN이 적용돼요.
+   완벽한 보안은 아니고(코드를 볼 수 있는 사람은 PIN도 볼 수 있어요), 아무나
+   실수로 공지·링크를 건드리지 않게 막는 정도의 가벼운 잠금이에요.
+============================================================================ */
+const ADMIN_PIN = "0000";
+
+/* ============================================================================
+   Firebase 설정 — "사진" 탭(전체사진 / 성경읽기 인증), "릴레이기도" 게시판,
+   관리자 모드로 고친 공지·링크를 모두에게 실시간으로 보여주는 데 사용됩니다.
    실제 Firebase 프로젝트 값으로 바꾸기 전까지는 안내 문구만 표시됩니다.
    방법은 README.md 참고.
 ============================================================================ */
@@ -691,6 +858,13 @@ function missionStats() {
     });
   });
   return { total, done };
+}
+function categoryStats(catId) {
+  const cat = RETREAT_DATA.missions.categories.find((c) => c.id === catId);
+  if (!cat) return { total: 0, done: 0 };
+  let done = 0;
+  cat.items.forEach((_, idx) => { if (lsGet('gt_mission_' + catId + '_' + idx, false)) done++; });
+  return { total: cat.items.length, done };
 }
 
 /* ============================================================================
@@ -910,17 +1084,28 @@ function renderMissions() {
     <div class="commitment-saved" id="commitmentSaved" hidden></div>
   </div>`;
 
+  html += `<div class="section-label" style="margin-top:6px;">🗂️ 미션 파트별로 골라 도전해보세요 (총 ${ms.total}개)</div>`;
   RETREAT_DATA.missions.categories.forEach((cat) => {
-    html += `<div class="mission-cat-label">${cat.emoji} ${esc(cat.label)}</div><div class="mission-list">`;
-    cat.items.forEach((text, idx) => {
-      const key = 'gt_mission_' + cat.id + '_' + idx;
-      const checked = lsGet(key, false);
-      html += `<div class="mission-card${checked ? ' done' : ''}" data-mission-toggle="${key}">
-        <span class="mission-check${checked ? ' checked' : ''}">${checked ? iconSvg('check') : ''}</span>
-        <span class="mission-text">${esc(text)}</span>
-      </div>`;
-    });
-    html += `</div>`;
+    const cs = categoryStats(cat.id);
+    const items = cat.items
+      .map((text, idx) => {
+        const key = 'gt_mission_' + cat.id + '_' + idx;
+        const checked = lsGet(key, false);
+        return `<div class="mission-card${checked ? ' done' : ''}" data-mission-toggle="${key}">
+          <span class="mission-check${checked ? ' checked' : ''}">${checked ? iconSvg('check') : ''}</span>
+          <span class="mission-text">${esc(text)}</span>
+        </div>`;
+      })
+      .join('');
+    html += `<div class="mission-cat-item${cs.done === cs.total && cs.total ? ' full' : ''}" data-mcat="${cat.id}">
+      <button type="button" class="mission-cat-head" data-mcat-toggle="${cat.id}">
+        <span class="mission-cat-emoji">${cat.emoji}</span>
+        <span class="mission-cat-name">${esc(cat.label)}</span>
+        <span class="mission-cat-count">${cs.done}/${cs.total}</span>
+        ${iconSvg('chevron-down')}
+      </button>
+      <div class="mission-cat-body"><div class="mission-list">${items}</div></div>
+    </div>`;
   });
 
   html += `</div>`;
@@ -1237,13 +1422,42 @@ function closeDetail() {
 }
 
 /* ============================================================================
-   PHOTOS TAB (Firebase Storage + Firestore) — 전체사진 / 성경읽기 인증 공용
+   PHOTOS TAB (Firestore만 사용 — Firebase Storage/유료 요금제 불필요)
+   사진은 브라우저에서 미리 리사이즈·압축한 뒤 base64로 Firestore 문서에 직접
+   저장합니다. Firestore 문서는 1개당 1MB 한도가 있어서 그 안에 들어가도록
+   압축하고, Firestore 무료 사용량(저장 1GB, 쓰기/읽기 일일 한도)으로 충분히
+   커버돼요 — Storage처럼 결제수단 등록이 필요 없습니다.
 ============================================================================ */
-let firebaseApp = null, db = null, storage = null;
+let firebaseApp = null, db = null;
 const PHOTO_FEATURES = [
-  { key: 'all', label: '전체 사진', collection: 'photos', storagePrefix: 'photos', uploaderKey: 'gt_uploader_name' },
-  { key: 'bible', label: '성경읽기 인증', collection: 'bible_photos', storagePrefix: 'bible', uploaderKey: 'gt_uploader_name_bible' },
+  { key: 'all', label: '전체 사진', collection: 'photos', uploaderKey: 'gt_uploader_name' },
+  { key: 'bible', label: '성경읽기 인증', collection: 'bible_photos', uploaderKey: 'gt_uploader_name_bible' },
 ];
+function compressImageToDataUrl(file, maxDim, quality) {
+  maxDim = maxDim || 1280; quality = quality || 0.7;
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('read failed'));
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('decode failed'));
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          if (width > height) { height = Math.round(height * maxDim / width); width = maxDim; }
+          else { width = Math.round(width * maxDim / height); height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 function renderPhotosShell() {
   if (!isFirebaseConfigured()) {
     return `<div class="stop">
@@ -1278,21 +1492,20 @@ function renderPhotoUploadBlock(f) {
 async function initFirebase() {
   if (!isFirebaseConfigured()) return;
   try {
-    const [{ initializeApp }, firestoreMod, storageMod] = await Promise.all([
+    const [{ initializeApp }, firestoreMod] = await Promise.all([
       import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'),
       import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'),
-      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js'),
     ]);
     firebaseApp = initializeApp(firebaseConfig);
     db = firestoreMod.getFirestore(firebaseApp);
-    storage = storageMod.getStorage(firebaseApp);
     firestoreModRef = firestoreMod;
     PHOTO_FEATURES.forEach((f) => {
       watchPhotos(f, firestoreMod);
-      setupUploadUI(f, storageMod, firestoreMod);
+      setupUploadUI(f, firestoreMod);
     });
     initPrayerBoard(firestoreMod);
     watchRanking();
+    watchSettings(firestoreMod);
     syncMissionProgress();
   } catch (err) {
     console.error('Firebase init failed', err);
@@ -1318,7 +1531,7 @@ function watchPhotos(f, firestoreMod) {
     if (grid) grid.innerHTML = '<p class="empty-note">사진을 불러오지 못했어요. Firestore 보안 규칙을 확인해주세요.</p>';
   });
 }
-function setupUploadUI(f, storageMod, firestoreMod) {
+function setupUploadUI(f, firestoreMod) {
   const nameInput = document.getElementById('uploaderName_' + f.key);
   const fileInput = document.getElementById('fileInput_' + f.key);
   const fileDrop = document.getElementById('fileDrop_' + f.key);
@@ -1342,22 +1555,21 @@ function setupUploadUI(f, storageMod, firestoreMod) {
     if (!files.length) return;
     uploadBtn.disabled = true;
     progressEl.hidden = false;
-    const { ref, uploadBytes, getDownloadURL } = storageMod;
     const { collection, addDoc, serverTimestamp } = firestoreMod;
     const name = nameInput.value.trim();
     let done = 0;
     for (const file of files) {
-      progressEl.textContent = `업로드 중… (${done + 1}/${files.length})`;
+      progressEl.textContent = `사진을 줄이는 중… (${done + 1}/${files.length})`;
       try {
-        const path = `${f.storagePrefix}/${Date.now()}_${Math.random().toString(36).slice(2, 8)}_${file.name}`;
-        const sref = ref(storage, path);
-        await uploadBytes(sref, file);
-        const url = await getDownloadURL(sref);
-        await addDoc(collection(db, f.collection), { url, name: name || '', path, uploadedAt: serverTimestamp() });
+        let dataUrl = await compressImageToDataUrl(file, 1280, 0.7);
+        if (dataUrl.length > 900000) dataUrl = await compressImageToDataUrl(file, 900, 0.55);
+        if (dataUrl.length > 900000) throw new Error('too large even after compression');
+        progressEl.textContent = `업로드 중… (${done + 1}/${files.length})`;
+        await addDoc(collection(db, f.collection), { url: dataUrl, name: name || '', uploadedAt: serverTimestamp() });
         done++;
       } catch (err) {
         console.error('upload failed', err);
-        toast('일부 사진 업로드에 실패했어요.');
+        toast('사진이 너무 커서 일부 업로드에 실패했어요.');
       }
     }
     progressEl.textContent = `${done}장 업로드 완료!`;
@@ -1408,6 +1620,148 @@ function initPrayerBoard(firestoreMod) {
 }
 
 /* ============================================================================
+   관리자 모드 — 공지사항 / 링크 / 홈 문구 / D-day를 앱에서 직접 수정.
+   저장하면 Firestore 'settings/content' 문서에 기록되고, watchSettings가
+   모든 방문자 화면에 실시간으로 반영합니다 (Firebase 미설정 시엔 내 기기에만).
+============================================================================ */
+function isAdminUnlocked() { return lsGet('gt_admin_unlocked', false); }
+
+function openAdminModal() {
+  document.getElementById('adminModalInner').innerHTML = renderAdminModal();
+  document.getElementById('adminModal').hidden = false;
+}
+function closeAdminModal() {
+  document.getElementById('adminModal').hidden = true;
+}
+function renderAdminModal() {
+  if (!isAdminUnlocked()) {
+    return `<div class="admin-modal-head"><h3>🔒 관리자 모드</h3><button type="button" class="admin-close" id="adminModalClose">✕</button></div>
+      <p class="stop-sub" style="margin:0 0 14px;">PIN을 입력하면 공지사항·링크·홈 문구 같은 간단한 내용을 앱에서 바로 고칠 수 있어요.</p>
+      <div class="admin-field">
+        <label>PIN</label>
+        <div class="admin-pin-row">
+          <input type="password" inputmode="numeric" id="adminPinInput" placeholder="****">
+          <button type="button" class="admin-save-btn" id="adminUnlockBtn">잠금해제</button>
+        </div>
+      </div>`;
+  }
+  const notices = RETREAT_DATA.notices || [];
+  const noticeRows = notices.map((n, i) => `
+    <div class="admin-notice-row">
+      <div class="admin-field">
+        <label>제목</label><input type="text" data-notice-title="${i}" value="${esc(n.title)}">
+        <label style="margin-top:8px;">내용</label><textarea data-notice-body="${i}">${esc(n.body)}</textarea>
+        <label class="admin-check-label" style="margin-top:8px;"><input type="checkbox" data-notice-important="${i}" ${n.important ? 'checked' : ''}> 중요 공지로 표시</label>
+      </div>
+      <button type="button" class="admin-del-btn" data-notice-del="${i}" title="삭제">🗑️</button>
+    </div>`).join('');
+
+  const linkRows = Object.keys(RETREAT_DATA.links).map((key) => {
+    const l = RETREAT_DATA.links[key];
+    return `<div class="admin-field">
+      <label>${l.emoji || '🔗'} ${esc(l.title)}</label>
+      <input type="text" data-link-url="${key}" value="${esc(l.url || '')}" placeholder="https://...">
+    </div>`;
+  }).join('');
+
+  return `<div class="admin-modal-head"><h3>⚙️ 관리자 모드</h3><button type="button" class="admin-close" id="adminModalClose">✕</button></div>
+    <p class="stop-sub" style="margin:0 0 14px;">여기서 고친 내용은 "전체 저장"을 누르면 모두의 화면에 반영돼요.</p>
+
+    <div class="admin-section-title">📢 공지사항</div>
+    ${noticeRows || '<p class="empty-note" style="margin-bottom:10px;">등록된 공지가 없어요.</p>'}
+    <button type="button" class="admin-save-btn" id="adminAddNotice" style="background:var(--surface-2);color:var(--ink);box-shadow:none;border:1px dashed var(--border-strong);width:100%;margin-bottom:8px;">+ 공지 추가</button>
+
+    <div class="admin-section-title">🔗 링크 모음</div>
+    ${linkRows}
+
+    <div class="admin-section-title">✏️ 홈 화면 문구</div>
+    <div class="admin-field"><label>테마 문구</label><input type="text" id="adminTheme" value="${esc(RETREAT_DATA.meta.theme || '')}"></div>
+    <div class="admin-field"><label>환영 문구</label><textarea id="adminWelcome">${esc(RETREAT_DATA.meta.welcome || '')}</textarea></div>
+    <div class="admin-field"><label>D-day 기준 날짜</label><input type="date" id="adminDateStart" value="${esc(RETREAT_DATA.meta.dateStart || '')}"></div>
+    <div class="admin-field"><label>날짜 표시 문구</label><input type="text" id="adminDateLabel" value="${esc(RETREAT_DATA.meta.dateLabel || '')}"></div>
+
+    <button type="button" class="admin-save-btn" id="adminSaveBtn" style="width:100%;margin-top:6px;">💾 전체 저장</button>
+    <button type="button" class="admin-save-btn" id="adminLockBtn" style="width:100%;margin-top:8px;background:var(--surface-2);color:var(--ink-dim);box-shadow:none;">🔒 관리자 모드 잠그기</button>`;
+}
+async function saveAdminSettings() {
+  const titleEls = document.querySelectorAll('[data-notice-title]');
+  const notices = Array.from(titleEls).map((el) => {
+    const i = el.getAttribute('data-notice-title');
+    const bodyEl = document.querySelector(`[data-notice-body="${i}"]`);
+    const impEl = document.querySelector(`[data-notice-important="${i}"]`);
+    return { title: el.value.trim(), body: bodyEl ? bodyEl.value.trim() : '', important: !!(impEl && impEl.checked) };
+  });
+  RETREAT_DATA.notices = notices;
+
+  document.querySelectorAll('[data-link-url]').forEach((el) => {
+    const key = el.getAttribute('data-link-url');
+    if (RETREAT_DATA.links[key]) RETREAT_DATA.links[key].url = el.value.trim();
+  });
+
+  RETREAT_DATA.meta.theme = (document.getElementById('adminTheme').value || '').trim();
+  RETREAT_DATA.meta.welcome = document.getElementById('adminWelcome').value;
+  RETREAT_DATA.meta.dateStart = (document.getElementById('adminDateStart').value || '').trim();
+  RETREAT_DATA.meta.dateLabel = (document.getElementById('adminDateLabel').value || '').trim();
+
+  if (!isFirebaseConfigured() || !db || !firestoreModRef) {
+    toast('Firebase 설정이 없어서 이 기기에만 반영돼요.');
+    refreshAfterSettingsChange();
+    closeAdminModal();
+    return;
+  }
+  const { doc, setDoc } = firestoreModRef;
+  const linksPlain = {};
+  Object.keys(RETREAT_DATA.links).forEach((k) => { linksPlain[k] = { url: RETREAT_DATA.links[k].url || '' }; });
+  try {
+    await setDoc(doc(db, 'settings', 'content'), {
+      notices: RETREAT_DATA.notices,
+      links: linksPlain,
+      welcome: RETREAT_DATA.meta.welcome,
+      theme: RETREAT_DATA.meta.theme,
+      dateStart: RETREAT_DATA.meta.dateStart,
+      dateLabel: RETREAT_DATA.meta.dateLabel,
+    }, { merge: true });
+    toast('저장했어요! 모두의 화면에 반영됩니다 🎉');
+    refreshAfterSettingsChange();
+    closeAdminModal();
+  } catch (err) {
+    console.error('admin save failed', err);
+    toast('저장에 실패했어요. Firestore 규칙에 settings 컬렉션이 있는지 확인해주세요.');
+  }
+}
+function refreshAfterSettingsChange() {
+  renderTopbar();
+  const homePanel = document.getElementById('panel-home');
+  if (homePanel) homePanel.innerHTML = renderHome();
+  const detailBody = document.getElementById('detailBody');
+  if (detailBody) {
+    detailBody.innerHTML = renderDetailPanels();
+    if (currentDetail) {
+      const p = document.getElementById('detail-' + currentDetail);
+      if (p) p.classList.add('active');
+    }
+  }
+}
+function watchSettings(firestoreMod) {
+  const { doc, onSnapshot } = firestoreMod;
+  onSnapshot(doc(db, 'settings', 'content'), (snap) => {
+    if (!snap.exists()) return;
+    const data = snap.data();
+    let changed = false;
+    if (Array.isArray(data.notices)) { RETREAT_DATA.notices = data.notices; changed = true; }
+    if (data.links && typeof data.links === 'object') {
+      Object.keys(data.links).forEach((k) => { if (RETREAT_DATA.links[k]) Object.assign(RETREAT_DATA.links[k], data.links[k]); });
+      changed = true;
+    }
+    if (typeof data.welcome === 'string') { RETREAT_DATA.meta.welcome = data.welcome; changed = true; }
+    if (typeof data.theme === 'string') { RETREAT_DATA.meta.theme = data.theme; changed = true; }
+    if (typeof data.dateStart === 'string' && data.dateStart) { RETREAT_DATA.meta.dateStart = data.dateStart; changed = true; }
+    if (typeof data.dateLabel === 'string' && data.dateLabel) { RETREAT_DATA.meta.dateLabel = data.dateLabel; changed = true; }
+    if (changed) refreshAfterSettingsChange();
+  }, (err) => console.error('settings watch failed', err));
+}
+
+/* ============================================================================
    RENDER ALL
 ============================================================================ */
 const RENDERERS = { home: renderHome, schedule: renderSchedule, missions: renderMissions, photos: renderPhotosShell, more: renderMore };
@@ -1439,6 +1793,42 @@ document.getElementById('detailBack').addEventListener('click', closeDetail);
    GLOBAL CLICK / INPUT DELEGATION
 ============================================================================ */
 document.addEventListener('click', (e) => {
+  if (e.target.id === 'adminGearBtn') { openAdminModal(); return; }
+  if (e.target.id === 'adminModalClose') { closeAdminModal(); return; }
+  if (e.target.id === 'adminModal') { closeAdminModal(); return; }
+  if (e.target.id === 'adminUnlockBtn') {
+    const val = document.getElementById('adminPinInput').value;
+    if (val === ADMIN_PIN) {
+      lsSet('gt_admin_unlocked', true);
+      document.getElementById('adminGearBtn').classList.add('on');
+      toast('관리자 모드 잠금 해제! 🔓');
+      openAdminModal();
+    } else {
+      toast('PIN이 올바르지 않아요.');
+    }
+    return;
+  }
+  if (e.target.id === 'adminLockBtn') {
+    lsSet('gt_admin_unlocked', false);
+    document.getElementById('adminGearBtn').classList.remove('on');
+    closeAdminModal();
+    toast('관리자 모드를 잠갔어요.');
+    return;
+  }
+  if (e.target.id === 'adminAddNotice') {
+    RETREAT_DATA.notices = RETREAT_DATA.notices || [];
+    RETREAT_DATA.notices.push({ title: '새 공지', body: '', important: false });
+    openAdminModal();
+    return;
+  }
+  const noticeDel = e.target.closest('[data-notice-del]');
+  if (noticeDel) {
+    RETREAT_DATA.notices.splice(Number(noticeDel.getAttribute('data-notice-del')), 1);
+    openAdminModal();
+    return;
+  }
+  if (e.target.id === 'adminSaveBtn') { saveAdminSettings(); return; }
+
   const tabBtn = e.target.closest('.tab-btn[data-tab]');
   if (tabBtn) { switchTab(tabBtn.getAttribute('data-tab')); return; }
 
@@ -1494,6 +1884,9 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  const mcatToggle = e.target.closest('[data-mcat-toggle]');
+  if (mcatToggle) { mcatToggle.closest('.mission-cat-item').classList.toggle('open'); return; }
+
   const missionToggle = e.target.closest('[data-mission-toggle]');
   if (missionToggle) {
     const key = missionToggle.getAttribute('data-mission-toggle');
@@ -1508,6 +1901,14 @@ document.addEventListener('click', (e) => {
     const label = document.querySelector('.mission-progress-top span');
     if (bar) bar.style.width = (stats.total ? Math.round((stats.done / stats.total) * 100) : 0) + '%';
     if (label) label.textContent = `${stats.done} / ${stats.total}`;
+    const catId = key.split('_')[2];
+    const cs = categoryStats(catId);
+    const catItemEl = document.querySelector(`.mission-cat-item[data-mcat="${catId}"]`);
+    if (catItemEl) {
+      const countEl = catItemEl.querySelector('.mission-cat-count');
+      if (countEl) countEl.textContent = `${cs.done}/${cs.total}`;
+      catItemEl.classList.toggle('full', cs.total > 0 && cs.done === cs.total);
+    }
     syncMissionProgress();
     return;
   }
@@ -1538,12 +1939,11 @@ document.addEventListener('click', (e) => {
   if (thumb) { openLightbox(thumb.getAttribute('data-url'), thumb.getAttribute('data-name')); return; }
 });
 
-document.getElementById('dismissBanner').addEventListener('click', () => { document.getElementById('sampleBanner').hidden = true; });
-
 /* ============================================================================
    BOOT
 ============================================================================ */
 renderAll();
+document.getElementById('adminGearBtn').classList.toggle('on', isAdminUnlocked());
 initFirebase();
 </script>
 </body>
