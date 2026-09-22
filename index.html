@@ -65,6 +65,7 @@ main{padding:16px 18px 8px;}
 .home-banner{background:linear-gradient(155deg,#4a72f2 0%,var(--primary) 45%,#1f3aa0 100%);color:#fff;border-radius:var(--radius-l);padding:24px 22px;margin-bottom:20px;position:relative;overflow:hidden;box-shadow:0 16px 40px -14px rgba(31,58,160,.5);}
 .home-banner::after{content:'';position:absolute;right:-50px;top:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);}
 .home-banner::before{content:'';position:absolute;left:-30px;bottom:-60px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,214,122,.18),transparent 70%);}
+.home-cross{position:absolute;right:22px;top:22px;width:30px;height:30px;opacity:.28;pointer-events:none;}
 .home-eyebrow{font-size:11px;letter-spacing:.18em;opacity:.85;font-weight:700;}
 .home-title{font-size:23px;margin-top:9px;color:#fff;position:relative;}
 .home-year{color:#ffd67a;}
@@ -78,6 +79,7 @@ main{padding:16px 18px 8px;}
 
 .section-label{font-size:12.5px;font-weight:800;color:var(--ink);letter-spacing:.02em;margin-bottom:11px;padding-left:10px;position:relative;}
 .section-label::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--primary),var(--violet));}
+.section-label.gold::before{background:linear-gradient(180deg,#f0a623,var(--amber));}
 .quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
 .quick-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;text-align:left;color:var(--ink);}
 .quick-card .icon-badge{width:32px;height:32px;border-radius:9px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;font-size:17px;}
@@ -144,6 +146,9 @@ main{padding:16px 18px 8px;}
 .session-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
 .session-meta span{font-size:11px;color:var(--ink-faint);background:var(--surface-2);padding:2px 8px;border-radius:999px;font-weight:600;}
 .session-desc{margin-top:8px;font-size:12.5px;color:var(--ink-dim);}
+.oly-card{border-left:3px solid var(--amber);}
+.oly-card .session-top .session-time{font-size:19px;color:inherit;}
+.oly-card .session-meta span{color:#8a5a05;background:var(--amber-soft);}
 
 /* missions */
 .mission-progress{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:16px;margin-bottom:18px;}
@@ -175,10 +180,36 @@ main{padding:16px 18px 8px;}
 .mission-text{font-size:13.5px;color:var(--ink);}
 .mission-card.done .mission-text{color:var(--ink-dim);text-decoration:line-through;}
 .commitment-card{background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:var(--radius-l);padding:16px;margin-bottom:20px;}
-.commitment-card b{font-size:14px;color:var(--ink);display:block;margin-bottom:8px;}
+.commitment-card b{font-size:14px;color:var(--ink);display:block;margin-bottom:2px;}
+.commitment-hint{display:block;font-size:11.5px;color:var(--ink-dim);margin:0 0 10px;}
 .commitment-card textarea{width:100%;min-height:70px;border-radius:10px;border:1px solid var(--border-strong);padding:10px 12px;font-family:inherit;font-size:13.5px;resize:vertical;background:#fff;}
 .commitment-save{margin-top:8px;background:linear-gradient(135deg,var(--violet),#6a4ae8);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px -6px rgba(124,92,255,.55);}
 .commitment-saved{margin-top:10px;font-size:12.5px;color:var(--ink-dim);font-style:italic;}
+.commitment-post{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.commitment-post-name{font-size:12px;font-weight:800;color:var(--violet);}
+.commitment-post-text{font-size:13.5px;color:var(--ink);margin-top:4px;white-space:pre-line;}
+
+/* GBS 인증 미션 (사진으로 인증하는 특별 미션) */
+.gbsphoto-section{background:linear-gradient(160deg,var(--amber-soft) 0%,#fffdf7 60%);border:1px solid var(--amber-line);border-radius:var(--radius-l);padding:16px 14px;margin-bottom:20px;box-shadow:var(--shadow-card);}
+.gbsphoto-gbsname-field{margin-bottom:14px;}
+.gbsphoto-gbsname-field .f-label{display:block;font-size:12px;color:var(--ink-dim);margin-bottom:6px;font-weight:600;}
+.gbsphoto-gbsname-field input{width:100%;background:#fff;border:1px solid var(--border-strong);border-radius:10px;padding:10px 12px;font-size:13.5px;font-family:inherit;}
+.gbsphoto-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-m);padding:13px;margin-bottom:10px;box-shadow:var(--shadow-card);}
+.gbsphoto-card.done{border-color:var(--mint-line);background:var(--mint-soft);}
+.gbsphoto-head{display:flex;align-items:flex-start;gap:10px;}
+.gbsphoto-emoji{font-size:21px;flex:none;line-height:1.3;}
+.gbsphoto-text{flex:1;min-width:0;}
+.gbsphoto-text b{display:block;font-size:13.5px;color:var(--ink);}
+.gbsphoto-text span{display:block;font-size:12px;color:var(--ink-dim);margin-top:3px;}
+.gbsphoto-done-badge{display:none;flex:none;font-size:10.5px;font-weight:800;color:var(--mint);background:#fff;border:1px solid var(--mint-line);padding:3px 8px;border-radius:999px;white-space:nowrap;}
+.gbsphoto-card.done .gbsphoto-done-badge{display:inline-flex;}
+.gbsphoto-thumbs{display:flex;gap:6px;overflow-x:auto;margin:10px 0;padding-bottom:2px;}
+.gbsphoto-thumbs .empty-note{white-space:nowrap;}
+.gbsphoto-thumb{flex:none;width:46px;height:46px;border-radius:9px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;}
+.gbsphoto-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.gbsphoto-upload-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#f0a623,var(--amber));color:#fff;border:none;border-radius:10px;padding:9px;font-weight:700;font-size:12.5px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(232,137,12,.5);}
+.gbsphoto-upload-btn .icon{width:14px;height:14px;}
+.gbsphoto-progress{margin-top:8px;font-size:12px;color:var(--ink-dim);text-align:center;}
 
 /* 닉네임 / 랭킹 */
 .nickname-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px;margin-bottom:16px;}
@@ -409,9 +440,10 @@ const RETREAT_DATA = {
     orgName: "GT",
     year: "2027",
     eyebrow: "❄️ GT TEACHERS' WINTER RETREAT",
-    theme: "쉼. 배움. 다시. (예시 테마 문구 — 실제 테마로 바꿔주세요)",
+    theme: "복음으로 사는 삶 (예시 주제 — 최종 확정 후 관리자 모드에서 수정하세요)",
     welcome:
       "선생님, 한 학기 정말 애쓰셨습니다 🍎\n" +
+      "이번 겨울수련회는 GBS(그룹성경공부) 조원들과 함께 복음 안에서 진짜 쉼을 누리는 시간이 되기를 소망합니다.\n" +
       "이 앱 하나에 2027 GT 겨울수련회의 모든 정보를 담았어요. 아래 메뉴와 '정보' 탭에서 필요한 걸 찾아보세요!\n\n" +
       "(예시 문구입니다 — 아래 RETREAT_DATA에서 실제 안내문으로 교체해주세요.)",
     dateStart: "2027-01-15",
@@ -446,7 +478,7 @@ const RETREAT_DATA = {
         { time: "08:00", title: "아침 식사", tag: "식사" },
         { time: "09:30", title: "분과연수 1부", tag: "분과연수", desc: "'정보 > 분과·워크숍'에서 미리 살펴보세요" },
         { time: "12:00", title: "점심 식사", tag: "식사" },
-        { time: "14:00", title: "교사 체육대회", tag: "체육대회", desc: "5인제 풋살 · 단체 줄넘기 · 피구 (예시)" },
+        { time: "14:00", title: "GBS 미니올림픽", tag: "미니올림픽", desc: "GBS 팀 대항전 + 가족부 경기 — '정보 > 미니올림픽'에서 종목을 확인해보세요 (예시)" },
         { time: "18:00", title: "저녁 식사", tag: "식사" },
         { time: "19:30", title: "저녁 집회 (핵심 강연)", tag: "특강" },
         { time: "21:30", title: "문화행사 — 작가와의 만남 & 버스킹", tag: "문화행사" },
@@ -480,12 +512,12 @@ const RETREAT_DATA = {
   packing: [
     { id: "p1", title: "✅ 필수 준비물", items: ["성경책 및 필기구", "세면도구", "개인 컵", "따뜻한 겉옷·운동복"] },
     { id: "p2", title: "🧴 위생/상비약", items: ["수건", "칫솔/치약", "개인 상비약"] },
-    { id: "p3", title: "🎒 선택 준비물", items: ["체육대회용 운동화", "나눔용 수업자료·사진(선택)", "핫팩", "카메라"] },
+    { id: "p3", title: "🎒 선택 준비물", items: ["미니올림픽용 운동화", "나눔용 수업자료·사진(선택)", "핫팩", "카메라"] },
   ],
 
   notices: [
     { title: "💰 수련회비 안내 (예시)", body: "회비는 1/10(일)까지 간사에게 납부해주세요.", important: true },
-    { title: "🏃 체육대회 복장 안내", body: "2일차 오후에는 활동하기 편한 복장과 운동화를 준비해주세요.", important: false },
+    { title: "🏃 미니올림픽 복장 안내", body: "2일차 오후에는 활동하기 편한 복장과 운동화를 준비해주세요.", important: false },
   ],
 
   faq: [
@@ -545,15 +577,15 @@ const RETREAT_DATA = {
         "프로그램 하나에서 사회자·진행 돕기에 자원하기",
       ]},
       { id: "sports", label: "체육 미션", emoji: "🏃", items: [
-        "체육대회 개회식에서 우리 조 구호 외치기",
+        "미니올림픽 개회식에서 우리 조 구호 외치기",
         "풋살 경기에서 골 넣고 세레머니 해보기",
         "단체 줄넘기 한 번이라도 성공하기",
         "우리 조 경기를 목이 쉬도록 응원하기",
-        "체육대회 중 상대 팀 선수에게 하이파이브 건네기",
+        "미니올림픽 중 상대 팀 선수에게 하이파이브 건네기",
         "준비운동 스트레칭 빠지지 않고 참여하기",
         "이기든 지든 파이팅 있게 경기 마무리하기",
         "평소 안 하던 운동(줄넘기·피구 등) 한 번 도전해보기",
-        "체육대회 후 땀 흘린 얼굴로 인증샷 남기기",
+        "미니올림픽 후 땀 흘린 얼굴로 인증샷 남기기",
       ]},
       { id: "culture", label: "문화 미션", emoji: "🎤", items: [
         "CCM 콘서트에서 좋아하는 곡 하나 따라 부르기",
@@ -630,6 +662,41 @@ const RETREAT_DATA = {
         "수련회 마지막 날, 처음 적었던 다짐을 다시 읽어보기",
       ]},
     ],
+    // GBS 인증 미션 — 이번 수련회의 중심인 GBS(그룹성경공부) 조가 함께 사진으로
+    // 인증하는 특별 미션 10개예요. 체크가 아니라 '사진 업로드'로 완료 처리됩니다.
+    // '미션' 탭 상단에 항상 보이는 별도 섹션으로 표시돼요.
+    gbsPhotoMissions: [
+      { id: "g1", emoji: "🙌", title: "우리 GBS 첫 만남", desc: "조원 전체가 다 함께 나온 첫 만남 사진을 남겨보세요." },
+      { id: "g2", emoji: "📖", title: "함께 말씀 펴는 순간", desc: "GBS 모임 중 다 함께 성경을 펴고 말씀 나누는 장면을 담아보세요." },
+      { id: "g3", emoji: "🙏", title: "함께 기도하는 손", desc: "조원들이 둘러앉아(또는 손을 모아) 함께 기도하는 순간을 찍어보세요." },
+      { id: "g4", emoji: "🤝", title: "반가운 인사", desc: "하이파이브, 포옹 등 조원과 반가움을 표현하는 순간을 남겨보세요." },
+      { id: "g5", emoji: "🍽️", title: "한 상에 둘러앉아", desc: "우리 조가 한 식탁에 둘러앉아 식사하는 모습을 담아보세요." },
+      { id: "g6", emoji: "😂", title: "우리 조 최고의 순간", desc: "이번 수련회에서 우리 조가 가장 크게 웃었던 순간을 포착해보세요." },
+      { id: "g7", emoji: "🎨", title: "우리 조 이름·구호", desc: "우리 조만의 이름이나 구호를 손팻말로 만들어 함께 찍어보세요." },
+      { id: "g8", emoji: "💌", title: "서로에게 쓴 응원", desc: "조원에게 짧은 응원의 메시지를 써서 함께 들고 찍어보세요." },
+      { id: "g9", emoji: "🔥", title: "미니올림픽 단체 응원", desc: "미니올림픽에서 우리 조가 함께 뛰거나 응원하는 모습을 남겨보세요." },
+      { id: "g10", emoji: "✝️", title: "파송 다짐, 함께", desc: "마지막 날 서로의 다짐을 나눈 뒤, 조원들과 함께 사진을 남겨보세요." },
+    ],
+  },
+
+  // GBS 팀 대항 미니올림픽 — 2일차 오후, GBS 조가 팀이 되어 겨루는 체육 프로그램
+  miniOlympics: {
+    intro: "2일차 오후, GBS 조가 한 팀이 되어 겨루는 '미니올림픽'이 열려요! 승부보다 함께 웃고 부딪히며 한 조가 되는 시간이에요. (예시 — 실제 종목·시간으로 교체해주세요.)",
+    teamNote: "조별 누적 점수로 최우수 GBS팀을 시상해요 🏆 (예시)",
+    events: [
+      { emoji: "⚽", title: "5인제 풋살 리그", format: "조 대항 · 예선~결승", desc: "GBS 조 대항 풋살 토너먼트예요. 골보다 팀워크! (예시)" },
+      { emoji: "🪢", title: "단체 줄넘기", format: "제한시간 3분", desc: "조원 전체가 함께 뛰며 연속 성공 횟수를 겨뤄요. (예시)" },
+      { emoji: "🎽", title: "이어달리기(계주)", format: "4인 1조 계주", desc: "조원이 바통을 이어받아 완주하는 계주 경기예요. (예시)" },
+      { emoji: "🎯", title: "박 터뜨리기", format: "조 대항 협동전", desc: "콩주머니를 던져 우리 조의 박을 먼저 터뜨려요. (예시)" },
+      { emoji: "🪢", title: "줄다리기", format: "조 대항 토너먼트", desc: "온 힘을 다해 당기는 클래식 종목이에요! (예시)" },
+      { emoji: "🏀", title: "슛돌이 챌린지", format: "자유투 개수 겨루기", desc: "제한 시간 안에 골대에 넣은 개수로 승부해요. (예시)" },
+    ],
+    familyEvents: [
+      { emoji: "👨‍👩‍👧", title: "2인3각 가족 달리기", format: "가족 단위", desc: "부모와 자녀가 발목을 묶고 함께 달려요. (예시)" },
+      { emoji: "🎈", title: "풍선 배달 릴레이", format: "가족 단위", desc: "배와 배 사이에 풍선을 끼우고 이어달려요. (예시)" },
+      { emoji: "🥄", title: "공 옮기기 릴레이", format: "가족 단위", desc: "숟가락 위 공을 떨어뜨리지 않고 옮겨요. (예시)" },
+      { emoji: "🧺", title: "가족 보물찾기", format: "가족 단위", desc: "수양관 곳곳에 숨은 보물을 가족이 함께 찾아요. (예시)" },
+    ],
   },
 
   // GBS(그룹성경공부) 편성
@@ -649,7 +716,7 @@ const RETREAT_DATA = {
 
   helpers: [
     { name: "이헬퍼 (예시)", role: "안내/등록", group: "본부" },
-    { name: "박헬퍼 (예시)", role: "체육대회 진행", group: "운동장" },
+    { name: "박헬퍼 (예시)", role: "미니올림픽 진행", group: "운동장" },
     { name: "최헬퍼 (예시)", role: "GK캠프 보조", group: "유치부" },
   ],
 
@@ -730,7 +797,7 @@ const RETREAT_DATA = {
     together: { emoji: "🤝", title: "수련회 함께세움", desc: "수련회는 섬기는 손길로 함께 세워집니다. 섬김이로 함께해주실 분은 신청해주세요! (예시)", url: "" },
     onlineRegister: { emoji: "💻", title: "온라인등록안내", desc: "온라인으로 미리 등록하면 현장 접수가 훨씬 빨라져요. (예시)", url: "" },
     albumLink: { emoji: "🖼️", title: "사진첩 (외부 링크)", desc: "수련회 전체 사진첩(구글포토 등)은 여기서 볼 수 있어요. (예시)", url: "" },
-    bibleReadingPlan: { emoji: "📖", title: "공동체적 성경읽기표", desc: "수련회 기간 함께 읽을 말씀 본문표예요. (예시)", url: "" },
+    bibleReadingPlan: { emoji: "📖", title: "공동체적 성경읽기표", desc: "갓피플 성경읽기표와 연결돼요. 매일 본문을 읽고 인증샷을 남겨 서로 확인해요! (예시 — 실제 갓피플 링크로 교체해주세요.)", url: "" },
   },
 };
 
@@ -776,7 +843,7 @@ function iconSvg(name, extraClass) {
 const TAG_CLASS = {
   '예배': 'tag-primary', '경건회': 'tag-primary', '특강': 'tag-primary',
   '분과연수': 'tag-violet', '워크숍': 'tag-violet', 'GBS': 'tag-violet',
-  '체육대회': 'tag-amber',
+  '체육대회': 'tag-amber', '미니올림픽': 'tag-amber',
   '문화행사': 'tag-mint',
 };
 function tagClass(tag) { return TAG_CLASS[tag] || 'tag-grey'; }
@@ -857,6 +924,10 @@ function missionStats() {
       if (lsGet('gt_mission_' + cat.id + '_' + idx, false)) done++;
     });
   });
+  (RETREAT_DATA.missions.gbsPhotoMissions || []).forEach((m) => {
+    total++;
+    if (lsGet('gt_gbsphoto_done_' + m.id, false)) done++;
+  });
   return { total, done };
 }
 function categoryStats(catId) {
@@ -885,6 +956,12 @@ function levelInfo(done, total) {
   return { emoji: '🌱', label: '새내기 참가자' };
 }
 let firestoreModRef = null;
+const LOADING_NOTE = '<p class="empty-note">불러오는 중…</p>';
+const FIREBASE_NEEDED_NOTE = '<p class="empty-note">Firebase 설정 후 이용할 수 있어요.</p>';
+let rankBoardCache = isFirebaseConfigured() ? LOADING_NOTE : '<p class="empty-note">Firebase 설정 후 랭킹이 열려요.</p>';
+let commitmentFeedCache = isFirebaseConfigured() ? LOADING_NOTE : '<p class="empty-note">Firebase 설정 후 서로의 다짐을 볼 수 있어요.</p>';
+let bibleGalleryCache = isFirebaseConfigured() ? LOADING_NOTE : FIREBASE_NEEDED_NOTE;
+let gbsPhotoCache = {};
 async function syncMissionProgress() {
   const nickname = getNickname();
   if (!nickname || !isFirebaseConfigured() || !db || !firestoreModRef) return;
@@ -905,24 +982,60 @@ function watchRanking() {
   const { collection, query, orderBy, limit, onSnapshot } = firestoreModRef;
   const q = query(collection(db, 'players'), orderBy('points', 'desc'), limit(20));
   onSnapshot(q, (snap) => {
-    const board = document.getElementById('rankBoardList');
-    if (!board) return;
-    if (snap.empty) { board.innerHTML = '<p class="empty-note">아직 랭킹에 아무도 없어요. 첫 주자가 되어보세요! 🏁</p>'; return; }
     const myId = ensureDeviceId();
     const medals = ['🥇', '🥈', '🥉'];
-    board.innerHTML = snap.docs.map((d, i) => {
-      const p = d.data();
-      const isMe = d.id === myId;
-      return `<div class="rank-row${isMe ? ' me' : ''}">
-        <span class="rank-num${i < 3 ? ' medal' : ''}">${i < 3 ? medals[i] : (i + 1)}</span>
-        <span class="rank-name">${esc(p.nickname || '익명')}${isMe ? ' (나)' : ''}</span>
-        <span class="rank-pts">${esc(p.points || 0)}pt</span>
-      </div>`;
-    }).join('');
+    rankBoardCache = snap.empty
+      ? '<p class="empty-note">아직 랭킹에 아무도 없어요. 첫 주자가 되어보세요! 🏁</p>'
+      : snap.docs.map((d, i) => {
+          const p = d.data();
+          const isMe = d.id === myId;
+          return `<div class="rank-row${isMe ? ' me' : ''}">
+            <span class="rank-num${i < 3 ? ' medal' : ''}">${i < 3 ? medals[i] : (i + 1)}</span>
+            <span class="rank-name">${esc(p.nickname || '익명')}${isMe ? ' (나)' : ''}</span>
+            <span class="rank-pts">${esc(p.points || 0)}pt</span>
+          </div>`;
+        }).join('');
+    const board = document.getElementById('rankBoardList');
+    if (board) board.innerHTML = rankBoardCache;
   }, (err) => {
     console.error('ranking watch failed', err);
+    rankBoardCache = '<p class="empty-note">랭킹을 불러오지 못했어요.</p>';
     const board = document.getElementById('rankBoardList');
-    if (board) board.innerHTML = '<p class="empty-note">랭킹을 불러오지 못했어요.</p>';
+    if (board) board.innerHTML = rankBoardCache;
+  });
+}
+/* ============================================================================
+   나의 다짐 — 저장하면 Firestore 'commitments'에 기록되어 모두에게 공유됩니다.
+============================================================================ */
+async function syncCommitment(text) {
+  if (!isFirebaseConfigured() || !db || !firestoreModRef) return;
+  const { doc, setDoc, deleteDoc, serverTimestamp } = firestoreModRef;
+  const id = ensureDeviceId();
+  try {
+    if (text) {
+      await setDoc(doc(db, 'commitments', id), { text, nickname: getNickname() || '이름없는 선생님', updatedAt: serverTimestamp() }, { merge: true });
+    } else {
+      await deleteDoc(doc(db, 'commitments', id));
+    }
+  } catch (err) { console.error('commitment sync failed', err); }
+}
+function watchCommitments(firestoreMod) {
+  const { collection, query, orderBy, limit, onSnapshot } = firestoreMod;
+  const q = query(collection(db, 'commitments'), orderBy('updatedAt', 'desc'), limit(60));
+  onSnapshot(q, (snap) => {
+    commitmentFeedCache = snap.empty
+      ? '<p class="empty-note">아직 나눠진 다짐이 없어요. 첫 다짐을 나눠보세요!</p>'
+      : snap.docs.map((d) => {
+          const c = d.data();
+          return `<div class="commitment-post"><div class="commitment-post-name">✍️ ${esc(c.nickname || '이름없는 선생님')}</div><div class="commitment-post-text">${esc(c.text)}</div></div>`;
+        }).join('');
+    const feed = document.getElementById('commitmentFeed');
+    if (feed) feed.innerHTML = commitmentFeedCache;
+  }, (err) => {
+    console.error('commitment watch failed', err);
+    commitmentFeedCache = '<p class="empty-note">불러오지 못했어요.</p>';
+    const feed = document.getElementById('commitmentFeed');
+    if (feed) feed.innerHTML = commitmentFeedCache;
   });
 }
 
@@ -933,13 +1046,14 @@ function renderHome() {
 
   const quickLinks = [
     { open: 'opentalk', emoji: '💬', label: '오픈카톡방' },
+    { open: 'miniOlympics', emoji: '🏅', label: '미니올림픽 종목' },
     { open: 'onlineRegister', emoji: '💻', label: '온라인등록' },
-    { tab: 'schedule', emoji: '📅', label: '전체 일정표' },
     { tab: 'photos', emoji: '📸', label: '사진 보러가기' },
   ];
 
   let html = '';
   html += `<div class="home-banner">
+    <svg class="home-cross" viewBox="0 0 24 24" fill="none" stroke="#ffe9b8" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M3 9h18"/></svg>
     <div class="home-eyebrow">${esc(m.eyebrow || "GT TEACHERS' WINTER RETREAT")}</div>
     <h1 class="home-title">${esc(m.orgName || 'GT')} 교사 겨울수련회 <span class="home-year">${esc(m.year || '')}</span></h1>
     <p class="home-theme">${esc(m.theme || '')}</p>
@@ -1046,8 +1160,69 @@ function renderWorkshops() {
 }
 
 /* ============================================================================
+   미니올림픽 (전체 탭 상세) — GBS 팀 대항전 + 가족 대항전 소개
+============================================================================ */
+function renderMiniOlympics() {
+  const mo = RETREAT_DATA.miniOlympics;
+  const eventCard = (e) => `<div class="session-card oly-card">
+    <div class="session-top"><span class="session-time">${e.emoji}</span><span class="session-title">${esc(e.title)}</span></div>
+    <div class="session-meta"><span>${esc(e.format)}</span></div>
+    <div class="session-desc">${esc(e.desc)}</div>
+  </div>`;
+  return `<p class="stop-sub" style="margin-left:0;margin-bottom:6px;">${esc(mo.intro)}</p>
+    <p class="empty-note" style="margin-bottom:18px;">${esc(mo.teamNote)}</p>
+    <div class="section-label gold">🙌 GBS 단체전</div>
+    ${(mo.events || []).map(eventCard).join('') || '<p class="empty-note">종목이 아직 없어요.</p>'}
+    <div class="section-label" style="margin-top:20px;">👨‍👩‍👧‍👦 가족 대항전</div>
+    ${(mo.familyEvents || []).map(eventCard).join('') || '<p class="empty-note">종목이 아직 없어요.</p>'}`;
+}
+
+/* ============================================================================
    MISSIONS TAB
 ============================================================================ */
+function gbsPhotoThumbsHtml(missionId) {
+  if (!isFirebaseConfigured()) return '<p class="empty-note" style="margin:0;">Firebase 설정 후 인증샷이 보여요.</p>';
+  const list = gbsPhotoCache[missionId] || [];
+  if (!list.length) return '<p class="empty-note" style="margin:0;">아직 인증샷이 없어요. 첫 주자가 되어보세요!</p>';
+  return list.slice(0, 10).map((p) => `<div class="gbsphoto-thumb" data-url="${esc(p.url)}" data-name="${esc(p.gbsName || p.uploaderName || '')}"><img src="${esc(p.url)}" loading="lazy" alt="인증샷"></div>`).join('');
+}
+function renderGbsPhotoThumbs(missionId) {
+  const wrap = document.getElementById('gbsphotoThumbs_' + missionId);
+  if (wrap) wrap.innerHTML = gbsPhotoThumbsHtml(missionId);
+}
+function renderAllGbsPhotoThumbs() {
+  (RETREAT_DATA.missions.gbsPhotoMissions || []).forEach((m) => renderGbsPhotoThumbs(m.id));
+}
+function renderGbsPhotoSection() {
+  const missions = RETREAT_DATA.missions.gbsPhotoMissions || [];
+  if (!missions.length) return '';
+  const myGbs = lsGet('gt_my_gbs', '');
+  const cards = missions.map((m) => {
+    const done = lsGet('gt_gbsphoto_done_' + m.id, false);
+    return `<div class="gbsphoto-card${done ? ' done' : ''}" data-gbsphoto-id="${m.id}">
+      <div class="gbsphoto-head">
+        <span class="gbsphoto-emoji">${m.emoji}</span>
+        <div class="gbsphoto-text"><b>${esc(m.title)}</b><span>${esc(m.desc)}</span></div>
+        <span class="gbsphoto-done-badge">✅ 인증완료</span>
+      </div>
+      <div class="gbsphoto-thumbs" id="gbsphotoThumbs_${m.id}">${gbsPhotoThumbsHtml(m.id)}</div>
+      <label class="gbsphoto-upload-btn" for="gbsphotoFile_${m.id}">
+        ${iconSvg('upload')} ${done ? '사진 더 추가하기' : '인증샷 올리기'}
+      </label>
+      <input type="file" id="gbsphotoFile_${m.id}" accept="image/*" multiple style="display:none" data-gbsphoto-file="${m.id}">
+      <div class="gbsphoto-progress" id="gbsphotoProgress_${m.id}" hidden></div>
+    </div>`;
+  }).join('');
+  return `<div class="gbsphoto-section">
+    <div class="section-label gold">🙌 GBS 인증 미션 — 우리 조와 함께 도전해요!</div>
+    <p class="stop-sub" style="margin:-6px 0 14px 0;">사진으로 인증하면 바로 완료돼요. 다른 조 사진도 함께 구경해보세요.</p>
+    <div class="gbsphoto-gbsname-field">
+      <label class="f-label" for="myGbsNameInput">우리 GBS 이름 (선택)</label>
+      <input type="text" id="myGbsNameInput" placeholder="예: 3GBS" value="${esc(myGbs)}">
+    </div>
+    ${cards}
+  </div>`;
+}
 function renderMissions() {
   const ms = missionStats();
   const pct = ms.total ? Math.round((ms.done / ms.total) * 100) : 0;
@@ -1060,6 +1235,8 @@ function renderMissions() {
       <div class="mission-progress-top"><b>미션 진행률</b><span>${ms.done} / ${ms.total}</span></div>
       <div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
     </div>`;
+
+  html += renderGbsPhotoSection();
 
   html += `<div class="nickname-card">
     <b>🙋 내 닉네임 (랭킹용)</b>
@@ -1074,15 +1251,19 @@ function renderMissions() {
 
   html += `<div class="rank-board">
     <div class="rank-board-title">🏆 미션 랭킹 TOP 20</div>
-    <div id="rankBoardList"><p class="empty-note">${isFirebaseConfigured() ? '불러오는 중…' : 'Firebase 설정 후 랭킹이 열려요.'}</p></div>
+    <div id="rankBoardList">${rankBoardCache}</div>
   </div>`;
 
   html += `<div class="commitment-card">
     <b>✍️ 나의 새 학기 한 줄 다짐</b>
+    <span class="commitment-hint">저장하면 나만 보는 게 아니라 모든 선생님과 함께 나눠져요 🌿</span>
     <textarea id="commitmentInput" placeholder="예: 아이 한 명 한 명을 있는 그대로 바라보는 선생님이 되겠습니다."></textarea>
-    <button type="button" class="commitment-save" id="commitmentSave">다짐 저장하기</button>
+    <button type="button" class="commitment-save" id="commitmentSave">다짐 저장하고 나누기</button>
     <div class="commitment-saved" id="commitmentSaved" hidden></div>
   </div>`;
+
+  html += `<div class="section-label">🌟 선생님들의 다짐 모음</div>`;
+  html += `<div id="commitmentFeed" style="margin-bottom:20px;">${commitmentFeedCache}</div>`;
 
   html += `<div class="section-label" style="margin-top:6px;">🗂️ 미션 파트별로 골라 도전해보세요 (총 ${ms.total}개)</div>`;
   RETREAT_DATA.missions.categories.forEach((cat) => {
@@ -1235,6 +1416,9 @@ const MENU_CATEGORIES = [
     { open: 'praiseList', emoji: '🎶', label: '찬양리스트' },
     { open: 'bibleReading', emoji: '📔', label: '공동체 성경읽기' },
   ]},
+  { label: '🏅 미니올림픽', tiles: [
+    { open: 'miniOlympics', emoji: '🏅', label: '미니올림픽 종목안내' },
+  ]},
   { label: '👶 가족·GK캠프', tiles: [
     { open: 'gkKinder', emoji: '👶', label: 'GK캠프(유치부)' },
     { open: 'gkElem', emoji: '🧒', label: 'GK캠프(초등부)' },
@@ -1359,7 +1543,10 @@ function renderGk(section) {
 }
 function renderBibleReading() {
   const bp = RETREAT_DATA.links.bibleReadingPlan;
-  return renderLinkCard(bp) + `<button type="button" class="upload-btn" style="margin-top:16px;" data-goto-photo-bible="1">📸 인증샷은 '사진' 탭에서 올려주세요 →</button>`;
+  return renderLinkCard(bp)
+    + `<button type="button" class="upload-btn" style="margin-top:16px;" data-goto-photo-bible="1">📸 다 읽었다면, 인증샷 올리러 가기 →</button>`
+    + `<div class="section-label" style="margin-top:22px;">📷 함께 인증한 사진들</div>`
+    + `<div class="photo-grid" id="bibleReadingPreviewGrid">${bibleGalleryCache}</div>`;
 }
 function renderRelayPrayer() {
   if (!isFirebaseConfigured()) {
@@ -1398,6 +1585,7 @@ const DETAIL_DEFS = [
   { id: 'gkKinder', title: 'GK캠프 (유치부)', render: () => renderGk('kinder') },
   { id: 'gkElem', title: 'GK캠프 (초등부)', render: () => renderGk('elem') },
   { id: 'workshops', title: '분과·워크숍', render: renderWorkshops },
+  { id: 'miniOlympics', title: '미니올림픽', render: renderMiniOlympics },
   { id: 'materials', title: '자료', render: () => renderMaterialList(RETREAT_DATA.materials) },
   { id: 'fieldMaterials', title: '현장자료', render: () => renderMaterialList(RETREAT_DATA.fieldMaterials) },
   { id: 'albumLink', title: '사진첩', render: () => renderLinkCard(RETREAT_DATA.links.albumLink) },
@@ -1506,6 +1694,8 @@ async function initFirebase() {
     initPrayerBoard(firestoreMod);
     watchRanking();
     watchSettings(firestoreMod);
+    watchCommitments(firestoreMod);
+    watchGbsPhotoMissions(firestoreMod);
     syncMissionProgress();
   } catch (err) {
     console.error('Firebase init failed', err);
@@ -1515,21 +1705,44 @@ function watchPhotos(f, firestoreMod) {
   const { collection, query, orderBy, limit, onSnapshot } = firestoreMod;
   const q = query(collection(db, f.collection), orderBy('uploadedAt', 'desc'), limit(120));
   onSnapshot(q, (snap) => {
-    const grid = document.getElementById('photoGrid_' + f.key);
-    if (!grid) return;
-    if (snap.empty) { grid.innerHTML = '<p class="empty-note">아직 업로드된 사진이 없어요. 첫 사진을 올려보세요!</p>'; return; }
-    grid.innerHTML = snap.docs.map((d) => {
-      const p = d.data();
-      return `<div class="photo-thumb" data-url="${esc(p.url)}" data-name="${esc(p.name || '')}">
-        <img src="${esc(p.url)}" loading="lazy" alt="${esc(p.name || '공유 사진')}">
-        ${p.name ? `<span class="photo-name">${esc(p.name)}</span>` : ''}
-      </div>`;
-    }).join('');
+    const html = snap.empty
+      ? '<p class="empty-note">아직 업로드된 사진이 없어요. 첫 사진을 올려보세요!</p>'
+      : snap.docs.map((d) => {
+          const p = d.data();
+          return `<div class="photo-thumb" data-url="${esc(p.url)}" data-name="${esc(p.name || '')}">
+            <img src="${esc(p.url)}" loading="lazy" alt="${esc(p.name || '공유 사진')}">
+            ${p.name ? `<span class="photo-name">${esc(p.name)}</span>` : ''}
+          </div>`;
+        }).join('');
+    const gridIds = ['photoGrid_' + f.key];
+    if (f.key === 'bible') { bibleGalleryCache = html; gridIds.push('bibleReadingPreviewGrid'); }
+    gridIds.forEach((id) => { const el = document.getElementById(id); if (el) el.innerHTML = html; });
   }, (err) => {
     console.error('photo watch failed', err);
+    const failNote = '<p class="empty-note">사진을 불러오지 못했어요. Firestore 보안 규칙을 확인해주세요.</p>';
+    if (f.key === 'bible') bibleGalleryCache = failNote;
     const grid = document.getElementById('photoGrid_' + f.key);
-    if (grid) grid.innerHTML = '<p class="empty-note">사진을 불러오지 못했어요. Firestore 보안 규칙을 확인해주세요.</p>';
+    if (grid) grid.innerHTML = failNote;
   });
+}
+/* ============================================================================
+   GBS 인증 미션 사진 (Firestore 'gbs_photos', missionId로 구분)
+   — 하나의 컬렉션을 orderBy만으로 구독한 뒤 클라이언트에서 미션별로 묶어요.
+   (where + orderBy를 같이 쓰면 Firestore 복합 색인이 필요해져서 일부러 피했어요.)
+============================================================================ */
+function watchGbsPhotoMissions(firestoreMod) {
+  const { collection, query, orderBy, limit, onSnapshot } = firestoreMod;
+  const q = query(collection(db, 'gbs_photos'), orderBy('uploadedAt', 'desc'), limit(400));
+  onSnapshot(q, (snap) => {
+    const byMission = {};
+    snap.docs.forEach((d) => {
+      const p = d.data();
+      if (!p.missionId) return;
+      (byMission[p.missionId] = byMission[p.missionId] || []).push(p);
+    });
+    gbsPhotoCache = byMission;
+    renderAllGbsPhotoThumbs();
+  }, (err) => console.error('gbs photo watch failed', err));
 }
 function setupUploadUI(f, firestoreMod) {
   const nameInput = document.getElementById('uploaderName_' + f.key);
@@ -1930,13 +2143,78 @@ document.addEventListener('click', (e) => {
     lsSet('gt_my_commitment', val);
     const saved = document.getElementById('commitmentSaved');
     saved.hidden = false;
-    saved.textContent = val ? '저장됐어요. 언제든 다시 고쳐 쓸 수 있어요.' : '다짐을 지웠어요.';
-    toast('저장했어요.');
+    saved.textContent = val
+      ? (isFirebaseConfigured() ? '저장됐어요. 모두의 화면에도 나눠졌어요 🌿' : '이 기기에 저장됐어요. (Firebase 설정 후엔 모두와 공유돼요)')
+      : '다짐을 지웠어요.';
+    toast(val ? '다짐을 나눴어요!' : '다짐을 지웠어요.');
+    syncCommitment(val);
     return;
   }
 
-  const thumb = e.target.closest('.photo-thumb');
+  const thumb = e.target.closest('.photo-thumb, .gbsphoto-thumb');
   if (thumb) { openLightbox(thumb.getAttribute('data-url'), thumb.getAttribute('data-name')); return; }
+});
+
+/* ============================================================================
+   GBS 인증 미션 — 파일 선택(change)은 이벤트 위임으로 처리합니다.
+   (미션 탭이 다시 그려져도 delegation 덕분에 계속 정상 동작해요.)
+============================================================================ */
+document.addEventListener('change', async (e) => {
+  const fileInput = e.target.closest('[data-gbsphoto-file]');
+  if (!fileInput) return;
+  const missionId = fileInput.getAttribute('data-gbsphoto-file');
+  const mission = (RETREAT_DATA.missions.gbsPhotoMissions || []).find((m) => m.id === missionId);
+  const files = Array.from(fileInput.files || []);
+  if (!mission || !files.length) return;
+  if (!isFirebaseConfigured() || !db || !firestoreModRef) {
+    toast('Firebase 설정 후 인증샷을 올릴 수 있어요.');
+    fileInput.value = '';
+    return;
+  }
+  const gbsNameInput = document.getElementById('myGbsNameInput');
+  const gbsName = gbsNameInput ? gbsNameInput.value.trim() : '';
+  lsSet('gt_my_gbs', gbsName);
+  const uploaderName = getNickname();
+  const card = fileInput.closest('.gbsphoto-card');
+  const progressEl = document.getElementById('gbsphotoProgress_' + missionId);
+  if (progressEl) progressEl.hidden = false;
+  const { collection, addDoc, serverTimestamp } = firestoreModRef;
+  let done = 0;
+  for (const file of files) {
+    if (progressEl) progressEl.textContent = `업로드 중… (${done + 1}/${files.length})`;
+    try {
+      let dataUrl = await compressImageToDataUrl(file, 1280, 0.7);
+      if (dataUrl.length > 900000) dataUrl = await compressImageToDataUrl(file, 900, 0.55);
+      if (dataUrl.length > 900000) throw new Error('too large even after compression');
+      await addDoc(collection(db, 'gbs_photos'), {
+        url: dataUrl, missionId, missionTitle: mission.title, gbsName, uploaderName, uploadedAt: serverTimestamp(),
+      });
+      done++;
+    } catch (err) {
+      console.error('gbs photo upload failed', err);
+      toast('사진이 너무 커서 일부 업로드에 실패했어요.');
+    }
+  }
+  if (progressEl) {
+    progressEl.textContent = `${done}장 업로드 완료!`;
+    setTimeout(() => { progressEl.hidden = true; }, 2000);
+  }
+  fileInput.value = '';
+  if (done > 0) {
+    lsSet('gt_gbsphoto_done_' + missionId, true);
+    if (card) {
+      card.classList.add('done');
+      const uploadLabel = card.querySelector('.gbsphoto-upload-btn');
+      if (uploadLabel) uploadLabel.innerHTML = `${iconSvg('upload')} 사진 더 추가하기`;
+    }
+    const stats = missionStats();
+    const bar = document.querySelector('.mission-bar-fill');
+    const label = document.querySelector('.mission-progress-top span');
+    if (bar) bar.style.width = (stats.total ? Math.round((stats.done / stats.total) * 100) : 0) + '%';
+    if (label) label.textContent = `${stats.done} / ${stats.total}`;
+    toast(`인증샷을 올렸어요! 🙌 (${done}장)`);
+    syncMissionProgress();
+  }
 });
 
 /* ============================================================================
