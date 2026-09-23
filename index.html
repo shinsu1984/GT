@@ -191,9 +191,6 @@ main{padding:16px 18px 8px;}
 
 /* GBS 인증 미션 (사진으로 인증하는 특별 미션) */
 .gbsphoto-section{background:linear-gradient(160deg,var(--amber-soft) 0%,#fffdf7 60%);border:1px solid var(--amber-line);border-radius:var(--radius-l);padding:16px 14px;margin-bottom:20px;box-shadow:var(--shadow-card);}
-.gbsphoto-gbsname-field{margin-bottom:14px;}
-.gbsphoto-gbsname-field .f-label{display:block;font-size:12px;color:var(--ink-dim);margin-bottom:6px;font-weight:600;}
-.gbsphoto-gbsname-field input{width:100%;background:#fff;border:1px solid var(--border-strong);border-radius:10px;padding:10px 12px;font-size:13.5px;font-family:inherit;}
 .gbsphoto-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-m);padding:13px;margin-bottom:10px;box-shadow:var(--shadow-card);}
 .gbsphoto-card.done{border-color:var(--mint-line);background:var(--mint-soft);}
 .gbsphoto-head{display:flex;align-items:flex-start;gap:10px;}
@@ -205,7 +202,8 @@ main{padding:16px 18px 8px;}
 .gbsphoto-card.done .gbsphoto-done-badge{display:inline-flex;}
 .gbsphoto-thumbs{display:flex;gap:6px;overflow-x:auto;margin:10px 0;padding-bottom:2px;}
 .gbsphoto-thumbs .empty-note{white-space:nowrap;}
-.gbsphoto-thumb{flex:none;width:46px;height:46px;border-radius:9px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;}
+.gbsphoto-thumb{flex:none;width:54px;height:54px;border-radius:10px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;position:relative;}
+.gbsphoto-thumb span{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent);color:#fff;font-size:9.5px;font-weight:800;text-align:center;padding:6px 0 2px;}
 .gbsphoto-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .gbsphoto-upload-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#f0a623,var(--amber));color:#fff;border:none;border-radius:10px;padding:9px;font-weight:700;font-size:12.5px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(232,137,12,.5);}
 .gbsphoto-upload-btn .icon{width:14px;height:14px;}
@@ -385,6 +383,162 @@ main{padding:16px 18px 8px;}
 .admin-pin-row{display:flex;gap:8px;}
 .admin-pin-row input{flex:1;}
 
+/* 홈: GBS·퀴즈 미니 티저 */
+.teaser-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-8px 0 20px;}
+.teaser-mini{border-radius:var(--radius-m);padding:13px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:3px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-card);color:var(--ink);}
+.teaser-mini.gbs{background:linear-gradient(160deg,var(--amber-soft),#fff 75%);border-color:var(--amber-line);}
+.teaser-mini.quiz{background:linear-gradient(160deg,var(--primary-soft),#fff 75%);border-color:var(--primary-line);}
+.teaser-mini-emoji{font-size:20px;}
+.teaser-mini b{font-size:13.5px;}
+.teaser-mini span:last-child{font-size:11.5px;color:var(--ink-dim);}
+
+/* 미션 탭 세그먼트 */
+.mseg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:4px;margin-bottom:14px;position:sticky;top:58px;z-index:10;box-shadow:0 6px 16px -10px rgba(20,30,70,.25);}
+.mseg-btn{border:none;background:none;border-radius:10px;padding:9px 4px;font-family:inherit;font-size:12.5px;font-weight:800;color:var(--ink-dim);cursor:pointer;white-space:nowrap;}
+.mseg-btn.active{background:#fff;color:var(--ink);box-shadow:0 2px 8px -2px rgba(20,30,70,.18);}
+.mseg-panel{display:none;}
+.mseg-panel.active{display:block;animation:msegIn .2s ease;}
+@keyframes msegIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+.mseg-desc{font-size:12.5px;color:var(--ink-dim);margin:0 2px 14px;}
+.rank-board-sub{font-size:11.5px;color:var(--ink-faint);margin:-6px 0 8px;}
+
+/* GBS 단체 미션 */
+.gbs-howto{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:14px 16px;margin-bottom:12px;box-shadow:var(--shadow-card);}
+.gbs-howto b{font-size:13.5px;color:var(--ink);}
+.gbs-howto ol{margin:8px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink-dim);display:flex;flex-direction:column;gap:3px;}
+.gbs-howto ol b{font-size:12.5px;}
+.gbs-team-pick{background:var(--surface);border:1.5px solid var(--amber-line);border-radius:var(--radius-m);padding:14px;margin-bottom:16px;box-shadow:var(--shadow-card);}
+.gbs-team-pick .f-label{display:block;font-size:12px;font-weight:800;color:#8a5a05;margin-bottom:6px;}
+.gbs-team-pick select{width:100%;appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2396a0b5' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;border:1px solid var(--border-strong);border-radius:10px;padding:11px 36px 11px 12px;font-family:inherit;font-size:14.5px;font-weight:800;color:var(--ink);}
+.gbs-my-summary{margin-top:10px;}
+.gbs-my-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;}
+.gbs-my-top b{font-size:14px;}
+.gbs-my-top span{font-family:var(--font-mono);font-size:12.5px;font-weight:700;color:var(--amber);}
+.gbs-bar-fill{height:100%;background:linear-gradient(90deg,#f0a623,var(--amber));border-radius:999px;transition:width .3s ease;}
+.gbs-teamchips{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:10px;}
+.gbs-chip-label{font-size:11.5px;color:var(--ink-faint);margin-right:2px;}
+.gbs-chip{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-dim);border:1px solid var(--border);}
+.gbs-chip.mine{background:var(--mint);color:#fff;border-color:var(--mint);}
+.gbs-board{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-l);padding:8px 12px;margin-bottom:20px;box-shadow:var(--shadow-card);}
+.gbs-board-row{display:flex;align-items:center;gap:10px;padding:8px 2px;border-top:1px solid var(--border);}
+.gbs-board-row:first-child{border-top:none;}
+.gbs-board-row.me{background:var(--amber-soft);border-radius:10px;padding:8px 8px;}
+.gbs-board-name{width:86px;flex:none;font-size:13px;font-weight:800;color:var(--ink);}
+.gbs-board-bar{flex:1;height:8px;background:var(--surface-2);border-radius:999px;overflow:hidden;}
+.gbs-board-bar span{display:block;height:100%;background:linear-gradient(90deg,#f0a623,var(--amber));border-radius:999px;}
+.gbs-board-n{font-family:var(--font-mono);font-size:12px;font-weight:700;color:#8a5a05;width:40px;text-align:right;flex:none;}
+
+/* GT 퀴즈 — 목록 */
+.quiz-hero{background:linear-gradient(150deg,#5b4be0 0%,var(--violet) 40%,var(--primary) 100%);color:#fff;border-radius:var(--radius-l);padding:20px;margin-bottom:12px;position:relative;overflow:hidden;box-shadow:0 16px 36px -14px rgba(91,75,224,.55);}
+.quiz-hero::after{content:'?';position:absolute;right:14px;top:-18px;font-size:120px;font-weight:900;opacity:.1;line-height:1;}
+.quiz-hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.85;}
+.quiz-hero h3{font-size:19px;margin-top:6px;color:#fff;}
+.quiz-hero p{font-size:12.5px;opacity:.9;margin-top:4px;}
+.quiz-hero-score{margin-top:14px;font-family:var(--font-mono);}
+.quiz-hero-score b{font-size:28px;}
+.quiz-hero-score span{font-size:13px;opacity:.85;}
+.quiz-hero-bar{height:8px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden;margin-top:6px;}
+.quiz-hero-bar span{display:block;height:100%;background:#ffd67a;border-radius:999px;}
+.quiz-hero-actions{display:flex;gap:8px;margin-top:14px;}
+.quiz-hero-actions .quiz-btn{flex:1;}
+.quiz-hero-note{font-size:11px;opacity:.8;margin-top:10px;}
+.quiz-btn{border:1px solid var(--border-strong);background:#fff;color:var(--ink);border-radius:12px;padding:11px 12px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;}
+.quiz-btn.primary{background:linear-gradient(135deg,#ffd67a,#f0a623);border-color:transparent;color:#3d2a00;box-shadow:0 8px 20px -8px rgba(240,166,35,.7);}
+.quiz-btn.ghost{background:transparent;border-color:transparent;color:var(--ink-dim);}
+.quiz-btn:disabled{opacity:.45;cursor:not-allowed;}
+.quiz-btn.wide{width:100%;}
+.quiz-types{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px;}
+.quiz-types span{font-size:11px;font-weight:700;color:var(--ink-dim);background:var(--surface);border:1px solid var(--border);padding:4px 9px;border-radius:999px;}
+.quiz-ch-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.quiz-ch{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);padding:13px;text-align:left;cursor:pointer;box-shadow:var(--shadow-card);color:var(--ink);font-family:inherit;}
+.quiz-ch.full{border-color:var(--mint-line);background:linear-gradient(160deg,var(--mint-soft),#fff 70%);}
+.quiz-ch-emoji{width:40px;height:40px;border-radius:12px;background:var(--violet-soft);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;}
+.quiz-ch-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
+.quiz-ch-main b{font-size:13.5px;}
+.quiz-ch-sub{font-size:11.5px;color:var(--ink-faint);}
+.quiz-ch-bar{height:5px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:5px;}
+.quiz-ch-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--primary));border-radius:999px;}
+.quiz-ch-side{font-family:var(--font-mono);font-size:12.5px;font-weight:700;color:var(--violet);text-align:right;flex:none;display:flex;flex-direction:column;}
+.quiz-ch-side small{font-size:10px;color:var(--mint);font-family:var(--font-body);}
+
+/* GT 퀴즈 — 풀이 화면 */
+body.quiz-open{overflow:hidden;}
+.quiz-view{position:fixed;inset:0;z-index:70;background:linear-gradient(180deg,#efeaff 0%,var(--bg) 280px);overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:520px;margin:0 auto;}
+.quiz-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.9);backdrop-filter:blur(10px);}
+.quiz-close{width:34px;height:34px;border-radius:50%;border:none;background:var(--surface-2);font-size:15px;cursor:pointer;flex:none;color:var(--ink);}
+.quiz-title{flex:1;font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.quiz-count{font-family:var(--font-mono);font-size:12.5px;font-weight:700;color:var(--violet);background:var(--violet-soft);padding:4px 10px;border-radius:999px;flex:none;}
+.quiz-progress{height:4px;background:rgba(124,92,255,.14);position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:2;}
+.quiz-progress div{height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--primary));transition:width .3s ease;}
+.quiz-body{padding:18px 16px 60px;}
+.qz-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-l);padding:18px 16px;box-shadow:var(--shadow-pop);animation:qzIn .22s ease;}
+@keyframes qzIn{from{opacity:0;transform:translateY(8px) scale(.99);}to{opacity:1;transform:none;}}
+.qz-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:12px;}
+.qz-type{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--violet-soft);color:var(--violet);}
+.qz-type.t-ox{background:var(--coral-soft);color:var(--coral);}
+.qz-type.t-blank,.qz-type.t-chosung{background:var(--mint-soft);color:var(--mint);}
+.qz-type.t-order,.qz-type.t-match{background:var(--amber-soft);color:#8a5a05;}
+.qz-type.t-multi{background:var(--primary-soft);color:var(--primary);}
+.qz-from{font-size:11px;color:var(--ink-faint);font-weight:600;}
+.qz-q{font-size:16px;font-weight:800;color:var(--ink);line-height:1.55;margin-bottom:16px;word-break:keep-all;}
+.qz-blank{display:inline-block;min-width:54px;border-bottom:3px solid var(--violet);color:var(--violet);text-align:center;margin:0 2px;}
+.qz-hint{font-size:12px;color:var(--ink-faint);margin:-6px 0 10px;}
+.qz-opts{display:flex;flex-direction:column;gap:8px;}
+.qz-opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--surface-2);border:1.5px solid transparent;border-radius:12px;padding:13px 14px;font-family:inherit;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;line-height:1.45;word-break:keep-all;}
+.qz-opt:active{transform:scale(.99);}
+.qz-opt.on{border-color:var(--primary);background:var(--primary-soft);}
+.qz-opt.correct{border-color:var(--mint);background:var(--mint-soft);color:#075e40;}
+.qz-opt.wrong{border-color:var(--coral);background:var(--coral-soft);color:#a3241c;}
+.qz-opt:disabled{cursor:default;}
+.qz-box{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border-strong);background:#fff;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;}
+.qz-opt.on .qz-box{background:var(--primary);border-color:var(--primary);}
+.qz-ox-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.qz-ox{height:96px;border-radius:18px;border:2px solid transparent;font-family:inherit;font-size:44px;font-weight:900;cursor:pointer;}
+.qz-ox.o{background:#e8f1ff;color:var(--primary);}
+.qz-ox.x{background:#ffecea;color:var(--coral);}
+.qz-ox.correct{border-color:var(--mint);box-shadow:0 0 0 4px var(--mint-soft);}
+.qz-ox.wrong{opacity:.45;}
+.qz-slots{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.qz-slot{display:flex;align-items:center;gap:10px;min-height:44px;border-radius:12px;padding:9px 12px;font-family:inherit;font-size:13.5px;font-weight:700;text-align:left;background:var(--violet-soft);border:1.5px solid var(--violet-line);color:var(--ink);cursor:pointer;word-break:keep-all;}
+.qz-slot.empty{background:#fff;border-style:dashed;border-color:var(--border-strong);cursor:default;}
+.qz-slot.correct{background:var(--mint-soft);border-color:var(--mint);}
+.qz-slot.wrong{background:var(--coral-soft);border-color:var(--coral);}
+.qz-num{width:22px;height:22px;border-radius:50%;background:#fff;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:var(--ink-dim);flex:none;}
+.qz-pool{display:flex;flex-wrap:wrap;gap:6px;}
+.qz-chip{border:1.5px solid var(--border-strong);background:#fff;border-radius:12px;padding:9px 12px;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;text-align:left;word-break:keep-all;box-shadow:0 2px 6px -3px rgba(20,30,70,.2);}
+.qz-match{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.qz-col{display:flex;flex-direction:column;gap:6px;}
+.qz-m{border:1.5px solid var(--border);background:var(--surface-2);border-radius:12px;padding:10px;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;text-align:left;min-height:48px;line-height:1.4;word-break:keep-all;}
+.qz-m.left{background:#fff;}
+.qz-m.sel{border-color:var(--ink);box-shadow:0 0 0 3px rgba(28,35,51,.12);}
+.qz-m.pc0{background:#e8f1ff;border-color:#8fb0ff;}
+.qz-m.pc1{background:#fff3dc;border-color:#f2c26b;}
+.qz-m.pc2{background:#e3f7ee;border-color:#7fd3ae;}
+.qz-m.pc3{background:#f3ecff;border-color:#bca6ff;}
+.qz-m.pc4{background:#ffe9e7;border-color:#f3a39c;}
+.qz-m.pc5{background:#e6f6fb;border-color:#86cde3;}
+.qz-m.left.correct{box-shadow:inset 4px 0 0 var(--mint);}
+.qz-m.left.wrong{box-shadow:inset 4px 0 0 var(--coral);}
+.qz-chosung{font-size:34px;font-weight:900;letter-spacing:.18em;text-align:center;color:var(--violet);background:var(--violet-soft);border-radius:16px;padding:18px 8px;margin-bottom:12px;}
+.qz-input{width:100%;border:1.5px solid var(--border-strong);border-radius:12px;padding:13px 14px;font-family:inherit;font-size:16px;font-weight:700;text-align:center;}
+.qz-fb{border-radius:14px;padding:13px 14px;margin-top:14px;animation:qzIn .2s ease;}
+.qz-fb.ok{background:var(--mint-soft);border:1px solid var(--mint-line);}
+.qz-fb.no{background:var(--coral-soft);border:1px solid var(--coral-line);}
+.qz-fb-head{font-size:15px;font-weight:900;}
+.qz-fb.ok .qz-fb-head{color:#075e40;}
+.qz-fb.no .qz-fb-head{color:#a3241c;}
+.qz-fb-ans{font-size:13px;color:var(--ink);margin-top:6px;line-height:1.6;}
+.qz-fb-ans ul{margin:4px 0 0;padding-left:18px;}
+.qz-fb-exp{font-size:12.5px;color:var(--ink-dim);margin-top:8px;line-height:1.6;background:rgba(255,255,255,.65);border-radius:10px;padding:9px 10px;}
+.qz-actions{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+.qz-result{text-align:center;padding:30px 18px;}
+.qz-result-emoji{font-size:64px;line-height:1;animation:qzPop .5s ease;}
+@keyframes qzPop{0%{transform:scale(.4);opacity:0;}70%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+.qz-result-score{font-family:var(--font-mono);font-size:44px;font-weight:800;color:var(--violet);margin-top:12px;}
+.qz-result-score span{font-size:20px;color:var(--ink-faint);}
+.qz-result-msg{font-size:15px;font-weight:800;color:var(--ink);margin-top:6px;}
+.qz-result-new{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:#8a5a05;background:var(--amber-soft);border:1px solid var(--amber-line);padding:6px 12px;border-radius:999px;}
+
 /* 마을지도 */
 .map-frame{background:var(--surface-2);border:1.5px dashed var(--border-strong);border-radius:var(--radius-l);padding:34px 20px;text-align:center;color:var(--ink-faint);font-size:13px;}
 .map-frame img{border-radius:14px;margin-bottom:10px;}
@@ -425,6 +579,16 @@ main{padding:16px 18px 8px;}
 </div>
 
 <div class="toast" id="toast" hidden></div>
+
+<div class="quiz-view" id="quizView" hidden>
+  <div class="quiz-top">
+    <button type="button" class="quiz-close" id="quizClose" aria-label="퀴즈 닫기">✕</button>
+    <div class="quiz-title" id="quizTitle"></div>
+    <div class="quiz-count" id="quizCount"></div>
+  </div>
+  <div class="quiz-progress"><div id="quizBar"></div></div>
+  <div class="quiz-body" id="quizBody"></div>
+</div>
 
 <div class="admin-modal" id="adminModal" hidden>
   <div class="admin-modal-inner" id="adminModalInner"></div>
@@ -662,9 +826,10 @@ const RETREAT_DATA = {
         "수련회 마지막 날, 처음 적었던 다짐을 다시 읽어보기",
       ]},
     ],
-    // GBS 인증 미션 — 이번 수련회의 중심인 GBS(그룹성경공부) 조가 함께 사진으로
-    // 인증하는 특별 미션 10개예요. 체크가 아니라 '사진 업로드'로 완료 처리됩니다.
-    // '미션' 탭 상단에 항상 보이는 별도 섹션으로 표시돼요.
+    // GBS 단체 미션 — 개인 미션과 따로, '조' 단위로 완료되는 사진 인증 미션 10개예요.
+    // 조 대표 1명이 조 번호를 고르고 사진을 올리면 그 조 전체가 완료로 표시되고,
+    // '미션 > GBS 단체' 화면의 조별 현황판에 반영됩니다.
+    gbsTeamCount: 12, // 조 개수 (1조 ~ 12조). 관리자 모드에서도 바꿀 수 있어요.
     gbsPhotoMissions: [
       { id: "g1", emoji: "🙌", title: "우리 GBS 첫 만남", desc: "조원 전체가 다 함께 나온 첫 만남 사진을 남겨보세요." },
       { id: "g2", emoji: "📖", title: "함께 말씀 펴는 순간", desc: "GBS 모임 중 다 함께 성경을 펴고 말씀 나누는 장면을 담아보세요." },
@@ -802,6 +967,227 @@ const RETREAT_DATA = {
 };
 
 /* ============================================================================
+   QUIZ_DATA — GT 퀴즈 문제은행 (8개 파트, 194문제)
+   올려주신 자료 6개(비전2030+ 문서·슬라이드, 길라잡이 I·II·III, 교사양육과정)에서만 출제했어요.
+   유형 t: mc(객관식) ox blank(빈칸) multi(모두 고르기) order(순서) match(짝꿍) chosung(초성)
+   정답 a: mc/blank=보기 번호(0부터), ox=true/false, multi=번호 목록, order=o가 정답 순서,
+           match=p가 정답 짝 목록, chosung=허용 정답 목록.  e = 풀고 나서 보이는 해설.
+   문제를 고치거나 더할 땐 같은 모양으로 한 줄을 복사해 바꾸면 돼요. (id는 겹치지 않게!)
+============================================================================ */
+const QUIZ_DATA = [
+  {"id": "c1", "emoji": "🌱", "title": "GT 첫걸음", "sub": "우리는 어떤 공동체일까?", "src": "길라잡이 III 3과(브로슈어 소개) · 비전2030+ 문서 · 길라잡이 I", qs: [
+    {"t": "mc", "q": "'GT'는 무엇의 줄임말일까요?", "o": ["GodTeachers (하나님의교사들)", "Good Teachers (좋은 교사들)", "Great Together (위대한 동행)", "Gospel Training (복음 훈련)"], "a": 0, "e": "GT는 GodTeachers, 우리말로 '하나님의교사들'이에요.", "id": "c1-01"},
+    {"t": "chosung", "q": "GT의 우리말 이름을 적어보세요.", "hint": "ㅎㄴㄴㅇ ㄱㅅㄷ", "a": ["하나님의교사들"], "e": "하나님의교사들(GodTeachers)! 줄여서 GT라고 불러요.", "id": "c1-02"},
+    {"t": "multi", "q": "GT의 핵심가치 3가지를 모두 고르세요.", "o": ["복음", "양육", "공동체", "교육", "말씀", "봉사"], "a": [0, 1, 2], "e": "핵심가치는 '복음·양육·공동체'예요. '말씀'과 '교육'도 후보로 고민했지만 최종적으로 복음과 양육이 선택됐어요.", "id": "c1-03"},
+    {"t": "ox", "q": "GT는 교회가 아니라 '선교회'이다.", "a": true, "e": "비전 문서: '우리는 일차적 소명을 바탕으로 하는 교회와는 기본적으로 성격을 달리하는 선교회이다.'", "id": "c1-04"},
+    {"t": "mc", "q": "GT는 어느 단체의 회원 단체로 협력하고 있을까요? (브로슈어 소개)", "o": ["사단법인 좋은교사운동", "대한기독교사회", "전국교사선교연합", "기독교학부모회"], "a": 0, "e": "GT는 「사단법인 좋은교사운동」의 회원 단체로 협력 활동하고 있어요.", "id": "c1-05"},
+    {"t": "mc", "q": "GT는 어느 지역 학원복음화협의회에 소속된 캠퍼스 선교단체일까요?", "o": ["서부경남", "수도권", "호남", "대구경북"], "a": 0, "e": "브로슈어 소개: 서부경남 학원복음화협의회에 소속되어 활동하는 캠퍼스 선교단체예요.", "id": "c1-06"},
+    {"t": "multi", "q": "브로슈어 소개에 나온 GT 교육공동체의 구성원을 모두 고르세요.", "o": ["전국 유·초·중 현직교사", "예비교사", "넌티쳐스", "학원 강사 연합회"], "a": [0, 1, 2], "e": "GT는 전국 유초중 현직교사들, 예비교사, 넌티쳐스 등으로 이루어진 교육공동체예요.", "id": "c1-07"},
+    {"t": "blank", "q": "비전2030+ 선언문의 목적 문장: \"본 회는 성경적 교사상의 확립과 ____의 복음화를 통한 하나님 나라의 확장에 헌신함을 그 목적으로 한다.\"", "o": ["교육 현장", "한국 교회", "온 세상", "가정"], "a": 0, "e": "교육 현장의 복음화! 비전2030+ 선언문도 이 회칙에서 나왔어요.", "id": "c1-08"},
+    {"t": "mc", "q": "비전2030+ 선언문은 GT 회칙 몇 조를 바탕으로 할까요?", "o": ["제1조", "제2조", "제3조", "제5조"], "a": 2, "e": "'우리는 GT 회칙 제3조와 핵심 가치, 비전2020 돌아보기를 바탕으로 비전2030+를 선언한다.'", "id": "c1-09"},
+    {"t": "ox", "q": "GT는 2019년에 창립 30주년 기념대회를 열었다.", "a": true, "e": "2019년 30주년 창립기념대회에서 '비전2020 돌아보기'가 발표됐어요.", "id": "c1-10"},
+    {"t": "blank", "q": "GT에서 오래 구전돼 온 구호: \"양육은 ____이다\"", "o": ["밥", "삶", "힘", "빛"], "a": 0, "e": "'양육은 밥이다' — GT에서 오랫동안 구전돼 온 구호예요.", "id": "c1-11"},
+    {"t": "blank", "q": "또 하나의 구호: \"하나님의 ____을 이어가는 교육공동체\"", "o": ["심정", "말씀", "사랑", "나라"], "a": 0, "e": "'하나님의 심정을 이어가는 교육공동체' — GT에서 구전돼 온 또 하나의 구호예요.", "id": "c1-12"},
+    {"t": "mc", "q": "비전 문서가 말하는 GT의 강점은 무엇일까요?", "o": ["말씀과 양육, 그리고 공동체성", "찬양과 예배, 그리고 선교", "규모와 재정, 그리고 조직", "연구와 출판, 그리고 행정"], "a": 0, "e": "'우리 선교회가 가진 강점은 말씀과 양육, 그리고 공동체성이다.'", "id": "c1-13"},
+    {"t": "ox", "q": "GT가 강점을 겉으로 잘 드러내지 않았던 이유는, 숨 쉬는 공기처럼 너무 당연하게 여겼기 때문이다.", "a": true, "e": "'우리가 숨 쉬는 공기같이 … 말씀과 양육, 공동체성을 너무나 당연하게 생각했기 때문이다.'", "id": "c1-14"},
+    {"t": "mc", "q": "비전 문서가 정리한 GT 사역의 지향점은?", "o": ["제자로 삼는 일", "교회를 세우는 일", "학교를 운영하는 일", "교재를 보급하는 일"], "a": 0, "e": "'우리 사역의 지향점은 분명해진다. 제자로 삼는 일이다.'", "id": "c1-15"},
+    {"t": "mc", "q": "문서에 따르면, 개척이 '이 지역'을 벗어나 다른 지역과 도시로 넓어졌어요. 이 지역은?", "o": ["경남", "서울", "제주", "강원"], "a": 0, "e": "'지역적으로도 경남을 벗어난 지역과 도시에 개척이 이루어지면서…'", "id": "c1-16"},
+    {"t": "ox", "q": "길라잡이 I에 따르면 GT 공동체는 '교육으로 부르심을 받은 교사선교사 공동체'이다.", "a": true, "e": "'GT(하나님의 교사들)공동체는 교육으로 부르심을 받은 교사선교사 공동체입니다.'", "id": "c1-17"},
+    {"t": "mc", "q": "비전2030+ 추진 목표: GT는 하나님께서 보여주신 비전을 무엇 삼아 나아가는 교육선교회일까요?", "o": ["촛대", "등대", "지팡이", "방패"], "a": 0, "e": "'하나님께서 우리에게 보여주신 비전을 촛대삼아 나아가는 교육선교회이다.'", "id": "c1-18"},
+    {"t": "chosung", "q": "교육 현장 복음화의 첫 번째 대상은 교실에서 만나는 누구일까요?", "hint": "ㅈㅈㄷ", "a": ["제자들", "제자"], "e": "'교육 현장의 복음화의 대상은 먼저 우리가 교실에서 만나는 제자들이다.'", "id": "c1-19"},
+    {"t": "ox", "q": "분명한 그림이 보일 때 삶을 내던지는 새로운 세대의 특징을, 문서는 '믿음이 부족해서' 생기는 현상으로 본다.", "a": false, "e": "'믿음이 부족해서 나타나는 현상이 아니라 세대적 현상이다.'", "id": "c1-20"},
+    {"t": "match", "q": "앞말과 뒷말을 이어 GT를 표현하는 말을 완성하세요.", "p": [["양육은", "밥이다"], ["하나님의 심정을 이어가는", "교육공동체"], ["비전을 촛대삼아 나아가는", "교육선교회"], ["교육으로 부르심을 받은", "교사선교사 공동체"]], "e": "모두 자료에 나오는 GT의 자기소개 표현이에요.", "id": "c1-21"},
+  ]},
+  {"id": "c2", "emoji": "💎", "title": "핵심가치: 복음·양육·공동체", "sub": "우리의 나침반", "src": "비전2030+ 문서 4장 · 비전2030+ 슬라이드", qs: [
+    {"t": "mc", "q": "핵심가치는 어떤 단체의 무엇을 담고 있을까요?", "o": ["존재 목적", "연간 예산", "조직도", "회원 명단"], "a": 0, "e": "'핵심 가치는 어떤 단체의 존재 목적을 담고 있다.'", "id": "c2-01"},
+    {"t": "multi", "q": "문서가 말하는 핵심가치의 역할을 모두 고르세요.", "o": ["나침반", "보호막", "홍보 전단", "출석부"], "a": [0, 1], "e": "어려울 때 사역 방향을 정하는 '나침반', 단체의 소명을 지키는 '보호막' 역할을 해요.", "id": "c2-02"},
+    {"t": "ox", "q": "핵심가치를 붙든다는 것은 고정된 신념에 사로잡혀 변하지 않는 태도를 말한다.", "a": false, "e": "'이는 고정된 신념에 사로잡혀 변하지 않는 태도를 말하지 않는다. 오히려 … 나침반 역할을 할 것이다.'", "id": "c2-03"},
+    {"t": "mc", "q": "'복음'과 함께 핵심가치 후보로 고민했던 단어는?", "o": ["말씀", "기도", "선교", "찬양"], "a": 0, "e": "'복음과 말씀이라는 가치를 두고 고민을 필요했지만 결국 복음을 사용하는 이유는 … 내외적 의미 때문이다.'", "id": "c2-04"},
+    {"t": "blank", "q": "우리는 내부적으로는 \"____\"에 사로잡힌 자로, 외부적으로는 \"복음\"이라는 가치를 드러내며 살아야 한다.", "o": ["말씀", "사랑", "기도", "소명"], "a": 0, "e": "안으로는 말씀에 사로잡히고, 밖으로는 복음의 능력으로 살아가는 것!", "id": "c2-05"},
+    {"t": "mc", "q": "'양육'과 함께 핵심가치 후보로 고민했던 단어는?", "o": ["교육", "훈련", "돌봄", "섬김"], "a": 0, "e": "'양육이라는 가치는 교육이라는 가치와 견주어 고민했다.'", "id": "c2-06"},
+    {"t": "ox", "q": "문서에 따르면 '교육'이 '양육'을 포함하는 더 큰 가치이다.", "a": false, "e": "반대예요! '양육은 교육을 포함하고 있는 더 큰 가치이다.'", "id": "c2-07"},
+    {"t": "mc", "q": "세 핵심가치 중 선정하는 일이 '가장 쉬웠다'고 한 것은?", "o": ["공동체", "복음", "양육", "셋 다 어려웠다"], "a": 0, "e": "'공동체라는 가치를 핵심 가치로 선정하는 일은 가장 쉬웠다.' 안팎에서 모두 공동체성을 자랑하기 때문이에요.", "id": "c2-08"},
+    {"t": "mc", "q": "공동체성은 무엇이 우선되고, 그 기초 위에 세워져야 할까요?", "o": ["소명", "친분", "나이", "지역"], "a": 0, "e": "'공동체성은 우리를 부르신 소명이 우선되고 그 기초 위에 세워져야 한다.'", "id": "c2-09"},
+    {"t": "blank", "q": "하나님께서 세상의 도전을 이길 방법으로 주셨던 제도는 ____이다.", "o": ["공동체", "학교", "국가", "시장"], "a": 0, "e": "'하나님께서 세상의 도전을 이길 방법으로 주셨던 제도가 공동체이다.'", "id": "c2-10"},
+    {"t": "ox", "q": "초등 '작은 제자' 교재 구성에도 복음-양육-공동체 영역이 기본적으로 포함되어 편성된다.", "a": true, "e": "핵심가치가 모든 사역에 녹아들도록 교재도 의도적으로 편성해요.", "id": "c2-11"},
+    {"t": "order", "q": "비전2030+ 슬라이드에 나오는 핵심가치를 순서대로 눌러보세요.", "o": ["복음", "양육", "공동체"], "e": "복음(보라) → 양육(연두) → 공동체(주황) 순서예요.", "id": "c2-12"},
+    {"t": "match", "q": "핵심가치와 선정 과정의 이야기를 짝지어 보세요.", "p": [["복음", "'말씀'과 견주어 고민"], ["양육", "'교육'과 견주어 고민"], ["공동체", "선정이 가장 쉬웠음"]], "e": "복음은 말씀과, 양육은 교육과 견주었고, 공동체는 가장 쉽게 정해졌어요.", "id": "c2-13"},
+    {"t": "mc", "q": "슬라이드: 핵심가치는 우리 모든 사역에 어떻게 되어야 할까요?", "o": ["먼저 고려되어야 한다", "마지막에 점검하면 된다", "필요할 때만 꺼내 본다", "리더만 알고 있으면 된다"], "a": 0, "e": "'핵심가치는 우리 모든 사역에 먼저 고려되어야 합니다.'", "id": "c2-14"},
+    {"t": "ox", "q": "핵심가치는 한 사람의 생각이 아니라, GT가 30년 동안 말과 행동으로 공유해 온 내용이다.", "a": true, "e": "'한 사람의 머리에서 툭 하고 떨어져 나온 생각이 아니라 … 30년이라는 오랜 시간 동안 … 공유해 온 내용이기도 하다.'", "id": "c2-15"},
+    {"t": "mc", "q": "문서에 따르면 '양육'은 어디까지 해결할 수 있는 가치일까요?", "o": ["교육의 오랜 문제까지", "교회 재정 문제까지", "학교 행정 업무까지", "입시 성적까지"], "a": 0, "e": "'양육은 교실에서 제자들을 양육하는 모습에서부터 교실과 학교, 한국 교육, 나아가 교육의 오랜 문제를 해결할 수 있는 가치이다.'", "id": "c2-16"},
+    {"t": "chosung", "q": "슬라이드: 비전2030+의 핵심가치는 하나님의교사들이 지켜야 할 가장 ○○○○ 가치예요.", "hint": "ㄱㅊㅈㅇ", "a": ["기초적인", "기초적"], "e": "'비전2030+의 핵심가치는 하나님의교사들이 지켜야할 가장 기초적인 가치'", "id": "c2-17"},
+    {"t": "ox", "q": "소명과 공동체성(친밀한 관계)은 서로 분리되는 것이다.", "a": false, "e": "'이 둘은 분리되는 게 아니라 어디를 먼저 생각하고 우선으로 여기냐는 점이 중요하다.'", "id": "c2-18"},
+    {"t": "mc", "q": "인간적인 섭섭함이나 불평이 생길 때 필요한 성숙한 자세는?", "o": ["다시 소명 위에 해석하고 함께하기", "조용히 모임을 떠나기", "리더에게 모두 맡기기", "새 모임을 따로 만들기"], "a": 0, "e": "'때로는 인간적인 섭섭함이나 불평들이 생겨나더라도 다시 소명 위에 해석하고 함께하는 성숙한 자세가 필요하다.'", "id": "c2-19"},
+    {"t": "multi", "q": "GT에서 '말씀'이 드러나는 모습으로 문서가 든 것을 모두 고르세요.", "o": ["말씀 사역자를 세우는 일", "지역 모임 중심활동", "양육의 수단", "개인 경건생활 점검", "회비 관리"], "a": [0, 1, 2, 3], "e": "선교회 초기부터 말씀 사역자를 세우고, 지역 모임·양육·개인 경건을 모두 말씀으로 해왔어요.", "id": "c2-20"},
+  ]},
+  {"id": "c3", "emoji": "📜", "title": "비전2030+ 선언문", "sub": "3가지 선언 · 9가지 실행", "src": "비전2030+ 문서 5장 도표 · 비전2030+ 슬라이드", qs: [
+    {"t": "order", "q": "비전2030+ 선언문 세 문장을 순서대로 눌러보세요.", "o": ["우리는 성경적 교사상을 확립한다", "우리는 교육 현장의 복음화를 위해 충성한다", "우리는 하나님 나라의 확장에 헌신한다"], "e": "확립 → 충성 → 헌신! 선언문 목적 문장의 순서와 같아요.", "id": "c3-01"},
+    {"t": "match", "q": "선언과 그 동사를 짝지어 보세요.", "p": [["성경적 교사상", "확립한다"], ["교육 현장의 복음화", "충성한다"], ["하나님 나라의 확장", "헌신한다"]], "e": "성경적 교사상을 '확립', 복음화를 위해 '충성', 하나님 나라 확장에 '헌신'.", "id": "c3-02"},
+    {"t": "multi", "q": "'성경적 교사상 확립'의 세 영역을 모두 고르세요.", "o": ["말씀", "영적 훈련", "공동체", "연합", "선교"], "a": [0, 1, 2], "e": "성경적 교사상은 말씀과 영적 훈련과 공동체를 통하여 확립돼요.", "id": "c3-03"},
+    {"t": "multi", "q": "'교육 현장의 복음화'의 세 영역을 모두 고르세요.", "o": ["제자 양육", "교사 양육", "예비교사 양육", "교육", "말씀"], "a": [0, 1, 2], "e": "제자 양육 · 교사 양육 · 예비교사 양육. 슬라이드에서는 '디모데 양육'으로도 표현돼요.", "id": "c3-04"},
+    {"t": "multi", "q": "'하나님 나라의 확장'의 세 영역을 모두 고르세요.", "o": ["교육", "연합", "선교", "영적 훈련", "교사 양육"], "a": [0, 1, 2], "e": "교육 · 연합 · 선교!", "id": "c3-05"},
+    {"t": "match", "q": "'성경적 교사상' 영역과 실행문을 짝지어 보세요.", "p": [["말씀", "말씀을 묵상하며 하나님과 풍성한 관계를 유지한다"], ["영적 훈련", "개인 경건훈련을 통하여 신앙을 세워간다"], ["공동체", "양육 및 지역 모임을 통해 공동체성을 키워간다"]], "e": "비전2030+ 도표의 실행문 그대로예요.", "id": "c3-06"},
+    {"t": "match", "q": "'교육 현장의 복음화' 영역과 실행문을 짝지어 보세요.", "p": [["제자 양육", "학교 현장에 복음을 증거하고 그리스도의 제자를 세운다"], ["교사 양육", "GT사역에 동참하게 하고 하나님의 교사로 교육현장을 섬긴다"], ["예비교사 양육", "GT사역을 이해하고 기독 교사의 소명을 가진다"]], "e": "비전2030+ 도표의 실행문 그대로예요.", "id": "c3-07"},
+    {"t": "match", "q": "'하나님 나라의 확장' 영역과 실행문을 짝지어 보세요.", "p": [["교육", "학교 현장에서 복음을 기반으로 교육 연구와 실천에 힘쓰고 GT 학교를 준비한다"], ["연합", "기독교사단체와 연합하고 지역교회와 협력한다"], ["선교", "MK 사역 및 외국학교 교육을 지원하며 통일한국을 준비한다"]], "e": "비전2030+ 도표의 실행문 그대로예요.", "id": "c3-08"},
+    {"t": "mc", "q": "슬라이드: '성경적 교사상'이란?", "o": ["우리의 참스승 예수 그리스도를 닮아가기 위해 애쓰는 것", "학생에게 인정받는 교사가 되는 것", "승진해서 영향력을 넓히는 것", "교회 봉사를 가장 많이 하는 것"], "a": 0, "e": "'우리의 참스승 예수 그리스도를 닮아가기 위해 애씁니다.'", "id": "c3-09"},
+    {"t": "blank", "q": "슬라이드: \"하나님 나라의 확장은 우리 사역의 ____입니다.\"", "o": ["열매", "뿌리", "시작", "조건"], "a": 0, "e": "'하나님 나라의 확장은 우리 사역의 열매입니다.'", "id": "c3-10"},
+    {"t": "blank", "q": "슬라이드: \"비전2030+ — ____ 위에 우리의 선언은 세워집니다.\"", "o": ["핵심가치", "회칙", "전통", "조직"], "a": 0, "e": "핵심가치(복음·양육·공동체) 위에 세 가지 선언이 세워져요.", "id": "c3-11"},
+    {"t": "mc", "q": "슬라이드에서 '교육현장의 복음화' 아래 첫 번째 상자의 이름은?", "o": ["디모데 양육", "사무엘 양육", "다윗 양육", "바울 양육"], "a": 0, "e": "디모데 양육 · 교사 양육 · 예비교사 양육. 문서 도표에서는 '제자 양육'이라고 써요.", "id": "c3-12"},
+    {"t": "blank", "q": "슬라이드: \"교육현장의 복음화 — 양육을 통하여 제자, ____들을 소명으로 부르고 깊이 관계합니다.\"", "o": ["동역자", "후원자", "학부모", "목회자"], "a": 0, "e": "제자와 동역자들을 소명으로 부르고 깊이 관계하는 것!", "id": "c3-13"},
+    {"t": "mc", "q": "성경적 교사상에서 우리가 본으로 삼을 이는?", "o": ["오직 예수 그리스도", "모세", "사도 바울", "존경하는 선배 교사"], "a": 0, "e": "'성경 가운데 우리의 본으로 삼을 이는 오직 예수 그리스도이시다.'", "id": "c3-14"},
+    {"t": "blank", "q": "\"우리는 삼위일체 하나님과 신구약 ____권이 진리임을 고백한다.\"", "o": ["66", "39", "27", "73"], "a": 0, "e": "구약 39권 + 신약 27권 = 66권!", "id": "c3-15"},
+    {"t": "multi", "q": "영적 훈련의 구체적인 방법으로 문서가 든 것을 모두 고르세요.", "o": ["매일의 묵상", "성경 읽기", "기도", "암송", "성지순례"], "a": [0, 1, 2, 3], "e": "'매일의 묵상과 성경 읽기, 기도와 암송 등을 통하여 깊이 있는 하나님과의 관계를 유지할 수 있도록'", "id": "c3-16"},
+    {"t": "mc", "q": "영적 훈련이 구체적으로 이루어져야 하는 자리는?", "o": ["양육모임", "주일 대예배", "교무회의", "개인 SNS"], "a": 0, "e": "'이를 위한 구체적인 훈련은 양육모임을 통하여 이루어져야 한다.'", "id": "c3-17"},
+    {"t": "ox", "q": "문서가 말하는 '하나님 나라의 확장'은 전도로 숫자를 늘려 가는 확장을 뜻한다.", "a": false, "e": "'단순한 복음 전도로 숫자를 늘려 가는 확장이 아니라 초대되고 하나님 나라를 누리게 하는 확장이다.'", "id": "c3-18"},
+    {"t": "mc", "q": "문서에서 말하는 하나님 나라는?", "o": ["예수님께서 왕 되신 나라", "교회 건물 안의 나라", "죽은 뒤에만 가는 곳", "기독교인만 사는 국가"], "a": 0, "e": "'하나님 나라는 예수님께서 왕 되신 나라이다.'", "id": "c3-19"},
+    {"t": "mc", "q": "'선교' 영역에서 가장 먼저 준비해야 할 것으로 꼽은 것은?", "o": ["북한과의 통일", "해외 학교 설립", "영어 교재 개발", "선교지 방문 여행"], "a": 0, "e": "'먼저 우리의 동포인 북한과의 통일을 준비해야 한다.'", "id": "c3-20"},
+    {"t": "chosung", "q": "'교육' 영역에서 준비하는 학교의 이름은?", "hint": "GT ㅎㄱ", "a": ["gt학교"], "e": "'GT 학교를 준비하도록 한다.' — 비전2020 돌아보기에서도 계속 기도하며 준비하는 주제예요.", "id": "c3-21"},
+    {"t": "ox", "q": "교육 현장의 복음화 사역에는 각 캠퍼스의 예비교사들을 훈련하는 일도 포함된다.", "a": true, "e": "'이 거룩한 사역에 미리 준비될 수 있도록 각 캠퍼스의 예비교사들을 훈련하여 준비해야 한다.'", "id": "c3-22"},
+    {"t": "mc", "q": "'교사 양육'은 예수님을 모르는 교사뿐 아니라 어떤 교사들을 부르는 일일까요?", "o": ["교회는 다니지만 기독교사의 소명을 모르고 분리된 신앙으로 사는 교사", "은퇴를 앞둔 교사", "행정직 공무원", "사립학교 교사만"], "a": 0, "e": "소명을 모른 채 분리된 신앙으로 살아가는 교사들을 불러 함께 동역하게 해요.", "id": "c3-23"},
+    {"t": "blank", "q": "\"우리가 매일 만나는 제자들에게 줄 수 있는 가장 큰 선물은 바로 생명의 ____이다.\"", "o": ["복음", "지식", "칭찬", "성적"], "a": 0, "e": "생명의 복음!", "id": "c3-24"},
+  ]},
+  {"id": "c4", "emoji": "🧭", "title": "비전2030+ 걸어온 길", "sub": "비전2020을 돌아보며", "src": "비전2030+ 슬라이드(추진과정·돌아보기) · 비전2030+ 문서 2~3장", qs: [
+    {"t": "mc", "q": "슬라이드에 나온 비전2030+ 추진 조직의 위원장은?", "o": ["박종식", "김은혜", "이소망", "최믿음"], "a": 0, "e": "추진과정 [조직]: 가. 위원장 박종식", "id": "c4-01"},
+    {"t": "ox", "q": "비전2030+ 추진 방침 중 하나는 '가능한 많은 회원이 참여하여 함께 세우는 비전'이 되게 하는 것이다.", "a": true, "e": "방침 나. '가능한 많은 회원이 참여하여 함께 세우는 비전2030이 되도록 한다.'", "id": "c4-02"},
+    {"t": "match", "q": "비전2030+를 세우며 가진 모임과 횟수를 짝지어 보세요.", "p": [["리더수련회", "4회"], ["세대별 모임", "1회"], ["상임간사회", "매달(12회)"]], "e": "리더수련회 4회, 온라인 설문 4회, 세대별 모임 1회, 상임간사회는 매달 모였어요.", "id": "c4-03"},
+    {"t": "mc", "q": "비전2020 중간 점검 설문조사를 실시한 해는?", "o": ["2016년", "2010년", "2019년", "2020년"], "a": 0, "e": "'2016년에 실시했던 중간 점검 설문조사를 바탕으로…'", "id": "c4-04"},
+    {"t": "multi", "q": "비전2020 보고서의 세 대영역을 모두 고르세요.", "o": ["양육", "교육", "나눔", "예배", "행정"], "a": [0, 1, 2], "e": "'보고서는 양육, 교육, 나눔의 대영역으로 분류하고…'", "id": "c4-05"},
+    {"t": "mc", "q": "비전2020 보고서는 소영역 비전 실행문 몇 개를 중심으로 정리했을까요?", "o": ["9개", "3개", "12개", "30개"], "a": 0, "e": "'각기 해당되는 소영역의 비전 실행문 9개를 중심으로 정리를 했다.'", "id": "c4-06"},
+    {"t": "mc", "q": "'비전2030'에 '+'를 붙인 이유와 거리가 먼 것은?", "o": ["10년 뒤 새 이름을 쉽게 짓기 위해", "계속 점검하고 세워가는 의미", "매년 공동체의 의사로 수정해 나간다는 의미", "좁은 틀에 가두지 않는 확산의 의미"], "a": 0, "e": "'+'에는 계속 세워감, 매년 수정, 확산의 의미가 담겨 있어요.", "id": "c4-07"},
+    {"t": "order", "q": "비전2030+가 세워진 순서대로 눌러보세요.", "o": ["30주년 창립기념대회에서 비전2020 돌아보기 발표", "사역자 워크숍에서 비전2030+ 설명", "2020년 1월 겨울수련회에서 선언문 발표", "2월 간사회의에서 인준"], "e": "창립기념대회 → 사역자 워크숍 → 겨울수련회 발표 → 간사회의 인준!", "id": "c4-08"},
+    {"t": "mc", "q": "GT 핵심가치와 비전2030+ 선언문이 발표된 자리는?", "o": ["2020년 1월 겨울수련회", "2019년 여름 캠프", "2021년 리더학교", "2018년 정기총회"], "a": 0, "e": "바로 '겨울수련회'였어요! 이번 겨울수련회에서 그 비전을 다시 떠올려봐요.", "id": "c4-09"},
+    {"t": "ox", "q": "비전2030+는 10년 단위의 목표가 아니라 그 이상을 바라본다.", "a": true, "e": "슬라이드: '비전2030+은 10년 단위의 목표가 아니라 그 이상을 바라본다.'", "id": "c4-10"},
+    {"t": "blank", "q": "슬라이드: \"비전2030+는 회칙과 ________을 기초로 한다.\"", "o": ["파송선언문", "교단 헌법", "국가 교육과정", "학교 학칙"], "a": 0, "e": "회칙과 파송선언문이 비전2030+의 기초예요.", "id": "c4-11"},
+    {"t": "ox", "q": "비전2030+는 한 번 세우면 10년 동안 바꾸지 않는다.", "a": false, "e": "'비전2030+은 매년 세워져 가며 실천한다.'", "id": "c4-12"},
+    {"t": "mc", "q": "교사양육 영역에 반영된 'GT Life flow chart'의 우리말 이름은?", "o": ["회원생애흐름도", "교사성장평가표", "연간행사달력", "지역모임지도"], "a": 0, "e": "GT Life flow chart(회원생애흐름도) — 선교회에 들어오면서부터 회원 생애 전반의 그림을 제공해요.", "id": "c4-13"},
+    {"t": "mc", "q": "교사양육 교육과정은 '도서'에 무엇을 더해 개정됐을까요?", "o": ["G.B.S", "온라인 강의", "필기시험", "성경 필사"], "a": 0, "e": "'교사양육교육과정 개정(도서+ G.B.S)' — 이번 겨울수련회도 GBS 모임이 중심이에요!", "id": "c4-14"},
+    {"t": "multi", "q": "비전2020 돌아보기 후 '제자양육' 영역에 반영된 것을 모두 고르세요.", "o": ["교재개발 지속·출판", "제자양육 워크숍 정기적 실시", "토디학교 지역 확대", "기독학생반 지원", "해외 분교 설립"], "a": [0, 1, 2, 3], "e": "교재 출판, 워크숍, 토디학교 확대, 기독학생반 지원이 반영됐어요.", "id": "c4-15"},
+    {"t": "multi", "q": "'예비교사양육' 영역에 반영된 것을 모두 고르세요.", "o": ["캠퍼스 개척 사업 전개", "캠퍼스 담당자 교육 개설", "예비기독교사양육과정 개설", "예비기독교사 아카데미 강사진 구성", "교대 입시 설명회"], "a": [0, 1, 2, 3], "e": "캠퍼스 개척, 담당자 교육, 양육과정 개설, 아카데미 강사진 구성!", "id": "c4-16"},
+    {"t": "mc", "q": "교육선교 평가에서 '모두 품기'로 함께 언급된 두 대상은?", "o": ["캄보디아 및 지티키즈", "몽골 및 청년부", "베트남 및 학부모", "필리핀 및 은퇴교사"], "a": 0, "e": "'교육선교 — 캄보디아 및 지티키즈 모두 품기'", "id": "c4-17"},
+    {"t": "blank", "q": "비전2020 돌아보기 · GT학교: \"하나님이 준비하시는 때 — ____\"", "o": ["기도", "모금", "설계", "투표"], "a": 0, "e": "GT학교는 하나님이 준비하시는 때를 기도하며 기다려요.", "id": "c4-18"},
+    {"t": "ox", "q": "교사양육 영역 평가에서 '교사양육팀의 숫자 증가'와 '지역모임 개척 시작'이 꼽혔다.", "a": true, "e": "평가 ① 교사양육팀의 숫자 증가 ② 지역모임 개척 시작 ③ 교사양육과정 보완 필요", "id": "c4-19"},
+    {"t": "mc", "q": "비전2020 돌아보기 [반영]에 나오는, 파송한 선교팀의 이름은?", "o": ["오병이어 선교팀", "칠병이어 선교팀", "달란트 선교팀", "겨자씨 선교팀"], "a": 0, "e": "'GT키즈 담당자 세움/오병이어 선교팀 파송', 그리고 통일교육 선교팀도 파송했어요.", "id": "c4-20"},
+    {"t": "blank", "q": "비전2020 돌아보기 [반영]: \"좋은교사 ____ 파송/타 단체와의 협력 활동\"", "o": ["상근자", "강사", "이사", "연구원"], "a": 0, "e": "좋은교사 상근자 파송!", "id": "c4-21"},
+    {"t": "ox", "q": "전략회의의 '하나님 나라의 확장' 질문 중 하나는 '통일한국을 대비한 선교활동은 어떻게 준비해 가야 할까?'이다.", "a": true, "e": "전략회의 질문3. 통일한국을 대비한 선교활동은 어떻게 준비해 가야 할까?", "id": "c4-22"},
+    {"t": "blank", "q": "전략회의 질문: \"디모데양육(초, 중등) 마음의 ____을 조금이라도 덜 수 있는 방법은 없나?\"", "o": ["부담", "기쁨", "설렘", "자랑"], "a": 0, "e": "디모데양육의 마음의 부담을 함께 덜어 가는 것도 공동체의 몫이에요.", "id": "c4-23"},
+  ]},
+  {"id": "c5", "emoji": "📖", "title": "길라잡이 I · 교육으로의 부르심", "sub": "GT의 성경적 배경", "src": "GT길라잡이 I 단계 (출처: 정영찬 목사, 1996)", qs: [
+    {"t": "mc", "q": "'교육으로의 부르심 1'의 묵상 본문은?", "o": ["사사기 2:6~10", "룻기 1장", "여호수아 24장", "사무엘상 3장"], "a": 0, "e": "여호수아 이후 '다른 세대'가 일어난 사사기 2장이에요.", "id": "c5-01"},
+    {"t": "blank", "q": "삿 2:10 \"그 후에 일어난 ____ 세대는 여호와를 알지 못하며\"", "o": ["다른", "새", "젊은", "악한"], "a": 0, "e": "'그 세대'와 '다른 세대'의 대비가 1과의 핵심이에요.", "id": "c5-02"},
+    {"t": "mc", "q": "여호수아는 몇 세에 죽었을까요?", "o": ["110세", "120세", "100세", "175세"], "a": 0, "e": "'여호와의 종 눈의 아들 여호수아가 백십 세에 죽으매'", "id": "c5-03"},
+    {"t": "mc", "q": "사사기는 여호수아의 죽음에서 사무엘의 죽음까지 약 몇 년을 다룰까요?", "o": ["약 350년", "약 40년", "약 120년", "약 500년"], "a": 0, "e": "'약 350년간 이스라엘 역사상 가장 영적으로 어두웠던 시기'", "id": "c5-04"},
+    {"t": "mc", "q": "출애굽 후 가나안 정복 전까지 광야 훈련 기간은?", "o": ["40년", "7년", "12년", "70년"], "a": 0, "e": "'40년의 광야 훈련 과정을 거쳐 가나안을 정복'", "id": "c5-05"},
+    {"t": "chosung", "q": "장로들의 세대가 자녀들에게 제대로 교육하지 못한 하나님의 명령은?", "hint": "ㅅㅁ", "a": ["쉐마"], "e": "쉐마(신 6:4~9) 교육의 단절 = 신앙 교육의 단절이에요.", "id": "c5-06"},
+    {"t": "ox", "q": "한 세대의 신앙교육 단절은 바로 다음 세대에서 영향이 끝났다.", "a": false, "e": "'각자 소견에 옳은 대로' 살아가는 생활양식이 약 4세기까지 영향을 줬어요.", "id": "c5-07"},
+    {"t": "blank", "q": "신앙교육이 끊어지자 백성은 \"각자 ____에 옳은 대로\" 살아가게 되었다.", "o": ["소견", "마음", "판단", "생각"], "a": 0, "e": "사사기의 반복되는 표현 '각자 소견에 옳은 대로'", "id": "c5-08"},
+    {"t": "match", "q": "한국교회 세대와 그 모습을 짝지어 보세요.", "p": [["1세대", "처음 복음을 받아들이고 교회를 세워 지킴"], ["2세대", "1960년대 이후 외적인 성장과 건축에 정열"], ["3세대", "관념적이고 형식적인 신앙생활로 변화"]], "e": "길라잡이 I 1과 '적용하기'의 내용이에요.", "id": "c5-09"},
+    {"t": "mc", "q": "'교육으로의 부르심 2'에 등장하는 인물은?", "o": ["엘리의 아들들", "사울의 아들들", "다윗의 아들들", "노아의 아들들"], "a": 0, "e": "삼상 2장 — 행실이 나빠 여호와를 알지 못한 엘리의 아들들이에요.", "id": "c5-10"},
+    {"t": "mc", "q": "엘리의 아들들의 사환이 제물 고기를 가져갈 때 쓴 도구는?", "o": ["세 살 갈고리", "은 국자", "두 날 칼", "청동 그물"], "a": 0, "e": "'손에 세 살 갈고리를 가지고 와서 … 냄비에나 솥에나 … 찔러 넣어'", "id": "c5-11"},
+    {"t": "ox", "q": "엘리의 아들들은 기름을 태우기 전에, 삶은 고기가 아닌 날고기를 요구했다.", "a": true, "e": "'그가 네게 삶은 고기를 원하지 아니하고 날 것을 원하신다'", "id": "c5-12"},
+    {"t": "blank", "q": "제사장의 관 정면 패에 적힌 문구: \"여호와께 ____\"", "o": ["성결", "영광", "감사", "찬양"], "a": 0, "e": "그만큼 하나님은 제사장의 성결을 강조하셨어요.", "id": "c5-13"},
+    {"t": "mc", "q": "여호와께서 명하시지 않은 불을 담아 분향하다가 죽은 두 사람은?", "o": ["나답과 아비후", "홉니와 비느하스", "엘르아살과 이다말", "고라와 다단"], "a": 0, "e": "나답과 아비후 — 제사가 얼마나 엄격해야 하는지를 교훈해요. (홉니와 비느하스는 엘리의 두 아들이에요!)", "id": "c5-14"},
+    {"t": "mc", "q": "엘리의 아들들은 어느 나라와의 전쟁에서 죽임을 당했을까요?", "o": ["블레셋", "아말렉", "모압", "앗수르"], "a": 0, "e": "'결국 블레셋과의 전쟁에서 함께 죽임을 당하고 하나님의 궤는 빼앗기고 맙니다.'", "id": "c5-15"},
+    {"t": "ox", "q": "하나님은 엘리가 아들들의 죄를 금하지 아니한 것을 책망하셨다(삼상 3:13).", "a": true, "e": "'…이는 그가 자기 아들들이 저주를 자청하되 금하지 아니하였음이니라'", "id": "c5-16"},
+    {"t": "blank", "q": "삼상 2:26 \"아이 ____이 점점 자라매 여호와와 사람들에게 은총을 더욱 받더라\"", "o": ["사무엘", "다윗", "요셉", "요시야"], "a": 0, "e": "엘리의 아들들과 대비되는 아이 사무엘!", "id": "c5-17"},
+    {"t": "mc", "q": "'교육으로의 부르심 3'(왕상 12장)의 사건은?", "o": ["이스라엘 왕국의 남북 분열", "바벨론 포로", "출애굽", "성전 건축"], "a": 0, "e": "솔로몬 이후 르호보암 때 왕국이 남북으로 갈라져요.", "id": "c5-18"},
+    {"t": "mc", "q": "솔로몬은 예루살렘에서 몇 년간 이스라엘을 다스렸을까요?", "o": ["40년", "20년", "33년", "52년"], "a": 0, "e": "'솔로몬이 40년간 예루살렘에서 이스라엘을 다스린 뒤 죽자…'", "id": "c5-19"},
+    {"t": "mc", "q": "르호보암이 북쪽 지파의 요청을 거절할 때 따른 의견은?", "o": ["자기와 함께 자란 어린 사람들", "솔로몬과 함께했던 노인들", "선지자 나단", "제사장들"], "a": 0, "e": "노인들의 조언 대신 함께 자란 어린 사람들과 의논해 거절했어요.", "id": "c5-20"},
+    {"t": "mc", "q": "르호보암이 보냈다가 돌에 맞아 죽은 역꾼의 감독은?", "o": ["아도람", "아히도벨", "요압", "시므이"], "a": 0, "e": "'르호보암 왕이 역꾼의 감독 아도람을 보냈더니 온 이스라엘이 그를 돌로 쳐죽인지라'", "id": "c5-21"},
+    {"t": "mc", "q": "북쪽 지파가 공회로 청해 온 이스라엘의 왕으로 삼은 사람은?", "o": ["여로보암", "아합", "예후", "오므리"], "a": 0, "e": "'여로보암이 돌아왔다 함을 듣고 … 온 이스라엘의 왕으로 삼았으니'", "id": "c5-22"},
+    {"t": "ox", "q": "교재는 르호보암 때 왕국 분열을 '솔로몬의 타락과 가정교육의 부실로 말미암은 자연스러운 결과'로 본다.", "a": true, "e": "다윗의 유언(쉐마)이 르호보암에게까지 제대로 전해졌는지 묻고 있어요.", "id": "c5-23"},
+    {"t": "match", "q": "길라잡이 I 4과의 본문과 하나님이 찾으시는 사람을 짝지어 보세요.", "p": [["겔 9:4", "가증한 일로 탄식하며 우는 자"], ["렘 5:1", "정의를 행하며 진리를 구하는 한 사람"], ["겔 22:30", "성 무너진 데를 막아설 사람"]], "e": "애통하는 자, 진리를 구하는 자, 중보하는 자 — 하나님은 지금도 찾고 계세요.", "id": "c5-24"},
+    {"t": "multi", "q": "4과에서 말하는 '하나님의 심정' 세 가지를 모두 고르세요.", "o": ["애통함", "진리를 추구함", "중보함", "성공을 추구함"], "a": [0, 1, 2], "e": "'하나님의 심정(애통함, 진리를 추구함, 중보함)을 이어가는 일에 어떻게 동역할 수 있을까요?'", "id": "c5-25"},
+    {"t": "mc", "q": "길라잡이 I의 원출처 '하나님의 교사들의 성경적 배경'(정영찬 목사)이 쓰인 해는?", "o": ["1996년", "2006년", "1989년", "2016년"], "a": 0, "e": "출처: 하나님의 교사들의 성경적 배경 정영찬 목사(1996)", "id": "c5-26"},
+    {"t": "ox", "q": "교재는 가정의 교육 역할을 위탁받은 지금, 이를 대신할 수 있는 자가 아이들을 맡은 교사라고 말한다.", "a": true, "e": "'가정이 지녀야할 역할을 위탁 받은 지금 이것을 대신할 수 있는 자는 바로 아이들을 맡고 있는 교사입니다.'", "id": "c5-27"},
+  ]},
+  {"id": "c6", "emoji": "🌿", "title": "길라잡이 II · 제자양육과 디모데", "sub": "가서 제자 삼으라", "src": "GT길라잡이 II 단계 (1~3과, 중등·초등 디모데양육 과정)", qs: [
+    {"t": "blank", "q": "마 28:19 \"그러므로 너희는 가서 모든 민족을 ____로 삼아\"", "o": ["제자", "백성", "친구", "일꾼"], "a": 0, "e": "지상명령! 제자양육의 출발점이에요.", "id": "c6-01"},
+    {"t": "mc", "q": "마 28:18에서 예수님은 자신을 어떻게 소개하셨나요?", "o": ["하늘과 땅의 모든 권세를 받은 분", "유대인의 왕", "다윗의 자손", "선한 목자"], "a": 0, "e": "'하늘과 땅의 모든 권세를 내게 주셨으니'", "id": "c6-02"},
+    {"t": "mc", "q": "제자 삼는 일을 행하는 제자들에게 예수님이 하신 약속은?", "o": ["세상 끝날까지 항상 함께 있으리라", "모든 병을 고치리라", "땅을 기업으로 주리라", "큰 상을 주리라"], "a": 0, "e": "'볼지어다 내가 세상 끝날까지 너희와 항상 함께 있으리라'", "id": "c6-03"},
+    {"t": "order", "q": "지상명령(마 28:19~20)의 흐름을 순서대로 눌러보세요.", "o": ["가서", "모든 민족을 제자로 삼아", "세례를 베풀고", "가르쳐 지키게 하라"], "e": "가서 → 제자 삼아 → 세례 → 가르쳐 지키게!", "id": "c6-04"},
+    {"t": "ox", "q": "교재는 '가서'라는 말을 '기다리지 말고 다니며 복음을 전하라'는 뜻으로 풀이한다.", "a": true, "e": "'또 가서라고 말합니다. 기다리는 게 아니라 다니며 그들에게 복음을 전파하라 말씀하십니다.'", "id": "c6-05"},
+    {"t": "blank", "q": "딤후 2:2 \"네가 많은 증인 앞에서 내게 들은 바를 ____된 사람들에게 부탁하라\"", "o": ["충성", "지혜", "겸손", "온유"], "a": 0, "e": "충성된 사람들이 또 다른 사람들을 가르칠 수 있기 때문이에요. 디모데양육의 뿌리 말씀!", "id": "c6-06"},
+    {"t": "multi", "q": "딤후 2:3~6에서 바울이 든 세 가지 비유를 모두 고르세요.", "o": ["좋은 병사", "경기하는 자", "수고하는 농부", "어부", "목수"], "a": [0, 1, 2], "e": "병사, 경기하는 자, 농부 — 모두 목적을 위해 수고하고 인내하는 사람들이에요.", "id": "c6-07"},
+    {"t": "ox", "q": "디모데후서는 바울 생애 초기에 쓰인 서신이다.", "a": false, "e": "'디모데후서는 바울의 생애 마지막 시기에 쓰인 서신서로 알려져 있습니다.'", "id": "c6-08"},
+    {"t": "mc", "q": "창 1:26~27에서 하나님은 사람을 무엇을 따라 만드셨나요?", "o": ["하나님의 형상", "천사의 모습", "땅의 흙만으로", "동물의 본성"], "a": 0, "e": "'하나님이 자기 형상 곧 하나님의 형상대로 사람을 창조하시되'", "id": "c6-09"},
+    {"t": "mc", "q": "교재에서 '다스림'은 어떤 의미라고 할까요?", "o": ["돌봄", "지배", "소유", "경쟁"], "a": 0, "e": "'다스림이라는 영역은 단순히 지배한다는 의미가 아니라 돌봄이라는 의미를 가집니다.'", "id": "c6-10"},
+    {"t": "blank", "q": "돌봄을 하는 데 꼭 필요한 속성은 바로 대상에 대한 ____입니다.", "o": ["사랑", "지식", "권위", "규칙"], "a": 0, "e": "하나님께서 우리를 사랑하심으로 교제로 초대하셨듯이!", "id": "c6-11"},
+    {"t": "blank", "q": "엡 4:13 \"그리스도의 ____한 분량이 충만한 데까지 이르리니\"", "o": ["장성", "거룩", "온전", "영화"], "a": 0, "e": "제자양육의 목표 — 그리스도의 장성한 분량까지!", "id": "c6-12"},
+    {"t": "mc", "q": "GT에서 말하는 '디모데양육'의 정의는?", "o": ["학교에서 교사가 선발한 학생들에게 하나님의 말씀으로 양육하는 모든 활동", "교회 주일학교의 성경공부", "교사끼리 모이는 큐티 모임", "방학 중 성경 캠프"], "a": 0, "e": "학교 현장에서, 선발한 학생들과 말씀으로 함께하는 모든 활동이에요.", "id": "c6-13"},
+    {"t": "chosung", "q": "우리가 양육하는 디모데는 성경 지식만 배우는 학생이 아니라, 아는 것을 행할 줄 아는 '○○○○'이에요.", "hint": "ㄱㄷㅎㅅ", "a": ["기독학생"], "e": "'성경이 말하는 바를 바르게 알고 아는 것을 행할 줄 아는 기독학생을 말한다.'", "id": "c6-14"},
+    {"t": "mc", "q": "중등용 양육교재 '작은제자'가 발행된 해는?", "o": ["2009년", "2004년", "2016년", "1996년"], "a": 0, "e": "중등 '작은제자'는 2009년 발행, 2016년 개정을 준비했어요. (초등 통합본은 2004년!)", "id": "c6-15"},
+    {"t": "multi", "q": "디모데양육 외에 중등에서 이뤄지는 학교모임 형태를 모두 고르세요.", "o": ["학교예배", "동아리", "큐티모임", "반장회의"], "a": [0, 1, 2], "e": "학교예배 · 동아리 · 큐티모임 — 중등양육지원팀이 함께 지원해요.", "id": "c6-16"},
+    {"t": "mc", "q": "중등 디모데 과제점검 중 '1일3선'이 길러주려는 것은?", "o": ["봉사의 삶", "독서 습관", "운동 습관", "시험 공부"], "a": 0, "e": "'1일3선 : 디모데로서 봉사의 삶에 익숙해지도록 지도한다.'", "id": "c6-17"},
+    {"t": "ox", "q": "라이오넬 헌트의 결과에 따르면 15세 이전에 복음을 인격적으로 받아들일 확률이 가장 높다.", "a": true, "e": "그래서 초등 교사의 자리가 그만큼 귀해요.", "id": "c6-18"},
+    {"t": "multi", "q": "초등 디모데양육의 3가지 목표를 모두 고르세요.", "o": ["복음을 받아들이게 한다", "능동적인 그리스도인의 삶을 살도록 한다", "바람직한 관계를 가질 수 있는 삶을 살도록 한다", "성경 퀴즈대회에서 우승하게 한다"], "a": [0, 1, 2], "e": "복음 수용 · 능동적인 그리스도인의 삶 · 바람직한 관계!", "id": "c6-19"},
+    {"t": "blank", "q": "\"우리의 사역에 사랑이 빠지면 ____ 없는 차를 운전하려는 것과 같다.\"", "o": ["연료", "바퀴", "핸들", "브레이크"], "a": 0, "e": "그리스도의 사랑을 실천하는 교사!", "id": "c6-20"},
+    {"t": "blank", "q": "\"디모데들과 교사 사이에는 영적인 ____이 연결되어 있다고 해도 과언이 아니다.\"", "o": ["탯줄", "다리", "끈", "통로"], "a": 0, "e": "교사의 경건생활이 디모데들에게 그대로 전해져요.", "id": "c6-21"},
+    {"t": "order", "q": "초등 '디모데선발 ABC'를 순서대로 눌러보세요.", "o": ["관계 맺기", "분위기 만들기", "디모데양육 소개하기", "공개선발하기", "학부모동의서 받기"], "e": "관계 → 분위기 → 소개 → 공개선발 → 학부모동의 → 양육 시작!", "id": "c6-22"},
+    {"t": "mc", "q": "디모데양육을 학생들에게 소개하기 좋은 시기는?", "o": ["3월 말이나 4월 초", "3월 첫날", "여름방학 직전", "2학기 시작"], "a": 0, "e": "'분위기 만들기가 어느 정도 진행된 3월 말이나 4월 초'", "id": "c6-23"},
+    {"t": "mc", "q": "초등 양육교재를 통합한 '작은제자' 통합본이 발간된 해는?", "o": ["2004년", "2009년", "1998년", "2012년"], "a": 0, "e": "원래 4권 + 지킴이 1권(총 5권)이던 것을 2004년 '작은제자'로 통합했어요.", "id": "c6-24"},
+    {"t": "mc", "q": "'디모데큐티'는 총 몇 권으로 발간됐을까요?", "o": ["4권 (각 60개 사건)", "1권 (240개 사건)", "12권 (월별)", "2권 (구약·신약)"], "a": 0, "e": "각 권 60개 사건, 총 4권 — 약 240여 부분의 사건을 창세기부터 계시록까지 묵상해요.", "id": "c6-25"},
+    {"t": "match", "q": "초등 디모데 교재의 과 제목과 주제를 짝지어 보세요.", "p": [["천국지도", "하늘나라에 대해 알기"], ["여보세요 하나님이시죠", "기도에 대한 이해와 방법"], ["룰루랄라", "찬양의 기쁨과 능력"], ["사랑의 편지 성경", "성경의 기록 목적"]], "e": "제목이 참 귀엽죠? 아이들 눈높이에 맞춘 교재예요.", "id": "c6-26"},
+    {"t": "mc", "q": "초등 디모데 교재의 마지막 21과 제목은?", "o": ["꿈이 있어요", "어깨를 걸고", "손을 잡아요", "소중한 나"], "a": 0, "e": "21과 '꿈이 있어요' — 나의 꿈에 대한 성경적 조망, 그리고 겨울디모데 졸업여행!", "id": "c6-27"},
+    {"t": "ox", "q": "초등학생의 인격에 영향을 줄 수 있는 상호활동 시간은 교사가 부모보다 훨씬 더 많을 수 있다.", "a": true, "e": "'인격에 영향력을 끼칠 수 있는 상호활동 시간의 확보양은 교사가 부모보다 훨씬 더 많다.'", "id": "c6-28"},
+    {"t": "blank", "q": "교사는 교실의 모든 것을 움직여가는 ____이다.", "o": ["항해사", "감독관", "관리인", "심판"], "a": 0, "e": "20여 평 남짓한 교실, 그 배를 이끄는 항해사!", "id": "c6-29"},
+  ]},
+  {"id": "c7", "emoji": "🍎", "title": "길라잡이 III · 기독교사론", "sub": "기독교사는 누구인가?", "src": "GT길라잡이 III 단계 (1~4과)", qs: [
+    {"t": "match", "q": "기독교사의 네 유형과 그 모습을 짝지어 보세요.", "p": [["'기독'교사", "교회에서는 열심히 봉사, 교사로서의 삶은 빈약"], ["기독'교사'", "인정받는 모범 교사, 신앙과의 연관은 안 보임"], ["'기독''교사'", "학교를 제2의 교회로! 둘이 분리된 상태"], ["'기독교사'", "기독이 교사 속에 스며든 통합된 모습"]], "e": "우리가 꿈꾸는 건 넷째, 통합적이고 총체적인 '기독교사'예요.", "id": "c7-01"},
+    {"t": "mc", "q": "\"학교를 제2의 교회로!\"가 모토인 유형은?", "o": ["'기독''교사'", "'기독'교사", "기독'교사'", "'기독교사'"], "a": 0, "e": "훌륭하지만 '기독'과 '교사'가 서로에게 스며들지 못하고 분리된 모습이에요.", "id": "c7-02"},
+    {"t": "ox", "q": "교재는 오늘날 많은 미션스쿨도 '기독''교사' 유형으로 분류할 수 있다고 말한다.", "a": true, "e": "'사실, 오늘날 많은 미션스쿨도 이 유형에 분류할 수 있다.'", "id": "c7-03"},
+    {"t": "blank", "q": "기독'교사' 유형의 좌우명: \"____받는 교사\"", "o": ["인정", "사랑", "칭찬", "존경"], "a": 0, "e": "성실한 교사지만, 기독교사는 '성실한 교사'로의 부르심 이상이에요.", "id": "c7-04"},
+    {"t": "mc", "q": "직업(vocation)의 어원 'vocare'의 뜻은?", "o": ["부르심(calling)", "노동(labor)", "월급(salary)", "기술(skill)"], "a": 0, "e": "진정한 직업은 부르심과 연결되어야 해요.", "id": "c7-05"},
+    {"t": "ox", "q": "교재에 따르면 기독교사는 목사·선교사를 돕는 Part-time 사역자이다.", "a": false, "e": "'이런 점에서 기독교사는 Full-time 사역자이다.' — 전임 사역자예요!", "id": "c7-06"},
+    {"t": "match", "q": "부르심을 받은 사람과 그 부르심의 장(場)을 짝지어 보세요.", "p": [["목사", "지역교회"], ["선교사", "해외 선교현장"], ["기독교사", "학교 현장"]], "e": "부르심의 장이 다를 뿐, 모두 하나님 나라를 향해 역할을 나누고 있어요.", "id": "c7-07"},
+    {"t": "multi", "q": "목사·선교사·기독교사 부르심의 공통점을 모두 고르세요.", "o": ["사람을 대상으로 한다", "변화(하나님 형상으로의 회복)에 관심이 있다", "'사랑'이 사역의 제1원리이다", "같은 장소에서 사역한다"], "a": [0, 1, 2], "e": "장소는 달라도 대상·목표·원리는 같아요.", "id": "c7-08"},
+    {"t": "mc", "q": "'기독교사 파송식'에서 드리면 좋다고 제안한 예수님의 기도는?", "o": ["요한복음 17장의 기도", "주기도문", "겟세마네 기도", "마태복음 5장 팔복"], "a": 0, "e": "세상 속으로 보냄 받는(into the world) 기독교사를 위해 요한복음 17장처럼 기도하자고 제안해요.", "id": "c7-09"},
+    {"t": "order", "q": "기독교사로의 네 가지 일반적 부르심을 교재 순서대로 눌러보세요.", "o": ["성화의 명령", "선교의 명령", "문화적 명령", "이웃사랑의 명령"], "e": "첫째 성화, 둘째 선교, 셋째 문화적 명령, 넷째 이웃사랑(사회적 책임)!", "id": "c7-10"},
+    {"t": "match", "q": "명령과 기독교사에게 주는 의미를 짝지어 보세요.", "p": [["성화의 명령", "교사의 영성"], ["선교의 명령", "학원복음화"], ["문화적 명령", "교과목에 대한 기독교적 접근"], ["이웃사랑의 명령", "학생상담 및 교육개혁"]], "e": "네 가지는 한 분 하나님의 부르심이라 서로 의존하고 강화해요.", "id": "c7-11"},
+    {"t": "match", "q": "명령과 대표 말씀을 짝지어 보세요.", "p": [["성화의 명령", "벧전 1:16"], ["선교의 명령", "행 1:8"], ["문화적 명령", "창 1:28"], ["이웃사랑의 명령", "암 5:24"]], "e": "암 5:24 '정의를 하수같이' — 교육 현장에도 정의가 흐르고 있나요?", "id": "c7-12"},
+    {"t": "blank", "q": "커뮤니케이션 원리: \"'____가 전달내용이다'\"", "o": ["전달매체", "말투", "교과서", "시험"], "a": 0, "e": "교사의 인격을 학생들이 닮고 모방해요. 그래서 성화의 부르심이 중요해요.", "id": "c7-13"},
+    {"t": "blank", "q": "선교의 명령 관점에서 기독교사는 '학교로 보냄 받은 ____'이다.", "o": ["선교사", "목회자", "행정가", "상담가"], "a": 0, "e": "복음 전파를 위해 이보다 더 좋은 직장이 있을까요?", "id": "c7-14"},
+    {"t": "mc", "q": "\"All truth is God's truth\"의 뜻은?", "o": ["모든 진리는 하나님의 진리이다", "진리는 사람마다 다르다", "성경 밖에는 진리가 없다", "진리는 과학이 정한다"], "a": 0, "e": "그래서 모든 교과마저도 그리스도께 순종하도록(고후 10:5) 가르쳐야 해요.", "id": "c7-15"},
+    {"t": "ox", "q": "학생들로부터 꺼낼 수 있는 것(Educare)만으로도 그들을 진정 변화시킬 수 있다.", "a": false, "e": "'그들로부터 꺼낼 수 있는 것(Educare)으로는 그들을 진정 변화시킬 수 없다. 계시의 빛, 예수 그리스도의 복음을 통해…'", "id": "c7-16"},
+    {"t": "mc", "q": "교육의 사명(\"내 양을 먹이라\")을 맡기시며 예수님이 베드로에게 확인하신 것은?", "o": ["\"네가 나를 사랑하느냐?\"", "\"네가 무엇을 아느냐?\"", "\"네가 준비되었느냐?\"", "\"네가 할 수 있느냐?\""], "a": 0, "e": "네 가지 부르심은 모두 이 사랑에 기초해요.", "id": "c7-17"},
+    {"t": "blank", "q": "롬 12:6 \"우리에게 주신 은혜대로 받은 ____가 각각 다르기\"", "o": ["은사", "재능", "직분", "달란트"], "a": 0, "e": "은사에 따라 각자 한 영역을 더 강조하는 '특별한 부르심'이 있어요.", "id": "c7-18"},
+    {"t": "mc", "q": "교재가 네 가지 부르심을 비유한 것은?", "o": ["함께 짜여 천을 만드는 네 가지 색깔의 실", "네 바퀴 자동차", "사계절", "네 개의 기둥"], "a": 0, "e": "다양함(diversity) 안에서 하나 됨(unity)을 추구할 때 교육에서의 하나님 나라를 이뤄가요.", "id": "c7-19"},
+    {"t": "mc", "q": "1780년 영국에서 주일학교를 처음 시작한 사람은?", "o": ["Robert Raikes", "John Wesley", "William Carey", "Jonathan Edwards"], "a": 0, "e": "처음 주일학교는 사회를 새롭게 하려는 기독교교육운동이었어요.", "id": "c7-20"},
+    {"t": "ox", "q": "처음 시작된 주일학교는 성경만 가르치는 좁은 의미의 신앙교육이었다.", "a": false, "e": "일반 과목도 가르치는 일종의 보상교육이자 사회교육이었어요.", "id": "c7-21"},
+    {"t": "multi", "q": "<표-1>에서 '기독교(학교)교육'의 특징을 모두 고르세요.", "o": ["초점: 하나님 나라", "중심기관: 학교", "관심: 전인적인 면", "사회와의 관계: 분리"], "a": [0, 1, 2], "e": "'사회와의 관계: 분리'는 교회교육 쪽 특징이에요. 기독교(학교)교육은 사회와 '연결'돼요.", "id": "c7-22"},
+    {"t": "order", "q": "기독교사 공동체를 작은 단위부터 순서대로 눌러보세요.", "o": ["세포(cell) 공동체", "조직(tissue) 공동체", "기관(organ) 공동체"], "e": "세포 → 조직 → 기관. 하나의 유기체처럼 연결돼요.", "id": "c7-23"},
+    {"t": "mc", "q": "학교 안의 QT 모임이나 기독학생반은 어떤 공동체에 해당할까요?", "o": ["세포 공동체", "조직 공동체", "기관 공동체", "연합 공동체"], "a": 0, "e": "학교 내 QT 모임, 기독학생반, 교과별 교사모임은 세포 공동체예요.", "id": "c7-24"},
+    {"t": "blank", "q": "\"기독교교육 운동은 ____(全面戰)이다.\"", "o": ["전면전", "장기전", "심리전", "정보전"], "a": 0, "e": "공동체적으로 대응할 때 가장 효과적이에요.", "id": "c7-25"},
+    {"t": "multi", "q": "기독교교육 공동체로 함께 협력해야 할 대상을 모두 고르세요.", "o": ["교단", "학원선교단체", "기독교 학문 공동체", "기독교 시민단체(학부모 단체)", "연예기획사"], "a": [0, 1, 2, 3], "e": "교단 · 학원선교단체 · 학문 공동체 · 시민단체와의 협력!", "id": "c7-26"},
+    {"t": "mc", "q": "기독교사 유형 구분의 출처인 박상진(장신대) 교수의 기독교사대회 강의는 몇 년도일까요?", "o": ["1998년", "1989년", "2008년", "2019년"], "a": 0, "e": "'기독교사 그 부르심의 의미', 박상진(장신대) 1998, 기독교사대회 강의", "id": "c7-27"},
+  ]},
+  {"id": "c8", "emoji": "🎓", "title": "GT 교사양육과정 탐험", "sub": "만남과 초대부터 4단계까지", "src": "G.L.M에 따른 GT교사양육과정 (2020)", qs: [
+    {"t": "order", "q": "GT 교사양육과정의 흐름을 순서대로 눌러보세요.", "o": ["만남과 초대", "교사양육 1단계", "교사양육 2단계", "교사양육 3단계", "교사양육 4단계"], "e": "만남과 초대에서 시작해 4단계(리더학교 준비)까지!", "id": "c8-01"},
+    {"t": "match", "q": "교사양육 단계와 영역을 짝지어 보세요.", "p": [["1단계", "복음과 구원"], ["2단계", "기독교 세계관"], ["3단계", "제자와 공동체"], ["4단계", "리더십과 기독교교육"]], "e": "복음과 구원 → 세계관 → 제자와 공동체 → 리더십과 기독교교육.", "id": "c8-02"},
+    {"t": "match", "q": "단계와 별칭을 짝지어 보세요.", "p": [["1단계", "양"], ["2단계", "성도"], ["3단계", "제자"], ["4단계", "일꾼"]], "e": "양 → 성도 → 제자 → 일꾼으로 자라가요.", "id": "c8-03"},
+    {"t": "match", "q": "나눔도서와 저자를 짝지어 보세요. (1)", "p": [["예수를 믿는다는 것은", "박순용"], ["구원이란 무엇인가?", "김세윤"], ["소명", "오스 기니스"], ["평신도를 깨운다", "옥한흠"]], "e": "1단계: 박순용·김세윤 / 2단계: 오스 기니스 / 3단계: 옥한흠", "id": "c8-04"},
+    {"t": "match", "q": "나눔도서와 저자를 짝지어 보세요. (2)", "p": [["기독교적 세계관", "양승훈"], ["훈련으로 되는 제자", "월터 A. 헨릭슨"], ["거인들의 발자국", "한홍"], ["기독교세계관으로 가르치기", "알버트 그린"]], "e": "2단계: 양승훈 / 3단계: 헨릭슨 / 4단계: 한홍·알버트 그린", "id": "c8-05"},
+    {"t": "match", "q": "길라잡이와 주제를 짝지어 보세요.", "p": [["길라잡이 1", "교육으로의 부르심"], ["길라잡이 2", "GT 제자양육"], ["길라잡이 3", "GT 기독교사론"], ["길라잡이 4", "교육 실천"]], "e": "길라잡이 4는 '기독교사로 살아가기'를 다뤄요.", "id": "c8-06"},
+    {"t": "mc", "q": "'만남과 초대' 단계의 과제는?", "o": ["GT카페 방문하여 양육후기 2편 이상 읽어보기", "성경 전체 필사하기", "암송 60구절 테스트", "리더학교 수료하기"], "a": 0, "e": "★GT카페 방문하여 양육후기 2편 이상 읽어보기 — 그리고 모임 헌신 인터뷰!", "id": "c8-07"},
+    {"t": "mc", "q": "'회원 허입 인터뷰'는 언제 가능할까요?", "o": ["교사양육 1단계와 길라잡이 2를 수행한 후", "만남과 초대 첫 모임 직후", "4단계를 모두 마친 후", "수련회에 1회 참석한 후"], "a": 0, "e": "'교사양육 1단계와 길라잡이 2 수행 후 가능'", "id": "c8-08"},
+    {"t": "match", "q": "길라잡이별 ★과제를 짝지어 보세요.", "p": [["길라잡이 2", "양육할 제자 품고 기도하기"], ["길라잡이 3", "내가 꿈꾸는 기독교사상"], ["길라잡이 4", "일대일결연 아동 선정 및 품기"]], "e": "제자를 품고 → 기독교사상을 그리고 → 결연 아동을 품어요.", "id": "c8-09"},
+    {"t": "mc", "q": "암송 시리즈 A~E는 각각 몇 구절씩일까요?", "o": ["12구절", "10구절", "7구절", "24구절"], "a": 0, "e": "A~E 각 12구절씩!", "id": "c8-10"},
+    {"t": "mc", "q": "4단계의 'A~E 복습' 암송은 모두 몇 구절일까요?", "o": ["60구절", "36구절", "50구절", "100구절"], "a": 0, "e": "12구절 × 5시리즈 = 60구절!", "id": "c8-11"},
+    {"t": "match", "q": "암송 시리즈와 주제를 짝지어 보세요.", "p": [["A", "새로운 삶"], ["B", "그리스도를 전파함"], ["C", "하나님을 의뢰함"], ["D", "그리스도 제자의 자격"], ["E", "그리스도를 닮아감"]], "e": "새로운 삶 → 전파 → 의뢰 → 제자의 자격 → 닮아감", "id": "c8-12"},
+    {"t": "mc", "q": "1단계의 'A~C 암송테스트'는 몇 구절일까요?", "o": ["36구절", "12구절", "24구절", "60구절"], "a": 0, "e": "A·B·C 세 시리즈 × 12구절 = 36구절!", "id": "c8-13"},
+    {"t": "mc", "q": "교사양육과정에서 QT는 어떻게 할까요?", "o": ["매일성경, 묵상 카톡 나누기", "주 1회 설교 요약", "월 1회 독후감", "분기별 필사"], "a": 0, "e": "모든 단계에서 [QT] 매일성경, 묵상 카톡 나누기!", "id": "c8-14"},
+    {"t": "ox", "q": "교사양육과정의 [성경] 과제를 모두 마치면 신약과 구약을 각각 2번씩 읽게 된다.", "a": true, "e": "신약1독 → 구약1독 → 신약1독 → 구약1독!", "id": "c8-15"},
+    {"t": "mc", "q": "양승훈 『기독교적 세계관』이 세계를 바라보는 관점은?", "o": ["창조-타락-구속", "탄생-성장-쇠퇴", "정-반-합", "과거-현재-미래"], "a": 0, "e": "'성경'을 준거로 창조-타락-구속의 관점으로 세계를 바라보고 판단해요.", "id": "c8-16"},
+    {"t": "multi", "q": "김세윤 『구원이란 무엇인가』: 예수님의 죽으심을 표현한 구약적 배경의 '4대 그림'을 모두 고르세요.", "o": ["제사", "화해", "구속", "새 언약", "정복"], "a": [0, 1, 2, 3], "e": "제사 · 화해 · 구속 · 새 언약. 믿음을 통해서는 의인됨 · 화해함 · 하나님의 아들 됨 · 새로운 피조물로 적용돼요.", "id": "c8-17"},
+    {"t": "mc", "q": "『구원이란 무엇인가』에서 구원은 어떤 긴장 구조를 가지고 있을까요?", "o": ["'이미'와 '아직' 사이", "'처음'과 '나중' 사이", "'안'과 '밖' 사이", "'나'와 '너' 사이"], "a": 0, "e": "종말론적인 구조 — '이미'와 '아직' 사이의 긴장!", "id": "c8-18"},
+    {"t": "multi", "q": "옥한흠 『평신도를 깨운다』: 제자훈련이 목표로 하는 성도의 모습을 모두 고르세요.", "o": ["인격적인 위탁자", "복음의 증인", "섬기는 종", "유명한 설교자"], "a": [0, 1, 2], "e": "인격적인 위탁자, 복음의 증인, 섬기는 종의 모습!", "id": "c8-19"},
+    {"t": "ox", "q": "교재 해설에 따르면 제자훈련은 교재를 나누는 성경공부와 같은 것이다.", "a": false, "e": "'제자훈련은 단순한 성경공부와는 구별되는 것으로서 … 삶의 방식을 바꾸는 훈련'", "id": "c8-20"},
+    {"t": "mc", "q": "한홍 『거인들의 발자국』에서 리더와 함께 그 중요성을 살펴보는 사람은?", "o": ["따르는 자(follower)", "경쟁자", "후원자", "비평가"], "a": 0, "e": "균형잡힌 리더십과 함께 '따르는 자(follower)'의 중요성도 파악해요.", "id": "c8-21"},
+    {"t": "mc", "q": "오스 기니스 『소명』: 소명은 신앙이 무엇이 되지 않도록 저항하게 할까요?", "o": ["사유화·정치화·기둥화", "세계화·정보화·산업화", "대중화·단순화·전문화", "형식화·조직화·제도화"], "a": 0, "e": "'소명은 성도로 하여금 신앙이 사유화-정치화-기둥화 되지 않도록 저항하게 함으로…'", "id": "c8-22"},
+    {"t": "mc", "q": "1단계 선택교재 『사귐의 기도』의 저자는?", "o": ["김영봉", "이승구", "리차드 애들린", "헤로 반 브루멜론"], "a": 0, "e": "2단계 선택교재 『바늘귀를 통과한 부자』도 김영봉 목사님의 책이에요.", "id": "c8-23"},
+  ]},
+];
+
+/* ============================================================================
    관리자 모드 PIN — 여기 숫자만 바꾸면 새 PIN이 적용돼요.
    완벽한 보안은 아니고(코드를 볼 수 있는 사람은 PIN도 볼 수 있어요), 아무나
    실수로 공지·링크를 건드리지 않게 막는 정도의 가벼운 잠금이에요.
@@ -924,11 +1310,11 @@ function missionStats() {
       if (lsGet('gt_mission_' + cat.id + '_' + idx, false)) done++;
     });
   });
-  (RETREAT_DATA.missions.gbsPhotoMissions || []).forEach((m) => {
-    total++;
-    if (lsGet('gt_gbsphoto_done_' + m.id, false)) done++;
-  });
   return { total, done };
+}
+// 개인 랭킹 점수: 개인 미션 1개 = 10점, GT 퀴즈 1문제(처음 맞힌 것) = 5점
+function rankPoints() {
+  return missionStats().done * 10 + quizCorrectCount() * 5;
 }
 function categoryStats(catId) {
   const cat = RETREAT_DATA.missions.categories.find((c) => c.id === catId);
@@ -972,7 +1358,8 @@ async function syncMissionProgress() {
       nickname,
       missionsDone: stats.done,
       missionsTotal: stats.total,
-      points: stats.done * 10,
+      quizCorrect: quizCorrectCount(),
+      points: rankPoints(),
       updatedAt: serverTimestamp(),
     }, { merge: true });
   } catch (err) { console.error('ranking sync failed', err); }
@@ -1067,10 +1454,23 @@ function renderHome() {
 
   html += `<div class="home-welcome">${esc(m.welcome || '')}</div>`;
 
-  html += `<button type="button" class="mission-teaser" data-goto-tab="missions">
+  const team = myTeam();
+  html += `<button type="button" class="mission-teaser" data-goto-mseg="personal">
     <span class="icon-badge">🎯</span>
-    <span><b>수련회 미션 ${ms.done} / ${ms.total} 완료</b><span>탭해서 오늘의 미션을 확인해보세요 →</span></span>
+    <span><b>개인 미션 ${ms.done} / ${ms.total} 완료</b><span>탭해서 오늘의 미션을 확인해보세요 →</span></span>
   </button>`;
+  html += `<div class="teaser-duo">
+    <button type="button" class="teaser-mini gbs" data-goto-mseg="gbs">
+      <span class="teaser-mini-emoji">👥</span>
+      <b>GBS 단체 미션</b>
+      <span>${team ? `${esc(team)} · ${teamProgress(team)} / ${gbsMissionList().length} 인증` : '우리 조를 골라주세요'}</span>
+    </button>
+    <button type="button" class="teaser-mini quiz" data-goto-mseg="quiz">
+      <span class="teaser-mini-emoji">🧠</span>
+      <b>GT 퀴즈</b>
+      <span>${quizCorrectCount()} / ${QUIZ_ALL.length} 맞힘 · 도전!</span>
+    </button>
+  </div>`;
 
   html += `<div class="section-label">✨ 바로가기</div>`;
   html += `<div class="quick-grid">${quickLinks
@@ -1180,63 +1580,139 @@ function renderMiniOlympics() {
 /* ============================================================================
    MISSIONS TAB
 ============================================================================ */
-function gbsPhotoThumbsHtml(missionId) {
-  if (!isFirebaseConfigured()) return '<p class="empty-note" style="margin:0;">Firebase 설정 후 인증샷이 보여요.</p>';
-  const list = gbsPhotoCache[missionId] || [];
-  if (!list.length) return '<p class="empty-note" style="margin:0;">아직 인증샷이 없어요. 첫 주자가 되어보세요!</p>';
-  return list.slice(0, 10).map((p) => `<div class="gbsphoto-thumb" data-url="${esc(p.url)}" data-name="${esc(p.gbsName || p.uploaderName || '')}"><img src="${esc(p.url)}" loading="lazy" alt="인증샷"></div>`).join('');
+/* ---------------------------------------------------------------------------
+   GBS 단체 미션 — '조' 단위. 대표 1명이 조를 고르고 올리면 그 조 전체 완료.
+   완료 여부는 이 기기가 아니라 Firestore 'gbs_photos'의 team 값으로 판단하므로
+   같은 조 선생님 누구의 폰에서 봐도 똑같이 '완료'로 보여요.
+--------------------------------------------------------------------------- */
+function gbsMissionList() { return RETREAT_DATA.missions.gbsPhotoMissions || []; }
+function gbsTeams() {
+  const n = Math.max(1, Math.min(40, parseInt(RETREAT_DATA.missions.gbsTeamCount, 10) || 12));
+  return Array.from({ length: n }, (_, i) => (i + 1) + '조');
 }
-function renderGbsPhotoThumbs(missionId) {
-  const wrap = document.getElementById('gbsphotoThumbs_' + missionId);
-  if (wrap) wrap.innerHTML = gbsPhotoThumbsHtml(missionId);
+function myTeam() {
+  const t = lsGet('gt_my_gbs_team', '');
+  return gbsTeams().includes(t) ? t : '';
 }
-function renderAllGbsPhotoThumbs() {
-  (RETREAT_DATA.missions.gbsPhotoMissions || []).forEach((m) => renderGbsPhotoThumbs(m.id));
+function teamsDoneFor(missionId) {
+  const set = new Set();
+  (gbsPhotoCache[missionId] || []).forEach((p) => { if (p.team) set.add(p.team); });
+  return set;
 }
-function renderGbsPhotoSection() {
-  const missions = RETREAT_DATA.missions.gbsPhotoMissions || [];
-  if (!missions.length) return '';
-  const myGbs = lsGet('gt_my_gbs', '');
-  const cards = missions.map((m) => {
-    const done = lsGet('gt_gbsphoto_done_' + m.id, false);
-    return `<div class="gbsphoto-card${done ? ' done' : ''}" data-gbsphoto-id="${m.id}">
+function teamProgress(team) {
+  if (!team) return 0;
+  return gbsMissionList().filter((m) => teamsDoneFor(m.id).has(team)).length;
+}
+function renderGbsTeamSection() {
+  const missions = gbsMissionList();
+  const team = myTeam();
+  const opts = gbsTeams().map((t) => `<option value="${t}"${t === team ? ' selected' : ''}>${t}</option>`).join('');
+  const cards = missions.map((m) => `<div class="gbsphoto-card" id="gbsCard_${m.id}">
       <div class="gbsphoto-head">
         <span class="gbsphoto-emoji">${m.emoji}</span>
         <div class="gbsphoto-text"><b>${esc(m.title)}</b><span>${esc(m.desc)}</span></div>
-        <span class="gbsphoto-done-badge">✅ 인증완료</span>
+        <span class="gbsphoto-done-badge">✅ 우리 조 완료</span>
       </div>
-      <div class="gbsphoto-thumbs" id="gbsphotoThumbs_${m.id}">${gbsPhotoThumbsHtml(m.id)}</div>
-      <label class="gbsphoto-upload-btn" for="gbsphotoFile_${m.id}">
-        ${iconSvg('upload')} ${done ? '사진 더 추가하기' : '인증샷 올리기'}
-      </label>
+      <div class="gbs-teamchips" id="gbsTeams_${m.id}"></div>
+      <div class="gbsphoto-thumbs" id="gbsphotoThumbs_${m.id}"></div>
+      <label class="gbsphoto-upload-btn" for="gbsphotoFile_${m.id}">${iconSvg('upload')} <span id="gbsBtnText_${m.id}">우리 조 대표로 인증하기</span></label>
       <input type="file" id="gbsphotoFile_${m.id}" accept="image/*" multiple style="display:none" data-gbsphoto-file="${m.id}">
       <div class="gbsphoto-progress" id="gbsphotoProgress_${m.id}" hidden></div>
-    </div>`;
-  }).join('');
-  return `<div class="gbsphoto-section">
-    <div class="section-label gold">🙌 GBS 인증 미션 — 우리 조와 함께 도전해요!</div>
-    <p class="stop-sub" style="margin:-6px 0 14px 0;">사진으로 인증하면 바로 완료돼요. 다른 조 사진도 함께 구경해보세요.</p>
-    <div class="gbsphoto-gbsname-field">
-      <label class="f-label" for="myGbsNameInput">우리 GBS 이름 (선택)</label>
-      <input type="text" id="myGbsNameInput" placeholder="예: 3GBS" value="${esc(myGbs)}">
+    </div>`).join('');
+  return `<div class="gbs-howto">
+      <b>👥 GBS 단체 미션은 이렇게!</b>
+      <ol>
+        <li>아래에서 <b>우리 조</b>를 골라요.</li>
+        <li>조원들과 함께 미션을 하고, <b>조 대표 1명</b>만 사진을 올려요.</li>
+        <li>올리는 순간 우리 조 전체가 완료! 조별 현황판에 바로 반영돼요.</li>
+      </ol>
     </div>
-    ${cards}
-  </div>`;
+    <div class="gbs-team-pick">
+      <label class="f-label" for="myTeamSelect">우리 조</label>
+      <select id="myTeamSelect"><option value="">조를 선택하세요</option>${opts}</select>
+      <div class="gbs-my-summary" id="gbsMyTeamSummary"></div>
+    </div>
+    <div class="gbsphoto-section">
+      <div class="section-label gold">🙌 GBS 단체 미션 ${missions.length}</div>
+      ${cards}
+    </div>
+    <div class="section-label gold">🏆 조별 인증 현황</div>
+    <div class="gbs-board" id="gbsTeamBoard"></div>`;
 }
-function renderMissions() {
+function updateGbsDynamic() {
+  const team = myTeam();
+  const missions = gbsMissionList();
+  const configured = isFirebaseConfigured();
+  missions.forEach((m) => {
+    const card = document.getElementById('gbsCard_' + m.id);
+    if (!card) return;
+    const teams = teamsDoneFor(m.id);
+    const done = !!team && teams.has(team);
+    card.classList.toggle('done', done);
+    const chips = document.getElementById('gbsTeams_' + m.id);
+    if (chips) {
+      const sorted = Array.from(teams).sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
+      chips.innerHTML = sorted.length
+        ? '<span class="gbs-chip-label">인증한 조</span>' + sorted.map((t) => `<span class="gbs-chip${t === team ? ' mine' : ''}">${esc(t)}</span>`).join('')
+        : `<span class="gbs-chip-label">${configured ? '아직 인증한 조가 없어요 · 첫 주자가 되어보세요!' : 'Firebase 설정 후 인증 현황이 보여요'}</span>`;
+    }
+    const thumbs = document.getElementById('gbsphotoThumbs_' + m.id);
+    if (thumbs) {
+      const list = (gbsPhotoCache[m.id] || []).slice(0, 12);
+      thumbs.innerHTML = list.map((p) => `<div class="gbsphoto-thumb" data-url="${esc(p.url)}" data-name="${esc((p.team || '') + ' · ' + m.title)}"><img src="${esc(p.url)}" loading="lazy" alt="인증샷"><span>${esc(p.team || '')}</span></div>`).join('');
+      thumbs.hidden = !list.length;
+    }
+    const btn = document.getElementById('gbsBtnText_' + m.id);
+    if (btn) btn.textContent = !team ? '조를 먼저 선택해주세요' : (done ? `${team} 사진 더 올리기` : `${team} 대표로 인증하기`);
+  });
+  const summary = document.getElementById('gbsMyTeamSummary');
+  if (summary) {
+    if (!team) {
+      summary.innerHTML = '<span class="empty-note">조를 고르면 우리 조 진행 상황이 여기 보여요.</span>';
+    } else {
+      const n = teamProgress(team), total = missions.length;
+      summary.innerHTML = `<div class="gbs-my-top"><b>${esc(team)}</b><span>${n} / ${total} 인증</span></div>
+        <div class="mission-bar"><div class="gbs-bar-fill" style="width:${total ? Math.round(n / total * 100) : 0}%"></div></div>`;
+    }
+  }
+  const board = document.getElementById('gbsTeamBoard');
+  if (board) {
+    const rows = gbsTeams().map((t) => ({ t, n: teamProgress(t) }))
+      .sort((a, b) => b.n - a.n || parseInt(a.t, 10) - parseInt(b.t, 10));
+    const medals = ['🥇', '🥈', '🥉'];
+    const total = missions.length;
+    board.innerHTML = rows.map((r, i) => `<div class="gbs-board-row${r.t === team ? ' me' : ''}">
+        <span class="rank-num${i < 3 && r.n > 0 ? ' medal' : ''}">${i < 3 && r.n > 0 ? medals[i] : (i + 1)}</span>
+        <span class="gbs-board-name">${esc(r.t)}${r.t === team ? ' (우리 조)' : ''}</span>
+        <span class="gbs-board-bar"><span style="width:${total ? Math.round(r.n / total * 100) : 0}%"></span></span>
+        <span class="gbs-board-n">${r.n}/${total}</span>
+      </div>`).join('');
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   MISSIONS TAB — 🙋 개인 미션 / 👥 GBS 단체 미션 / 🧠 GT 퀴즈
+--------------------------------------------------------------------------- */
+let missionSeg = 'personal';
+const MSEG_DEFS = [
+  { id: 'personal', label: '🙋 개인 미션' },
+  { id: 'gbs', label: '👥 GBS 단체' },
+  { id: 'quiz', label: '🧠 GT 퀴즈' },
+];
+function setMissionSeg(seg) {
+  missionSeg = seg;
+  document.querySelectorAll('[data-mseg]').forEach((b) => b.classList.toggle('active', b.getAttribute('data-mseg') === seg));
+  document.querySelectorAll('[data-mseg-panel]').forEach((p) => p.classList.toggle('active', p.getAttribute('data-mseg-panel') === seg));
+}
+function renderPersonalMissions() {
   const ms = missionStats();
   const pct = ms.total ? Math.round((ms.done / ms.total) * 100) : 0;
   const nickname = getNickname();
   const lvl = levelInfo(ms.done, ms.total);
-  let html = `<div class="stop">
-    <div class="stop-head"><div class="stop-badge">🎯</div><h2 class="stop-title">수련회 미션</h2></div>
-    <p class="stop-sub">체크는 이 기기에 저장되고, 닉네임을 등록하면 랭킹에도 반영돼요!</p>
-    <div class="mission-progress">
-      <div class="mission-progress-top"><b>미션 진행률</b><span>${ms.done} / ${ms.total}</span></div>
+  let html = `<div class="mission-progress">
+      <div class="mission-progress-top"><b>개인 미션 진행률</b><span>${ms.done} / ${ms.total}</span></div>
       <div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
     </div>`;
-
-  html += renderGbsPhotoSection();
 
   html += `<div class="nickname-card">
     <b>🙋 내 닉네임 (랭킹용)</b>
@@ -1245,12 +1721,13 @@ function renderMissions() {
       <button type="button" id="nicknameSave">저장</button>
     </div>
     <div class="nickname-current">${nickname
-      ? `<span class="level-badge">${lvl.emoji} ${esc(lvl.label)}</span> 미션을 체크할 때마다 점수가 쌓여요!`
-      : '닉네임을 저장하면 미션 체크가 자동으로 랭킹에 반영돼요.'}</div>
+      ? `<span class="level-badge">${lvl.emoji} ${esc(lvl.label)}</span> 미션·퀴즈를 할 때마다 점수가 쌓여요!`
+      : '닉네임을 저장하면 미션 체크와 퀴즈 점수가 자동으로 랭킹에 반영돼요.'}</div>
   </div>`;
 
   html += `<div class="rank-board">
-    <div class="rank-board-title">🏆 미션 랭킹 TOP 20</div>
+    <div class="rank-board-title">🏆 개인 랭킹 TOP 20</div>
+    <div class="rank-board-sub">개인 미션 1개 = 10점 · GT 퀴즈 1문제 = 5점</div>
     <div id="rankBoardList">${rankBoardCache}</div>
   </div>`;
 
@@ -1265,7 +1742,7 @@ function renderMissions() {
   html += `<div class="section-label">🌟 선생님들의 다짐 모음</div>`;
   html += `<div id="commitmentFeed" style="margin-bottom:20px;">${commitmentFeedCache}</div>`;
 
-  html += `<div class="section-label" style="margin-top:6px;">🗂️ 미션 파트별로 골라 도전해보세요 (총 ${ms.total}개)</div>`;
+  html += `<div class="section-label" style="margin-top:6px;">🗂️ 개인 미션 — 파트별로 골라 도전해보세요 (총 ${ms.total}개)</div>`;
   RETREAT_DATA.missions.categories.forEach((cat) => {
     const cs = categoryStats(cat.id);
     const items = cat.items
@@ -1288,9 +1765,382 @@ function renderMissions() {
       <div class="mission-cat-body"><div class="mission-list">${items}</div></div>
     </div>`;
   });
-
-  html += `</div>`;
   return html;
+}
+function renderMissions() {
+  const seg = MSEG_DEFS.map((s) => `<button type="button" class="mseg-btn${s.id === missionSeg ? ' active' : ''}" data-mseg="${s.id}">${s.label}</button>`).join('');
+  return `<div class="stop">
+    <div class="stop-head"><div class="stop-badge">🎯</div><h2 class="stop-title">미션 & 퀴즈</h2></div>
+    <div class="mseg">${seg}</div>
+    <div class="mseg-panel${missionSeg === 'personal' ? ' active' : ''}" data-mseg-panel="personal">
+      <p class="mseg-desc">혼자서 하나씩 체크하는 미션이에요. 체크는 이 기기에 저장되고, 닉네임을 등록하면 개인 랭킹에 반영돼요.</p>
+      ${renderPersonalMissions()}
+    </div>
+    <div class="mseg-panel${missionSeg === 'gbs' ? ' active' : ''}" data-mseg-panel="gbs">
+      <p class="mseg-desc">우리 조가 함께 하는 사진 미션이에요. 조 대표 1명만 올리면 되고, 조 번호로 인증 여부를 확인해요.</p>
+      <div id="msegGbsBody">${renderGbsTeamSection()}</div>
+    </div>
+    <div class="mseg-panel${missionSeg === 'quiz' ? ' active' : ''}" data-mseg-panel="quiz">
+      <div id="quizPanelBody">${renderQuizPanel()}</div>
+    </div>
+  </div>`;
+}
+
+/* ---------------------------------------------------------------------------
+   GT 퀴즈 — 올려주신 자료(비전2030+, 길라잡이 I~III, 교사양육과정)에서만 출제.
+   문제는 QUIZ_DATA에 있고, 맞힌 기록은 이 기기에 저장돼요(처음 맞힌 문제만 점수).
+--------------------------------------------------------------------------- */
+const QUIZ_ALL = QUIZ_DATA.flatMap((c) => c.qs.map((q) => Object.assign({ cid: c.id }, q)));
+const QUIZ_TYPES = {
+  mc: { label: '객관식', emoji: '🔤' },
+  ox: { label: 'OX', emoji: '⭕' },
+  blank: { label: '빈칸 채우기', emoji: '✏️' },
+  multi: { label: '모두 고르기', emoji: '☑️' },
+  order: { label: '순서 맞추기', emoji: '🔢' },
+  match: { label: '짝꿍 찾기', emoji: '🔗' },
+  chosung: { label: '초성 퀴즈', emoji: '🔠' },
+};
+function quizState() { return lsGet('gt_quiz_state', {}); }
+function quizCorrectCount() {
+  const s = quizState();
+  return QUIZ_ALL.filter((q) => s[q.id] === 1).length;
+}
+function quizWrongList() {
+  const s = quizState();
+  return QUIZ_ALL.filter((q) => s[q.id] === 0);
+}
+function chapterQuizStats(cid) {
+  const s = quizState();
+  const qs = QUIZ_ALL.filter((q) => q.cid === cid);
+  return { total: qs.length, correct: qs.filter((q) => s[q.id] === 1).length, best: lsGet('gt_quiz_best_' + cid, null) };
+}
+function renderQuizPanel() {
+  const total = QUIZ_ALL.length;
+  const correct = quizCorrectCount();
+  const wrong = quizWrongList().length;
+  const pct = total ? Math.round(correct / total * 100) : 0;
+  const typeChips = Object.values(QUIZ_TYPES).map((t) => `<span>${t.emoji} ${t.label}</span>`).join('');
+  const chapters = QUIZ_DATA.map((c) => {
+    const st = chapterQuizStats(c.id);
+    const p = st.total ? Math.round(st.correct / st.total * 100) : 0;
+    return `<button type="button" class="quiz-ch${st.correct === st.total ? ' full' : ''}" data-quiz-start="${c.id}">
+        <span class="quiz-ch-emoji">${c.emoji}</span>
+        <span class="quiz-ch-main">
+          <b>${esc(c.title)}</b>
+          <span class="quiz-ch-sub">${esc(c.sub)} · ${st.total}문제</span>
+          <span class="quiz-ch-bar"><span style="width:${p}%"></span></span>
+        </span>
+        <span class="quiz-ch-side">${st.correct}/${st.total}${st.best != null ? `<small>최고 ${st.best}%</small>` : ''}</span>
+      </button>`;
+  }).join('');
+  return `<div class="quiz-hero">
+      <div class="quiz-hero-eyebrow">🧠 GT 퀴즈</div>
+      <h3>퀴즈로 GT를 더 깊이 알아가요</h3>
+      <p>비전2030+, 길라잡이 I~III, 교사양육과정 자료에서 낸 ${total}문제예요.</p>
+      <div class="quiz-hero-score"><b>${correct}</b><span> / ${total} 맞힘</span></div>
+      <div class="quiz-hero-bar"><span style="width:${pct}%"></span></div>
+      <div class="quiz-hero-actions">
+        <button type="button" class="quiz-btn primary" data-quiz-random="1">🎲 랜덤 10문제</button>
+        <button type="button" class="quiz-btn" data-quiz-wrong="1"${wrong ? '' : ' disabled'}>🔁 틀린 문제 ${wrong}</button>
+      </div>
+      <div class="quiz-hero-note">처음 맞힌 문제 1개 = 개인 랭킹 5점</div>
+    </div>
+    <div class="quiz-types">${typeChips}</div>
+    <div class="section-label">📚 파트별로 도전하기</div>
+    <div class="quiz-ch-list">${chapters}</div>`;
+}
+function refreshQuizPanel() {
+  const body = document.getElementById('quizPanelBody');
+  if (body) body.innerHTML = renderQuizPanel();
+}
+function refreshGbsSection() {
+  const body = document.getElementById('msegGbsBody');
+  if (body) body.innerHTML = renderGbsTeamSection();
+  updateGbsDynamic();
+}
+function refreshHomePanel() {
+  const homePanel = document.getElementById('panel-home');
+  if (homePanel) homePanel.innerHTML = renderHome();
+}
+
+
+/* ---------------------------------------------------------------------------
+   퀴즈 풀이 화면 (전체화면 오버레이)
+--------------------------------------------------------------------------- */
+let qz = null;
+function shuffleArr(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function shuffledIdx(n, avoidIdentity) {
+  const base = Array.from({ length: n }, (_, i) => i);
+  let s = shuffleArr(base);
+  for (let k = 0; avoidIdentity && n > 1 && k < 10 && s.every((v, i) => v === i); k++) s = shuffleArr(base);
+  return s;
+}
+function prepQuestion(q) {
+  const p = { q, answered: false, ok: null };
+  if (q.t === 'mc' || q.t === 'blank') p.perm = shuffledIdx(q.o.length, false);
+  if (q.t === 'multi') { p.perm = shuffledIdx(q.o.length, false); p.sel = []; }
+  if (q.t === 'order') { p.perm = shuffledIdx(q.o.length, true); p.picked = []; }
+  if (q.t === 'match') { p.rperm = shuffledIdx(q.p.length, true); p.pairs = {}; p.selL = 0; }
+  return p;
+}
+function quizChapterTitle(cid) {
+  const c = QUIZ_DATA.find((x) => x.id === cid);
+  return c ? `${c.emoji} ${c.title}` : '';
+}
+function startQuiz(mode, arg) {
+  let list = [], title = '';
+  if (mode === 'chapter') {
+    list = QUIZ_ALL.filter((q) => q.cid === arg);
+    title = quizChapterTitle(arg);
+  } else if (mode === 'random') {
+    list = shuffleArr(QUIZ_ALL).slice(0, 10);
+    title = '🎲 랜덤 10문제';
+  } else if (mode === 'wrong') {
+    list = shuffleArr(quizWrongList()).slice(0, 20);
+    title = '🔁 틀린 문제 다시 풀기';
+  } else if (mode === 'retry') {
+    list = arg;
+    title = '🔁 이번에 틀린 문제';
+  }
+  if (!list.length) { toast('풀 문제가 없어요!'); return; }
+  qz = { mode, arg, title, list: list.map(prepQuestion), idx: 0, correct: 0, newly: 0, wrongQs: [] };
+  document.getElementById('quizTitle').textContent = title;
+  document.getElementById('quizView').hidden = false;
+  document.body.classList.add('quiz-open');
+  renderQuizQuestion();
+}
+function closeQuiz() {
+  document.getElementById('quizView').hidden = true;
+  document.body.classList.remove('quiz-open');
+  const hadProgress = qz && qz.newly > 0;
+  qz = null;
+  refreshQuizPanel();
+  refreshHomePanel();
+  if (hadProgress) syncMissionProgress();
+}
+function quizQuestionText(q) {
+  return esc(q.q).replace(/_{4,}/g, '<span class="qz-blank">&nbsp;?&nbsp;</span>');
+}
+function renderQuizQuestion() {
+  const body = document.getElementById('quizBody');
+  const n = qz.list.length;
+  document.getElementById('quizCount').textContent = `${Math.min(qz.idx + 1, n)} / ${n}`;
+  document.getElementById('quizBar').style.width = Math.round((qz.idx / n) * 100) + '%';
+  if (qz.idx >= n) { renderQuizResult(); return; }
+  const p = qz.list[qz.idx];
+  const q = p.q;
+  const T = QUIZ_TYPES[q.t];
+  let area = '', needsCheck = false, canCheck = false;
+
+  if (q.t === 'mc' || q.t === 'blank') {
+    area = `<div class="qz-opts">${p.perm.map((i) => {
+      let cls = 'qz-opt';
+      if (p.answered) { if (i === q.a) cls += ' correct'; else if (i === p.pick) cls += ' wrong'; }
+      return `<button type="button" class="${cls}" data-qz-opt="${i}"${p.answered ? ' disabled' : ''}>${esc(q.o[i])}</button>`;
+    }).join('')}</div>`;
+  } else if (q.t === 'ox') {
+    const b = (val, label) => {
+      let cls = 'qz-ox ' + (val ? 'o' : 'x');
+      if (p.answered) { if (val === q.a) cls += ' correct'; else if (val === p.pick) cls += ' wrong'; }
+      return `<button type="button" class="${cls}" data-qz-ox="${val ? 1 : 0}"${p.answered ? ' disabled' : ''}>${label}</button>`;
+    };
+    area = `<div class="qz-ox-row">${b(true, 'O')}${b(false, 'X')}</div>`;
+  } else if (q.t === 'multi') {
+    needsCheck = true; canCheck = p.sel.length > 0;
+    area = `<p class="qz-hint">해당하는 것을 모두 고른 뒤 '정답 확인'을 눌러요.</p><div class="qz-opts">${p.perm.map((i) => {
+      let cls = 'qz-opt multi';
+      if (p.sel.includes(i)) cls += ' on';
+      if (p.answered) { if (q.a.includes(i)) cls += ' correct'; else if (p.sel.includes(i)) cls += ' wrong'; }
+      return `<button type="button" class="${cls}" data-qz-toggle="${i}"${p.answered ? ' disabled' : ''}><span class="qz-box">${p.sel.includes(i) ? '✓' : ''}</span>${esc(q.o[i])}</button>`;
+    }).join('')}</div>`;
+  } else if (q.t === 'order') {
+    needsCheck = true; canCheck = p.picked.length === q.o.length;
+    const slots = q.o.map((_, pos) => {
+      const i = p.picked[pos];
+      if (i == null) return `<div class="qz-slot empty"><span class="qz-num">${pos + 1}</span></div>`;
+      let cls = 'qz-slot';
+      if (p.answered) cls += i === pos ? ' correct' : ' wrong';
+      return `<button type="button" class="${cls}" data-qz-unpick="${pos}"${p.answered ? ' disabled' : ''}><span class="qz-num">${pos + 1}</span>${esc(q.o[i])}</button>`;
+    }).join('');
+    const pool = p.perm.filter((i) => !p.picked.includes(i))
+      .map((i) => `<button type="button" class="qz-chip" data-qz-pick="${i}">${esc(q.o[i])}</button>`).join('');
+    area = `<p class="qz-hint">아래 카드를 순서대로 누르세요. 잘못 놓았으면 위 칸을 눌러 빼면 돼요.</p>
+      <div class="qz-slots">${slots}</div>
+      ${p.answered ? '' : `<div class="qz-pool">${pool}</div>`}`;
+  } else if (q.t === 'match') {
+    needsCheck = true; canCheck = Object.keys(p.pairs).length === q.p.length;
+    const rightOwner = {};
+    Object.keys(p.pairs).forEach((l) => { rightOwner[p.pairs[l]] = Number(l); });
+    const lefts = q.p.map((pair, l) => {
+      let cls = 'qz-m left';
+      if (p.pairs[l] != null) cls += ' paired pc' + (l % 6);
+      if (p.selL === l) cls += ' sel';
+      if (p.answered) cls += p.pairs[l] === l ? ' correct' : ' wrong';
+      return `<button type="button" class="${cls}" data-qz-left="${l}"${p.answered ? ' disabled' : ''}>${esc(pair[0])}</button>`;
+    }).join('');
+    const rights = p.rperm.map((r) => {
+      let cls = 'qz-m right';
+      if (rightOwner[r] != null) cls += ' paired pc' + (rightOwner[r] % 6);
+      return `<button type="button" class="${cls}" data-qz-right="${r}"${p.answered ? ' disabled' : ''}>${esc(q.p[r][1])}</button>`;
+    }).join('');
+    area = `<p class="qz-hint">왼쪽을 누르고, 짝이 되는 오른쪽을 누르세요. 같은 색끼리 짝이에요.</p>
+      <div class="qz-match"><div class="qz-col">${lefts}</div><div class="qz-col">${rights}</div></div>`;
+  } else if (q.t === 'chosung') {
+    needsCheck = true; canCheck = true;
+    area = `<div class="qz-chosung">${esc(q.hint)}</div>
+      <input type="text" class="qz-input" id="qzInput" placeholder="정답을 입력하세요" autocomplete="off" value="${esc(p.typed || '')}"${p.answered ? ' disabled' : ''}>`;
+  }
+
+  let fb = '';
+  if (p.answered) {
+    fb = `<div class="qz-fb ${p.ok ? 'ok' : 'no'}">
+      <div class="qz-fb-head">${p.ok ? '🎉 정답이에요!' : '😅 아쉬워요!'}</div>
+      ${p.ok ? '' : `<div class="qz-fb-ans">${quizAnswerHtml(q)}</div>`}
+      <div class="qz-fb-exp">💡 ${esc(q.e)}</div>
+    </div>`;
+  }
+  const isLast = qz.idx === n - 1;
+  let actions = '';
+  if (!p.answered && needsCheck) {
+    actions = `<button type="button" class="quiz-btn primary wide" data-qz-check="1"${canCheck ? '' : ' disabled'}>정답 확인</button>`;
+    if (q.t === 'order' || q.t === 'match') actions += `<button type="button" class="quiz-btn wide ghost" data-qz-reset="1">다시 놓기</button>`;
+  } else if (p.answered) {
+    actions = `<button type="button" class="quiz-btn primary wide" data-qz-next="1">${isLast ? '결과 보기 🏁' : '다음 문제 →'}</button>`;
+  }
+
+  body.innerHTML = `<div class="qz-card" data-qid="${esc(q.id)}">
+      <div class="qz-meta"><span class="qz-type t-${q.t}">${T.emoji} ${T.label}</span>${qz.mode !== 'chapter' ? `<span class="qz-from">${esc(quizChapterTitle(q.cid))}</span>` : ''}</div>
+      <div class="qz-q">${quizQuestionText(q)}</div>
+      ${area}
+      ${fb}
+      <div class="qz-actions">${actions}</div>
+    </div>`;
+  if (q.t === 'chosung' && !p.answered) {
+    const inp = document.getElementById('qzInput');
+    if (inp) inp.focus({ preventScroll: true });
+  }
+}
+function quizAnswerHtml(q) {
+  if (q.t === 'mc' || q.t === 'blank') return `정답: <b>${esc(q.o[q.a])}</b>`;
+  if (q.t === 'ox') return `정답: <b>${q.a ? 'O' : 'X'}</b>`;
+  if (q.t === 'multi') return `정답: <b>${q.a.map((i) => esc(q.o[i])).join(', ')}</b>`;
+  if (q.t === 'order') return `정답 순서: ${q.o.map((x, i) => `<b>${i + 1}. ${esc(x)}</b>`).join(' → ')}`;
+  if (q.t === 'match') return `정답 짝: <ul>${q.p.map((pr) => `<li><b>${esc(pr[0])}</b> ↔ ${esc(pr[1])}</li>`).join('')}</ul>`;
+  if (q.t === 'chosung') return `정답: <b>${esc(q.a[0])}</b>`;
+  return '';
+}
+function normAnswer(s) {
+  return String(s || '').toLowerCase().replace(/[\s.,·'"‘’“”!?~()\-]/g, '');
+}
+function gradeQuestion(p) {
+  const q = p.q;
+  let ok = false;
+  if (q.t === 'mc' || q.t === 'blank') ok = p.pick === q.a;
+  else if (q.t === 'ox') ok = p.pick === q.a;
+  else if (q.t === 'multi') ok = p.sel.length === q.a.length && q.a.every((i) => p.sel.includes(i));
+  else if (q.t === 'order') ok = p.picked.every((v, i) => v === i);
+  else if (q.t === 'match') ok = q.p.every((_, l) => p.pairs[l] === l);
+  else if (q.t === 'chosung') ok = q.a.map(normAnswer).includes(normAnswer(p.typed));
+  p.answered = true;
+  p.ok = ok;
+  const st = quizState();
+  if (ok) {
+    if (st[q.id] !== 1) qz.newly++;
+    st[q.id] = 1;
+    qz.correct++;
+  } else {
+    if (st[q.id] !== 1) st[q.id] = 0;
+    qz.wrongQs.push(q);
+  }
+  lsSet('gt_quiz_state', st);
+  renderQuizQuestion();
+}
+function renderQuizResult() {
+  const n = qz.list.length;
+  const pct = Math.round(qz.correct / n * 100);
+  document.getElementById('quizCount').textContent = '완료!';
+  document.getElementById('quizBar').style.width = '100%';
+  if (qz.mode === 'chapter') {
+    const key = 'gt_quiz_best_' + qz.arg;
+    if (pct > (lsGet(key, -1))) lsSet(key, pct);
+  }
+  const grade = pct === 100 ? { e: '👑', t: '완벽해요! 진짜 GT 박사님!' }
+    : pct >= 80 ? { e: '🌟', t: '훌륭해요! GT를 정말 잘 아시네요.' }
+    : pct >= 50 ? { e: '👏', t: '좋아요! 조금만 더 하면 GT 박사!' }
+    : { e: '🌱', t: '괜찮아요! 틀린 문제에 GT가 더 숨어 있어요.' };
+  document.getElementById('quizBody').innerHTML = `<div class="qz-card qz-result">
+      <div class="qz-result-emoji">${grade.e}</div>
+      <div class="qz-result-score">${qz.correct}<span> / ${n}</span></div>
+      <div class="qz-result-msg">${grade.t}</div>
+      ${qz.newly ? `<div class="qz-result-new">새로 맞힌 문제 +${qz.newly} · 개인 랭킹 +${qz.newly * 5}점</div>` : ''}
+      <div class="qz-actions">
+        ${qz.wrongQs.length ? `<button type="button" class="quiz-btn primary wide" data-qz-retry="1">🔁 틀린 ${qz.wrongQs.length}문제 다시 풀기</button>` : ''}
+        <button type="button" class="quiz-btn wide" data-qz-restart="1">처음부터 다시</button>
+        <button type="button" class="quiz-btn wide ghost" data-qz-close="1">퀴즈 목록으로</button>
+      </div>
+    </div>`;
+}
+function handleQuizClick(e) {
+  if (!qz) return false;
+  const t = e.target;
+  const p = qz.list[qz.idx];
+  const el = (sel) => t.closest(sel);
+  if (el('[data-qz-close]') || el('#quizClose')) { closeQuiz(); return true; }
+  if (el('[data-qz-next]')) { qz.idx++; renderQuizQuestion(); document.getElementById('quizView').scrollTop = 0; return true; }
+  if (el('[data-qz-restart]')) { startQuiz(qz.mode === 'retry' ? 'retry' : qz.mode, qz.mode === 'retry' ? qz.list.map((x) => x.q) : qz.arg); return true; }
+  if (el('[data-qz-retry]')) { startQuiz('retry', qz.wrongQs.slice()); return true; }
+  if (!p || p.answered) return !!el('#quizView');
+  const opt = el('[data-qz-opt]');
+  if (opt) { p.pick = Number(opt.getAttribute('data-qz-opt')); gradeQuestion(p); return true; }
+  const oxb = el('[data-qz-ox]');
+  if (oxb) { p.pick = oxb.getAttribute('data-qz-ox') === '1'; gradeQuestion(p); return true; }
+  const tog = el('[data-qz-toggle]');
+  if (tog) {
+    const i = Number(tog.getAttribute('data-qz-toggle'));
+    p.sel = p.sel.includes(i) ? p.sel.filter((x) => x !== i) : p.sel.concat(i);
+    renderQuizQuestion(); return true;
+  }
+  const pick = el('[data-qz-pick]');
+  if (pick) { p.picked.push(Number(pick.getAttribute('data-qz-pick'))); renderQuizQuestion(); return true; }
+  const unpick = el('[data-qz-unpick]');
+  if (unpick) { p.picked.splice(Number(unpick.getAttribute('data-qz-unpick')), 1); renderQuizQuestion(); return true; }
+  const left = el('[data-qz-left]');
+  if (left) {
+    p.selL = Number(left.getAttribute('data-qz-left'));
+    renderQuizQuestion(); return true;
+  }
+  const right = el('[data-qz-right]');
+  if (right) {
+    const r = Number(right.getAttribute('data-qz-right'));
+    if (p.selL == null) {
+      // 이미 짝지어진 오른쪽을 다시 누르면 짝을 풀어요
+      Object.keys(p.pairs).forEach((l) => { if (p.pairs[l] === r) delete p.pairs[l]; });
+    } else {
+      Object.keys(p.pairs).forEach((l) => { if (p.pairs[l] === r) delete p.pairs[l]; });
+      p.pairs[p.selL] = r;
+      const nextFree = p.q.p.findIndex((_, i) => p.pairs[i] == null);
+      p.selL = nextFree >= 0 ? nextFree : null;
+    }
+    renderQuizQuestion(); return true;
+  }
+  if (el('[data-qz-reset]')) {
+    if (p.q.t === 'order') p.picked = [];
+    if (p.q.t === 'match') { p.pairs = {}; p.selL = 0; }
+    renderQuizQuestion(); return true;
+  }
+  const check = el('[data-qz-check]');
+  if (check) {
+    if (p.q.t === 'chosung') {
+      p.typed = (document.getElementById('qzInput') || {}).value || '';
+      if (!p.typed.trim()) { toast('정답을 입력해주세요.'); return true; }
+    }
+    gradeQuestion(p); return true;
+  }
+  return !!el('#quizView');
 }
 
 /* ============================================================================
@@ -1741,7 +2591,8 @@ function watchGbsPhotoMissions(firestoreMod) {
       (byMission[p.missionId] = byMission[p.missionId] || []).push(p);
     });
     gbsPhotoCache = byMission;
-    renderAllGbsPhotoThumbs();
+    updateGbsDynamic();
+    refreshHomePanel();
   }, (err) => console.error('gbs photo watch failed', err));
 }
 function setupUploadUI(f, firestoreMod) {
@@ -1893,6 +2744,9 @@ function renderAdminModal() {
     <div class="admin-field"><label>D-day 기준 날짜</label><input type="date" id="adminDateStart" value="${esc(RETREAT_DATA.meta.dateStart || '')}"></div>
     <div class="admin-field"><label>날짜 표시 문구</label><input type="text" id="adminDateLabel" value="${esc(RETREAT_DATA.meta.dateLabel || '')}"></div>
 
+    <div class="admin-section-title">👥 GBS 단체 미션</div>
+    <div class="admin-field"><label>GBS 조 개수 (1조부터 이 숫자까지 선택지가 생겨요)</label><input type="number" min="1" max="40" inputmode="numeric" id="adminTeamCount" value="${esc(RETREAT_DATA.missions.gbsTeamCount || 12)}"></div>
+
     <button type="button" class="admin-save-btn" id="adminSaveBtn" style="width:100%;margin-top:6px;">💾 전체 저장</button>
     <button type="button" class="admin-save-btn" id="adminLockBtn" style="width:100%;margin-top:8px;background:var(--surface-2);color:var(--ink-dim);box-shadow:none;">🔒 관리자 모드 잠그기</button>`;
 }
@@ -1915,6 +2769,10 @@ async function saveAdminSettings() {
   RETREAT_DATA.meta.welcome = document.getElementById('adminWelcome').value;
   RETREAT_DATA.meta.dateStart = (document.getElementById('adminDateStart').value || '').trim();
   RETREAT_DATA.meta.dateLabel = (document.getElementById('adminDateLabel').value || '').trim();
+  const prevTeamCount = RETREAT_DATA.missions.gbsTeamCount;
+  const teamCount = parseInt(document.getElementById('adminTeamCount').value, 10);
+  if (teamCount >= 1 && teamCount <= 40) RETREAT_DATA.missions.gbsTeamCount = teamCount;
+  if (RETREAT_DATA.missions.gbsTeamCount !== prevTeamCount) refreshGbsSection();
 
   if (!isFirebaseConfigured() || !db || !firestoreModRef) {
     toast('Firebase 설정이 없어서 이 기기에만 반영돼요.');
@@ -1933,6 +2791,7 @@ async function saveAdminSettings() {
       theme: RETREAT_DATA.meta.theme,
       dateStart: RETREAT_DATA.meta.dateStart,
       dateLabel: RETREAT_DATA.meta.dateLabel,
+      gbsTeamCount: RETREAT_DATA.missions.gbsTeamCount,
     }, { merge: true });
     toast('저장했어요! 모두의 화면에 반영됩니다 🎉');
     refreshAfterSettingsChange();
@@ -1970,6 +2829,11 @@ function watchSettings(firestoreMod) {
     if (typeof data.theme === 'string') { RETREAT_DATA.meta.theme = data.theme; changed = true; }
     if (typeof data.dateStart === 'string' && data.dateStart) { RETREAT_DATA.meta.dateStart = data.dateStart; changed = true; }
     if (typeof data.dateLabel === 'string' && data.dateLabel) { RETREAT_DATA.meta.dateLabel = data.dateLabel; changed = true; }
+    if (typeof data.gbsTeamCount === 'number' && data.gbsTeamCount !== RETREAT_DATA.missions.gbsTeamCount) {
+      RETREAT_DATA.missions.gbsTeamCount = data.gbsTeamCount;
+      refreshGbsSection();
+      changed = true;
+    }
     if (changed) refreshAfterSettingsChange();
   }, (err) => console.error('settings watch failed', err));
 }
@@ -2006,6 +2870,25 @@ document.getElementById('detailBack').addEventListener('click', closeDetail);
    GLOBAL CLICK / INPUT DELEGATION
 ============================================================================ */
 document.addEventListener('click', (e) => {
+  // 퀴즈 풀이 화면이 열려 있으면 퀴즈가 먼저 처리
+  if (qz && handleQuizClick(e)) return;
+  const quizStartBtn = e.target.closest('[data-quiz-start]');
+  if (quizStartBtn) { startQuiz('chapter', quizStartBtn.getAttribute('data-quiz-start')); return; }
+  if (e.target.closest('[data-quiz-random]')) { startQuiz('random'); return; }
+  if (e.target.closest('[data-quiz-wrong]')) { startQuiz('wrong'); return; }
+  const msegBtn = e.target.closest('[data-mseg]');
+  if (msegBtn) { setMissionSeg(msegBtn.getAttribute('data-mseg')); return; }
+  const gotoMseg = e.target.closest('[data-goto-mseg]');
+  if (gotoMseg) { switchTab('missions'); setMissionSeg(gotoMseg.getAttribute('data-goto-mseg')); return; }
+  // GBS 단체 미션: 조를 고르기 전에는 사진 선택창을 열지 않아요
+  const gbsUploadLabel = e.target.closest('.gbsphoto-upload-btn');
+  if (gbsUploadLabel && !myTeam()) {
+    e.preventDefault();
+    toast('먼저 우리 조를 선택해주세요 👆');
+    const sel = document.getElementById('myTeamSelect');
+    if (sel) { sel.scrollIntoView({ behavior: 'smooth', block: 'center' }); sel.focus(); }
+    return;
+  }
   if (e.target.id === 'adminGearBtn') { openAdminModal(); return; }
   if (e.target.id === 'adminModalClose') { closeAdminModal(); return; }
   if (e.target.id === 'adminModal') { closeAdminModal(); return; }
@@ -2135,6 +3018,7 @@ document.addEventListener('click', (e) => {
     syncMissionProgress();
     const panel = document.getElementById('panel-missions');
     if (panel) panel.innerHTML = renderMissions();
+    updateGbsDynamic();
     return;
   }
 
@@ -2156,38 +3040,42 @@ document.addEventListener('click', (e) => {
 });
 
 /* ============================================================================
-   GBS 인증 미션 — 파일 선택(change)은 이벤트 위임으로 처리합니다.
+   GBS 단체 미션 — 조 선택과 파일 선택(change)은 이벤트 위임으로 처리합니다.
    (미션 탭이 다시 그려져도 delegation 덕분에 계속 정상 동작해요.)
 ============================================================================ */
 document.addEventListener('change', async (e) => {
+  if (e.target.id === 'myTeamSelect') {
+    lsSet('gt_my_gbs_team', e.target.value);
+    updateGbsDynamic();
+    refreshHomePanel();
+    if (e.target.value) toast(`${e.target.value}(으)로 설정했어요!`);
+    return;
+  }
   const fileInput = e.target.closest('[data-gbsphoto-file]');
   if (!fileInput) return;
   const missionId = fileInput.getAttribute('data-gbsphoto-file');
-  const mission = (RETREAT_DATA.missions.gbsPhotoMissions || []).find((m) => m.id === missionId);
+  const mission = gbsMissionList().find((m) => m.id === missionId);
   const files = Array.from(fileInput.files || []);
   if (!mission || !files.length) return;
+  const team = myTeam();
+  if (!team) { toast('먼저 우리 조를 선택해주세요 👆'); fileInput.value = ''; return; }
   if (!isFirebaseConfigured() || !db || !firestoreModRef) {
     toast('Firebase 설정 후 인증샷을 올릴 수 있어요.');
     fileInput.value = '';
     return;
   }
-  const gbsNameInput = document.getElementById('myGbsNameInput');
-  const gbsName = gbsNameInput ? gbsNameInput.value.trim() : '';
-  lsSet('gt_my_gbs', gbsName);
-  const uploaderName = getNickname();
-  const card = fileInput.closest('.gbsphoto-card');
   const progressEl = document.getElementById('gbsphotoProgress_' + missionId);
   if (progressEl) progressEl.hidden = false;
   const { collection, addDoc, serverTimestamp } = firestoreModRef;
   let done = 0;
   for (const file of files) {
-    if (progressEl) progressEl.textContent = `업로드 중… (${done + 1}/${files.length})`;
+    if (progressEl) progressEl.textContent = `${team} 인증샷 올리는 중… (${done + 1}/${files.length})`;
     try {
       let dataUrl = await compressImageToDataUrl(file, 1280, 0.7);
       if (dataUrl.length > 900000) dataUrl = await compressImageToDataUrl(file, 900, 0.55);
       if (dataUrl.length > 900000) throw new Error('too large even after compression');
       await addDoc(collection(db, 'gbs_photos'), {
-        url: dataUrl, missionId, missionTitle: mission.title, gbsName, uploaderName, uploadedAt: serverTimestamp(),
+        url: dataUrl, missionId, missionTitle: mission.title, team, uploaderName: getNickname(), uploadedAt: serverTimestamp(),
       });
       done++;
     } catch (err) {
@@ -2200,20 +3088,15 @@ document.addEventListener('change', async (e) => {
     setTimeout(() => { progressEl.hidden = true; }, 2000);
   }
   fileInput.value = '';
-  if (done > 0) {
-    lsSet('gt_gbsphoto_done_' + missionId, true);
-    if (card) {
-      card.classList.add('done');
-      const uploadLabel = card.querySelector('.gbsphoto-upload-btn');
-      if (uploadLabel) uploadLabel.innerHTML = `${iconSvg('upload')} 사진 더 추가하기`;
-    }
-    const stats = missionStats();
-    const bar = document.querySelector('.mission-bar-fill');
-    const label = document.querySelector('.mission-progress-top span');
-    if (bar) bar.style.width = (stats.total ? Math.round((stats.done / stats.total) * 100) : 0) + '%';
-    if (label) label.textContent = `${stats.done} / ${stats.total}`;
-    toast(`인증샷을 올렸어요! 🙌 (${done}장)`);
-    syncMissionProgress();
+  if (done > 0) toast(`${team} '${mission.title}' 인증 완료! 🙌`);
+});
+
+// 초성 퀴즈: 엔터로 정답 확인
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && e.target.id === 'qzInput' && qz) {
+    e.preventDefault();
+    const btn = document.querySelector('[data-qz-check]');
+    if (btn) btn.click();
   }
 });
 
@@ -2221,6 +3104,7 @@ document.addEventListener('change', async (e) => {
    BOOT
 ============================================================================ */
 renderAll();
+updateGbsDynamic();
 document.getElementById('adminGearBtn').classList.toggle('on', isAdminUnlocked());
 initFirebase();
 </script>
